@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="REGISTRATION.css">
+    <title>iFOUND CAMPUS - Register</title>
+</head>
+<body>
+
+    <div class="lmain">
+
+        <!-- LEFT PHOTO PLMUN-->
+        <div class="lmain_img">
+            <img src="plmun.jpeg" alt="iFound Campus">
+
+            <div class="brand">
+                <span class="ifound">iFOUND</span>
+                <span class="campus">CAMPUS</span>
+            </div>
+
+            <div class="description">
+                <h3>Lost something<br>at school?</h3>
+                <p>
+                    We’re here to help you find it.<br>
+                    Report lost items and browse what’s been found on campus.
+                </p>
+            </div>
+        </div>
+
+        <!-- RIGHT REGISTRATION FORM -->
+        <div class="reg-container">
+            <div class="registration">
+
+                <h3>GET STARTED</h3>
+                <h2>Create an Account</h2>
+
+                <div class="user-toggle">
+                    <button type="button" class="toggle-btn active" id="studentBtn">STUDENT</button>
+                    <button type="button" class="toggle-btn" id="staffBtn">STAFF</button>
+                </div>
+            
+                <form id="registerForm">
+                    <label>Username</label>
+                    <input class="input-field" id="username" type="text" placeholder="Username" required>
+                    
+                    <label>Email</label>
+                    <input class="input-field" id="email" type="email" placeholder="name@plmun.edu.ph" required>
+                    
+                    <label id="identifierLabel">Student Number</label>
+                    <input class="input-field" id="identifierInput" type="text" placeholder="Student Number" required>
+
+                    <label>Password</label>
+                    <div class="password-container">
+                        <input class="input-field password-input" id="password" type="password" placeholder="Password" required>
+                        <img src="eye.png" alt="Show/Hide Password" class="eye-icon" id="eye">
+                    </div>
+
+                    <label>Confirm Password</label>
+                    <div class="password-container">
+                        <input class="input-field" id="confirmPassword" type="password" placeholder="Confirm Password" required>
+                        <!-- Inayos ang ID para hindi mag-clash -->
+                        <img src="eye.png" alt="Show/Hide Password" class="eye-icon" id="confirmEye">
+                    </div>
+
+                    <button type="submit" class="button-create">CREATE ACCOUNT</button>
+                </form>
+
+                <p class="signup">
+                    Already have an account? <a href="IFC_Login.html">Sign in.</a>
+                </p>
+
+            </div>
+        </div>
+
+    </div>
+
+   <div class="custom-toast" id="regToast" role="status" aria-live="polite">
+        <span class="toast-check">✓</span>
+        <div class="toast-text">
+            <strong id="toastTitle">Account created successfully!</strong>
+            <p id="toastDesc">Redirecting to login...</p>
+        </div>
+   </div>
+
+   <script>
+    const studentBtn = document.getElementById('studentBtn');
+    const staffBtn = document.getElementById('staffBtn');
+
+    const identifierLabel = document.getElementById('identifierLabel');
+    const identifierInput = document.getElementById('identifierInput');
+
+    studentBtn.addEventListener('click', () => {
+        studentBtn.classList.add('active');
+        staffBtn.classList.remove('active');
+
+        identifierLabel.textContent = "Student Number";
+        identifierInput.placeholder = "Student Number";
+    });
+
+    staffBtn.addEventListener('click', () => {
+        staffBtn.classList.add('active');
+        studentBtn.classList.remove('active');
+
+        identifierLabel.textContent = "Employee ID";
+        identifierInput.placeholder = "Employee ID";
+    });
+
+    // Password Toggle Visibility (Main Password)
+    const password = document.getElementById('password');
+    const eye = document.getElementById('eye');
+
+    eye.addEventListener('click', () => {
+        if (password.type === 'password') {
+            password.type = 'text';
+            eye.src = "closed-eye.png";
+        } else {
+            password.type = 'password';
+            eye.src = "eye.png";
+        }
+    });
+
+    // Confirm Password Toggle Visibility
+    const confirmPassword = document.getElementById('confirmPassword');
+    const confirmEye = document.getElementById('confirmEye');
+
+    confirmEye.addEventListener('click', () => {
+        if (confirmPassword.type === 'password') {
+            confirmPassword.type = 'text';
+            confirmEye.src = "closed-eye.png";
+        } else {
+            confirmPassword.type = 'password';
+            confirmEye.src = "eye.png";
+        }
+    });
+
+    function showToast(title, desc) {
+        const toast = document.getElementById('regToast');
+        document.getElementById('toastTitle').textContent = title;
+        document.getElementById('toastDesc').textContent = desc;
+        
+        toast.style.display = 'flex';
+        
+        setTimeout(() => {
+            toast.style.display = 'none';
+        }, 3000);
+    }
+
+    // Form Validation Logic
+    const registerForm = document.getElementById('registerForm');
+    const emailInput = document.getElementById('email');
+    const usernameInput = document.getElementById('username');
+
+    registerForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const emailValue = emailInput.value.trim();
+        const usernameValue = usernameInput.value.trim();
+        const pwdValue = password.value;
+        const confirmPwdValue = confirmPassword.value;
+
+        // Validation FOR PLMun Institutional Email
+        const emailRegex = /@plmun\.edu\.ph$/;
+        if (!emailRegex.test(emailValue)) {
+            showToast("Invalid Email", "Please use your PLMun institutional email ending with @plmun.edu.ph");
+            emailInput.focus();
+            return;
+        }
+
+        // Validation for Password at Confirm Password
+        if (pwdValue !== confirmPwdValue) {
+            showToast("Password Error", "Passwords do not match! Please check and try again.");
+            confirmPassword.focus();
+            return;
+        }
+
+        // Password length check
+        if (pwdValue.length < 6) {
+            showToast("Weak Password", "Password must be at least 6 characters long.");
+            password.focus();
+            return;
+        }
+
+        localStorage.setItem('iFoundUserName', usernameValue);
+        localStorage.setItem('iFoundIdentifier', identifierInput.value.trim());
+        localStorage.setItem('iFoundPassword', password.value);
+
+        showToast("Account Created!", "Redirecting to login page...");
+
+        setTimeout(() => {
+            window.location.href = "IFC_Login.html"; 
+        }, 2000);
+    });
+   </script>
+
+</body>
+</html>
