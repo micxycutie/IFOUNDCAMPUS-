@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="HELLO ITO AY LOST AND FOUND PARA SA PAMANTASAN NG LUNGSOD NG MUNTINLUPA COMMUNITY">
+    <link rel="stylesheet" href="IFC_Login.css">
+    <title>iFOUND CAMPUS - Login</title>
+</head>
+
+<body>
+
+    <div class="lmain">
+
+        <div class="lmain_img">
+            <img src="plmun.jpeg" alt="iFound Campus">
+
+            <div class="brand">
+                <span class="ifound">iFOUND</span>
+                <span class="campus">CAMPUS</span>
+            </div>
+
+            <div class="description">
+                <h3>The campus lost &amp; found</h3>
+                <p>Post what you've lost. Browse what's been found.</p>
+            </div>
+        </div>
+
+        <div class="login">
+
+            <h3>WELCOME BACK</h3>
+            <h2>Sign in to your Account</h2>
+
+            <form id="loginForm">
+                <label for="role">Login as</label>
+                <select id="role" class="input-field">
+                    <option value="student">Student</option>
+                    <option value="staff">Staff</option>
+                    <option value="admin">Admin</option>
+                </select>
+
+                <label id="loginLabel" for="loginInput">Student Number</label>
+                <input class="input-field" id="loginInput" type="text" placeholder="Student Number" required>
+
+                <label>Password</label>
+                <div class="password-container">
+                <input class="input-field password-input" id="password" type="password" placeholder="Password" required>
+                <img src="eye.png" alt="Show/Hide Password" class="eye-icon" id="eye">
+               </div>
+              
+                <p class="fp">Forgot password?</p>
+
+                <button type="submit" class="button-login">LOGIN</button>
+            </form>
+
+            <p class="signup">
+                Don't have an account yet?
+                <a href="REGISTRATION.html">Sign up.</a>
+            </p>
+
+        </div>
+
+    </div>
+    
+    <!-- CUSTOM TOAST MESSAGE (Kulay berde na #18453B) -->
+    <div class="custom-toast" id="loginToast" role="status" aria-live="polite">
+        <span class="toast-check" id="toastIcon">✓</span>
+        <div class="toast-text">
+            <strong id="toastTitle">Login successful!</strong>
+            <p id="toastDesc">Redirecting to dashboard...</p>
+        </div>
+    </div>
+
+    <style>
+        
+    </style>
+    
+
+<script>
+    const role = document.getElementById("role");
+    const loginLabel = document.getElementById("loginLabel");
+    const loginInput = document.getElementById("loginInput");
+    const loginForm = document.getElementById("loginForm");
+    const password = document.getElementById("password");
+
+    const loginToast = document.getElementById("loginToast");
+    const toastTitle = document.getElementById("toastTitle");
+    const toastDesc = document.getElementById("toastDesc");
+    const toastIcon = document.getElementById("toastIcon");
+    const eye = document.getElementById("eye");
+
+    
+    role.addEventListener("change", function () {
+        if (this.value === "student") {
+            loginLabel.textContent = "Student Number";
+            loginInput.placeholder = "Student Number";
+        } else if (this.value === "staff") {
+            loginLabel.textContent = "Employee ID";
+            loginInput.placeholder = "Employee ID";
+        } else {
+            loginLabel.textContent = "Username";
+            loginInput.placeholder = "Username";
+        }
+
+        loginInput.value = "";
+    });
+
+    function showToast(title, desc, isError = false) {
+        toastTitle.textContent = title;
+        toastDesc.textContent = desc;
+        toastIcon.textContent = isError ? "✕" : "✓";
+
+        loginToast.style.display = "flex";
+    }
+
+
+    loginForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const inputVal = loginInput.value.trim();
+        const pwdVal = password.value;
+
+        
+        if (
+            role.value === "admin" &&
+            inputVal === "admin" &&
+            pwdVal === "admin123"
+        ) {
+            localStorage.setItem("iFoundUserName", "Administrator");
+            localStorage.setItem("iFoundLoginRole", "admin");
+
+            showToast(
+                "Login Successful!",
+                "Welcome back, Admin!"
+            );
+
+            setTimeout(function () {
+                window.location.href = "DASHBOARD.html";
+            }, 1500);
+
+            return;
+        }
+
+        
+        const regIdentifier =
+            localStorage.getItem("iFoundIdentifier");
+
+        const regPassword =
+            localStorage.getItem("iFoundPassword");
+
+        const regUsername =
+            localStorage.getItem("iFoundUserName");
+
+        const regRole =
+            localStorage.getItem("iFoundRole");
+
+        
+        if (!regIdentifier || !regPassword) {
+            showToast(
+                "Login Failed",
+                "No registered account found. Please sign up first.",
+                true
+            );
+            return;
+        }
+
+        
+        const identifierMatches =
+            inputVal.toLowerCase() ===
+            regIdentifier.trim().toLowerCase();
+
+        const passwordMatches =
+            pwdVal === regPassword;
+
+        
+        const roleMatches = regRole
+            ? role.value === regRole
+            : role.value === "student";
+
+        if (
+            identifierMatches &&
+            passwordMatches &&
+            roleMatches
+        ) {
+           
+            localStorage.setItem(
+                "iFoundLoginRole",
+                role.value
+            );
+
+            showToast(
+                "Login Successful!",
+                "Welcome back, " + (regUsername || "User") + "!"
+            );
+
+            setTimeout(function () {
+                window.location.href = "DASHBOARD.html";
+            }, 1500);
+
+        } else {
+            showToast(
+                "Login Failed",
+                "Incorrect ID, username, password, or account role.",
+                true
+            );
+
+            password.value = "";
+            password.focus();
+        }
+    });
+
+    
+    eye.addEventListener("click", function () {
+        if (password.type === "password") {
+            password.type = "text";
+            eye.src = "closed-eye.png";
+            eye.alt = "Hide Password";
+        } else {
+            password.type = "password";
+            eye.src = "eye.png";
+            eye.alt = "Show Password";
+        }
+    });
+</script>
+
+</body>
+</html>
