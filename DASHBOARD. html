@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="DASHBOARD.css">
+  <title>iFoundCampus Dashboard</title>
+</head>
+
+<body>
+
+<nav class="navbar">
+  <div class="nav-bottom">
+    <div class="hamburger" id="menuBtn">
+      <img src="hamburger.png" alt="menu">
+    </div>
+    <div class="logo">
+      <span class="ifound">iFOUND</span><span class="campus">CAMPUS</span>
+      <div class="subtitle"><i>FIND.REPORT.RECOVER.</i></div>
+    </div>
+  </div>
+  
+  <div class="nav-top">
+    <div class="nav-right">
+  <!-- NOTIFICATION BELL WITH DROPDOWN -->
+  <div class="notification" id="notifBtn">
+    <img src="bell (1).png" alt="notification">
+    <span class="badge">3</span>
+    
+    <!-- Notification Dropdown Menu -->
+    <div class="notif-dropdown" id="notifDropdown">
+      <div class="notif-header">
+        <h4>Notifications</h4>
+        <span>3 New</span>
+      </div>
+      <div class="notif-list">
+        <div class="notif-item">
+          <p><strong>Claim Approved:</strong> Your claim request for <em>School ID</em> was approved.</p>
+          <span class="notif-time">10m ago</span>
+        </div>
+        <div class="notif-item">
+          <p><strong>Potential Match:</strong> A new item matches your lost report.</p>
+          <span class="notif-time">1h ago</span>
+        </div>
+        <div class="notif-item">
+          <p><strong>Report Posted:</strong> Your found item report is now live.</p>
+          <span class="notif-time">3h ago</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SIGN IN / USER PROFILE DROPDOWN -->
+  <div class="sign-in" id="signInBtn">
+    <img src="kiwi.jpg" alt="Profile">
+    <span>Ruffa</span> <!-- Pwede mong gawing pangalan ng user o "Sign in" -->
+    
+    <!-- User Dropdown Menu -->
+    <div class="user-dropdown" id="userDropdown">
+      <div class="user-dropdown-header">
+        <p class="user-name">Ruffa Micayla</p>
+        <p class="user-email">2023-00123@plmun.edu.ph</p>
+      </div>
+      <div class="user-dropdown-links">
+        <a href="#">👤 My Profile</a>
+        <a href="#">⚙️ Account Settings</a>
+        <a href="#" id="logoutLink">🚪 Logout</a>
+      </div>
+    </div>
+  </div>
+</div>
+  </div>
+</nav>
+
+<div id="sideMenu" class="side-menu">
+  <div class="side-menu-header">
+    <div class="logo">
+      <span class="ifound">iFOUND</span><span class="campus">CAMPUS</span>
+    </div>
+    <div class="close-btn" id="closeBtn">✕</div>
+  </div>
+
+  <div class="side-menu-links">
+    <a href="#" class="active">
+      <img src="home.png" alt="Home" class="menu-icon"> Home
+    </a>
+    <a href="#">
+      <img src="wirte.png" alt="Recent Claims" class="menu-icon"> Recent Claims
+    </a>
+    <a href="#">
+      <img src="user.png" alt="Profile" class="menu-icon"> Profile
+    </a>
+  </div>
+
+  <div class="side-menu-footer">
+    <a href="#" class="sign-out-link">
+      <img src="exit.png" alt="Sign out" class="menu-icon"> Logout
+    </a>
+  </div>
+</div>
+
+<div id="overlay" class="overlay"></div>
+
+  <!-- MAIN DASHBOARD / FIRST VIEW -->
+  <main class="hero">
+    <div class="maintext">
+      <h4>PAMANTASAN NG LUNGSOD NG MUNTINLUPA</h4>
+      <h2>Lost something <span>on campus?</span></h2>
+      <h1>We help you find it.</h1>
+      <p>
+        Search for a found item or report what you've lost.
+        <br class="desktop-break">
+        Everything in one place.
+      </p>
+    </div>
+
+    <form class="searchbar">
+      <img src="search.png" alt="search" class="search-icon">
+      <input class="last" type="search" placeholder="Search for wallets, IDs, keys..." aria-label="Search items">
+      <button class="search-btn" type="submit">Search</button>
+    </form>
+
+    <div class="buttons">
+      <button class="lost" id="lostBtn" type="button">
+        <img src="exclamation (1)_113400217664527.png" alt="lost"> I Lost Something
+      </button>
+      <button class="found" id="foundBtn" type="button">
+        <img src="check (1)_113340776789293.png" alt="found"> I Found Something
+      </button>
+    </div>
+  </main>
+
+  <!-- BROWSE ITEMS SECTION -->
+  <section class="items-section">
+    <div class="section-heading">
+      <h2>Browse Campus Items</h2>
+      <p>Explore lost and found items reported on campus.</p>
+    </div>
+
+    <!-- STATUS FILTERS -->
+    <div class="status-filters" aria-label="Filter by status">
+      <button class="status-chip active" type="button">All</button>
+      <button class="status-chip" type="button">Found</button>
+      <button class="status-chip" type="button">Lost</button>
+    </div>
+
+    <!-- ITEM CATEGORY FILTERS -->
+    <div class="filters" aria-label="Filter by item category">
+      <button class="filter-chip active" type="button">All Categories</button>
+      <button class="filter-chip" type="button">Electronics</button>
+      <button class="filter-chip" type="button">IDs & Cards</button>
+      <button class="filter-chip" type="button">Wallets</button>
+      <button class="filter-chip" type="button">Bags</button>
+      <button class="filter-chip" type="button">Keys</button>
+      <button class="filter-chip" type="button">Umbrellas</button>
+      <button class="filter-chip" type="button">Books & Notes</button>
+      <button class="filter-chip" type="button">Accessories</button>
+      <button class="filter-chip" type="button">Others</button>
+    </div>
+
+    <!-- ITEM POSTS -->
+    <div class="items-placeholder">
+    <div class="item-card" tabindex="0"  role="button"  aria-label="View details for Earpods"
+     data-description="Black wireless earpods inside a charging case.">
+        <div class="item-image">
+          <img src="earpods.jpg" alt="Earpods">
+          <span class="item-status status-found">Found</span>
+          
+        </div>
+        <div class="item-info">
+          <p class="categories">Electronics</p>
+          <h2 class="itemName">Earpods</h2>
+          <p class="loc">
+            <img src="pin.png" alt="">
+            <span class="loc-text">Emerald Hall</span>
+          </p>
+          <div class="item-time-wrapper">
+            <img src="time.png" alt="">
+            <p class="item-time">Reported at 9:00 AM</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="item-card" tabindex="0" role="button" aria-label="View details for Black Wallet" 
+        data-description="Black wireless earpods inside a charging case.">
+        <div class="item-image">
+          <img src="books.jpg" alt="Black Wallet">
+          <span class="item-status status-found">Found</span>
+        </div>
+        <div class="item-info">
+          <p class="categories">IDs & Cards</p>
+          <h2 class="itemName">School ID</h2>
+          <p class="loc">
+            <img src="pin.png" alt="">
+            <span class="loc-text">Library Entrance</span>
+          </p>
+          <div class="item-time-wrapper">
+            <img src="time.png" alt="">
+            <p class="item-time">Reported at 10:15 AM</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="item-card" tabindex="0" role="button" aria-label="View details for Student ID"
+        data-description="Black wireless earpods inside a charging case.">
+        <div class="item-image">
+          <img src="umbrella.jpg" alt="Umbrella">
+          <span class="item-status status-found">Found</span>
+        </div>
+        <div class="item-info">
+          <p class="categories">Umbrellas</p>
+          <h2 class="itemName">Blue Umbrella</h2>
+          <p class="loc">
+            <img src="pin.png" alt="">
+            <span class="loc-text">Computer Laboratory</span>
+          </p>
+          <div class="item-time-wrapper">
+            <img src="time.png" alt="">
+            <p class="item-time">Reported at 11:30 AM</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="item-card" tabindex="0" role="button" aria-label="View details for Black Backpack"
+        data-description="Black wireless earpods inside a charging case.">
+        <div class="item-image">
+          <img src="bottle.jpg" alt="Umbrella">
+          <span class="item-status status-lost">Lost</span>
+        </div>
+        <div class="item-info">
+          <p class="categories">Umbrellas</p>
+          <h2 class="itemName">Bottle</h2>
+          <p class="loc">
+            <img src="pin.png" alt="">
+            <span class="loc-text">Main Building</span>
+          </p>
+          <div class="item-time-wrapper">
+            <img src="time.png" alt="">
+            <p class="item-time">Reported at 8:45 AM</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="item-card" tabindex="0" role="button" aria-label="View details for Wireless Earpods"
+       data-description="Black wireless earpods inside a charging case.">
+        <div class="item-image">
+          <img src="bag.jpg" alt="Wireless Earpods">
+          <span class="item-status status-lost">Lost</span>
+        </div>
+        <div class="item-info">
+          <p class="categories">Electronics</p>
+          <h2 class="itemName">Bag</h2>
+          <p class="loc">
+            <img src="pin.png" alt="">
+            <span class="loc-text">Emerald Hall</span>
+          </p>
+          <div class="item-time-wrapper">
+            <img src="time.png" alt="">
+            <p class="item-time">Reported at 12:20 PM</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="item-card" tabindex="0" role="button" aria-label="View details for Keychain with Keys"
+      data-description="Black wireless earpods inside a charging case.">
+        <div class="item-image">
+          <img src="ballpens.jpg" alt="Keychain with Keys">
+          <span class="item-status status-lost">Lost</span>
+        </div>
+        <div class="item-info">
+          <p class="categories">Keys</p>
+          <h2 class="itemName">Ballpens</h2>
+          <p class="loc">
+            <img src="pin.png" alt="">
+            <span class="loc-text">Canteen</span>
+          </p>
+          <div class="item-time-wrapper">
+            <img src="time.png" alt="">
+            <p class="item-time">Reported at 1:10 PM</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="item-card" tabindex="0" role="button" aria-label="View details for Black Wallet" 
+        data-description="Black wireless earpods inside a charging case.">
+        <div class="item-image">
+          <img src="books.jpg" alt="Black Wallet">
+          <span class="item-status status-found">Found</span>
+        </div>
+        <div class="item-info">
+          <p class="categories">IDs & Cards</p>
+          <h2 class="itemName">School ID</h2>
+          <p class="loc">
+            <img src="pin.png" alt="">
+            <span class="loc-text">Library Entrance</span>
+          </p>
+          <div class="item-time-wrapper">
+            <img src="time.png" alt="">
+            <p class="item-time">Reported at 10:15 AM</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="item-card" tabindex="0" role="button" aria-label="View details for Keychain with Keys"
+      data-description="Black wireless earpods inside a charging case.">
+        <div class="item-image">
+          <img src="ballpens.jpg" alt="Keychain with Keys">
+          <span class="item-status status-lost">Lost</span>
+        </div>
+        <div class="item-info">
+          <p class="categories">Keys</p>
+          <h2 class="itemName">Ballpens</h2>
+          <p class="loc">
+            <img src="pin.png" alt="">
+            <span class="loc-text">Canteen</span>
+          </p>
+          <div class="item-time-wrapper">
+            <img src="time.png" alt="">
+            <p class="item-time">Reported at 1:10 PM</p>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="item-card" tabindex="0" role="button" aria-label="View details for Black Wallet" 
+        data-description="Black wireless earpods inside a charging case.">
+        <div class="item-image">
+          <img src="books.jpg" alt="Black Wallet">
+          <span class="item-status status-found">Found</span>
+        </div>
+        <div class="item-info">
+          <p class="categories">IDs & Cards</p>
+          <h2 class="itemName">School ID</h2>
+          <p class="loc">
+            <img src="pin.png" alt="">
+            <span class="loc-text">Library Entrance</span>
+          </p>
+          <div class="item-time-wrapper">
+            <img src="time.png" alt="">
+            <p class="item-time">Reported at 10:15 AM</p>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="item-card" tabindex="0" role="button" aria-label="View details for Keychain with Keys"
+      data-description="Black wireless earpods inside a charging case.">
+        <div class="item-image">
+          <img src="ballpens.jpg" alt="Keychain with Keys">
+          <span class="item-status status-lost">Lost</span>
+        </div>
+        <div class="item-info">
+          <p class="categories">Keys</p>
+          <h2 class="itemName">Ballpens</h2>
+          <p class="loc">
+            <img src="pin.png" alt="">
+            <span class="loc-text">Canteen</span>
+          </p>
+          <div class="item-time-wrapper">
+            <img src="time.png" alt="">
+            <p class="item-time">Reported at 1:10 PM</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="item-card" tabindex="0" role="button" aria-label="View details for Black Wallet" 
+        data-description="Black wireless earpods inside a charging case.">
+        <div class="item-image">
+          <img src="books.jpg" alt="Black Wallet">
+          <span class="item-status status-found">Found</span>
+        </div>
+        <div class="item-info">
+          <p class="categories">IDs & Cards</p>
+          <h2 class="itemName">School ID</h2>
+          <p class="loc">
+            <img src="pin.png" alt="">
+            <span class="loc-text">Library Entrance</span>
+          </p>
+          <div class="item-time-wrapper">
+            <img src="time.png" alt="">
+            <p class="item-time">Reported at 10:15 AM</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="item-card" tabindex="0" role="button" aria-label="View details for Keychain with Keys"
+      data-description="Black wireless earpods inside a charging case.">
+        <div class="item-image">
+          <img src="ballpens.jpg" alt="Keychain with Keys">
+          <span class="item-status status-lost">Lost</span>
+        </div>
+        <div class="item-info">
+          <p class="categories">Keys</p>
+          <h2 class="itemName">Ballpens</h2>
+          <p class="loc">
+            <img src="pin.png" alt="">
+            <span class="loc-text">Canteen</span>
+          </p>
+          <div class="item-time-wrapper">
+            <img src="time.png" alt="">
+            <p class="item-time">Reported at 1:10 PM</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+  <span class="ifound">iFOUND</span><span class="campus">CAMPUS</span>
+  <p>Pamantasan ng Lungsod ng Muntinlupa</p>
+</div>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Contact Support</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 iFoundCampus. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- ITEM DETAILS MODAL -->
+  <div class="item-modal-overlay" id="itemModal" role="dialog" aria-modal="true" aria-labelledby="modalItemName">
+    <div class="item-modal-content item-details-content">
+      <button class="modal-close-btn" id="closeModalBtn" type="button" aria-label="Close item details">✕</button>
+      <div class="modal-image">
+        <img id="modalItemImage" src="wallet.jpg" alt="Item photo">
+        <span class="item-status status-found" id="modalItemStatus">Found</span>
+      </div>
+      <div class="modal-details">
+        <p class="categories" id="modalItemCategory">Electronics</p>
+        <h2 id="modalItemName">Earpods</h2>
+        <p class="loc"><strong>Location:</strong> <span id="modalItemLocation">Emerald Hall</span></p>
+        <p class="item-time"><strong>Reported:</strong> <span id="modalItemTime">Today at 9:00 AM</span></p>
+        <p class="modal-desc"><strong>Description:</strong> <span id="modalItemDescription">Item details will appear here.</span></p>
+        <button class="claim-btn" id="openClaimModalBtn" type="button">Claim Item</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CLAIM VERIFICATION MODAL -->
+  <div class="item-modal-overlay" id="claimModal" role="dialog" aria-modal="true" aria-labelledby="claimModalTitle">
+    <div class="item-modal-content claim-modal-content">
+      <button class="modal-close-btn" id="closeClaimModalBtn" type="button" aria-label="Close claim verification">✕</button>
+      <div class="modal-details">
+        <p class="modal-eyebrow">CLAIM VERIFICATION</p>
+        <h2 id="claimModalTitle">Verify Your Claim</h2>
+        <p class="claim-intro">Provide details that can help the campus administrator verify that this item belongs to you.</p>
+        <div class="claim-item-summary">
+          <strong>Item:</strong> <span id="claimItemName">Earpods</span>
+        </div>
+        <form id="claimForm" class="report-form">
+          <div class="form-group">
+            <label for="claimStudentNumber">Student / Staff Number</label>
+            <input id="claimStudentNumber" type="text" placeholder="Enter your school ID number" required>
+          </div>
+          <div class="form-group">
+            <label for="claimEmail">PLMun Institutional Email</label>
+            <input id="claimEmail" type="email" placeholder="name@plmun.edu.ph" required>
+          </div>
+          <div class="form-group">
+            <label for="claimProof">How can you identify this item?</label>
+            <textarea id="claimProof" rows="3" placeholder="Describe a unique feature, mark, or what is inside the item." required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="claimPhoto">Ownership proof (optional)</label>
+            <input id="claimPhoto" type="file" accept="image/*">
+            
+          </div>
+          <div class="claim-actions">
+            <button class="cancel-btn" id="cancelClaimBtn" type="button">Cancel</button>
+            <button class="claim-btn" type="submit">Submit Claim Request</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- REPORT LOST / FOUND MODAL -->
+  <div class="item-modal-overlay" id="reportModal">
+    <div class="item-modal-content report-modal-content">
+      <button class="modal-close-btn" id="closeReportModalBtn" type="button" aria-label="Close report form">✕</button>
+      <div class="modal-details">
+        <h2 id="reportModalTitle">Report Item</h2>
+        <form id="reportForm" class="report-form">
+  <div class="form-group">
+    <label for="reportItemName">Item Name</label>
+    <input id="reportItemName" type="text"
+      placeholder="e.g. Black Wallet, Student ID" required>
+  </div>
+
+  <div class="form-group">
+    <label for="reportCategory">Category</label>
+    <select id="reportCategory" required>
+      <option value="">Select category</option>
+      <option value="Electronics">Electronics</option>
+      <option value="IDs & Cards">IDs & Cards</option>
+      <option value="Wallets">Wallets</option>
+      <option value="Bags">Bags</option>
+      <option value="Keys">Keys</option>
+      <option value="Umbrellas">Umbrellas</option>
+      <option value="Books & Notes">Books & Notes</option>
+      <option value="Accessories">Accessories</option>
+      <option value="Others">Others</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="reportLocation">Location</label>
+    <input id="reportLocation" type="text"
+      placeholder="e.g. University Library, 2nd Floor" required>
+  </div>
+
+  <div class="form-group">
+    <label for="reportPhoto">Upload Photo</label>
+    <input id="reportPhoto" type="file"
+      accept="image/*" required>
+  </div>
+
+  <div class="form-group">
+    <label for="reportDescription">Description</label>
+    <textarea id="reportDescription"
+      placeholder="Provide specific details..."
+      rows="3" required></textarea>
+  </div>
+
+  <button class="claim-btn" type="submit">
+    Submit Report
+  </button>
+</form>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast-message" id="claimToast" role="status" aria-live="polite">
+    <span class="toast-icon">✓</span>
+    <div>
+      <strong>Claim request submitted!</strong>
+      <p>Your request is pending review by the campus administrator.</p>
+    </div>
+    <button type="button" id="closeToastBtn" aria-label="Close notification">✕</button>
+  </div>
+
+<script>
+  // Sidebar Menu Logic
+  const menuBtn = document.getElementById('menuBtn');
+  const sideMenu = document.getElementById('sideMenu');
+  const closeBtn = document.getElementById('closeBtn');
+  const overlay = document.getElementById('overlay');
+
+  menuBtn.addEventListener('click', function() {
+    sideMenu.classList.add('active');
+    overlay.classList.add('active');
+  });
+
+  function closeSideMenu() {
+    sideMenu.classList.remove('active');
+    overlay.classList.remove('active');
+  }
+  closeBtn.addEventListener('click', closeSideMenu);
+  overlay.addEventListener('click', closeSideMenu);
+
+  
+  const searchForm = document.querySelector('.searchbar');
+  const searchInput = document.querySelector('.searchbar input');
+  const statusChips = document.querySelectorAll('.status-chip');
+  const categoryChips = document.querySelectorAll('.filter-chip');
+  let activeStatus = 'All';
+  let activeCategory = 'All Categories';
+
+  function filterItems() {
+    const query = (searchInput?.value || '').trim().toLowerCase();
+    document.querySelectorAll('.item-card').forEach(card => {
+      const name = card.querySelector('.itemName')?.textContent.toLowerCase() || '';
+      const category = card.querySelector('.categories')?.textContent.trim().toLowerCase() || '';
+      const location = card.querySelector('.loc-text')?.textContent.toLowerCase() || '';
+      const status = card.querySelector('.item-status')?.textContent.trim().toLowerCase() || '';
+      const matchesQuery = !query || `${name} ${category} ${location} ${status}`.includes(query);
+      const matchesStatus = activeStatus === 'All' || status === activeStatus.toLowerCase();
+      const matchesCategory = activeCategory === 'All Categories' || category === activeCategory.toLowerCase();
+      card.hidden = !(matchesQuery && matchesStatus && matchesCategory);
+    });
+  }
+
+  statusChips.forEach(chip => chip.addEventListener('click', () => {
+    activeStatus = chip.textContent.trim();
+    statusChips.forEach(item => item.classList.toggle('active', item === chip));
+    filterItems();
+  }));
+
+  categoryChips.forEach(chip => chip.addEventListener('click', () => {
+    activeCategory = chip.textContent.trim();
+    categoryChips.forEach(item => item.classList.toggle('active', item === chip));
+    filterItems();
+  }));
+
+  searchInput?.addEventListener('input', filterItems);
+  searchForm?.addEventListener('submit', event => {
+    event.preventDefault();
+    filterItems();
+    document.querySelector('.items-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+
+const itemsContainer = document.querySelector('.items-placeholder');
+const itemModal = document.getElementById('itemModal');
+const closeModalBtn = document.getElementById('closeModalBtn');
+const modalImage = document.getElementById('modalItemImage');
+const modalName = document.getElementById('modalItemName');
+const modalCategory = document.getElementById('modalItemCategory');
+const modalLocation = document.getElementById('modalItemLocation');
+const modalTime = document.getElementById('modalItemTime');
+const modalStatus = document.getElementById('modalItemStatus');
+const modalDescription = document.getElementById('modalItemDescription');
+const openClaimModalBtn = document.getElementById('openClaimModalBtn');
+
+function openCardDetails(card) {
+  const cardImage = card.querySelector('.item-image img');
+  const cardName = card.querySelector('.itemName');
+  const cardCategory = card.querySelector('.categories');
+  const cardLocation = card.querySelector('.loc-text');
+  const cardTime = card.querySelector('.item-time');
+  const cardStatus = card.querySelector('.item-status');
+
+  modalImage.src = cardImage.src;
+  modalImage.alt = cardImage.alt;
+  modalName.textContent = cardName.textContent;
+  modalCategory.textContent = cardCategory.textContent;
+  modalLocation.textContent = cardLocation ? cardLocation.textContent : 'Not specified';
+  modalTime.textContent = cardTime ? cardTime.textContent : 'Not specified';
+
+  modalStatus.textContent = cardStatus.textContent;
+  modalStatus.className = 'item-status ' +
+    (cardStatus.classList.contains('status-lost') ? 'status-lost' : 'status-found');
+
+  modalDescription.textContent = card.dataset.description || 'No description available.';
+
+  const isFoundItem = cardStatus.classList.contains('status-found');
+
+  if (isFoundItem) {
+    openClaimModalBtn.hidden = false;
+    openClaimModalBtn.textContent = 'Claim Item';
+  } else {
+    openClaimModalBtn.hidden = true;
+  }
+
+  itemModal.classList.add('active');
+}
+
+  itemsContainer.addEventListener('click', function(e) {
+  const card = e.target.closest('.item-card');
+
+  if (card && itemsContainer.contains(card)) {
+    openCardDetails(card);
+  }
+});
+
+// Keyboard support
+itemsContainer.addEventListener('keydown', function(e) {
+  if (e.key !== 'Enter' && e.key !== ' ') return;
+
+  const card = e.target.closest('.item-card');
+
+  if (card && itemsContainer.contains(card)) {
+    e.preventDefault();
+    openCardDetails(card);
+  }
+});
+
+function closeItemModal() {
+  itemModal.classList.remove('active');
+}
+closeModalBtn.addEventListener('click', closeItemModal);
+itemModal.addEventListener('click', function(e) {
+  if (e.target === itemModal) closeItemModal();
+});
+  
+  
+  function closeItemModal() {
+    itemModal.classList.remove('active');
+  }
+  closeModalBtn.addEventListener('click', closeItemModal);
+  itemModal.addEventListener('click', function(e) {
+    if (e.target === itemModal) closeItemModal();
+  });
+
+  // Claim verification modal
+  const claimModal = document.getElementById('claimModal');
+  const closeClaimModalBtn = document.getElementById('closeClaimModalBtn');
+  const cancelClaimBtn = document.getElementById('cancelClaimBtn');
+  const claimForm = document.getElementById('claimForm');
+  const claimItemName = document.getElementById('claimItemName');
+  const claimToast = document.getElementById('claimToast');
+  const closeToastBtn = document.getElementById('closeToastBtn');
+
+  openClaimModalBtn.addEventListener('click', function() {
+    claimItemName.textContent = modalName.textContent;
+    claimModal.classList.add('active');
+  });
+
+  function closeClaimModal() {
+    claimModal.classList.remove('active');
+  }
+  closeClaimModalBtn.addEventListener('click', closeClaimModal);
+  cancelClaimBtn.addEventListener('click', closeClaimModal);
+  claimModal.addEventListener('click', function(e) {
+    if (e.target === claimModal) closeClaimModal();
+  });
+
+  claimForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    closeClaimModal();
+    closeItemModal();
+    claimForm.reset();
+    claimToast.classList.add('show');
+  });
+
+  closeToastBtn.addEventListener('click', function() {
+    claimToast.classList.remove('show');
+  });
+
+  
+  // Lost / Found report modal
+const lostBtn = document.getElementById('lostBtn');
+const foundBtn = document.getElementById('foundBtn');
+const reportModal = document.getElementById('reportModal');
+const closeReportModalBtn =
+  document.getElementById('closeReportModalBtn');
+const reportModalTitle =
+  document.getElementById('reportModalTitle');
+const reportForm = document.getElementById('reportForm');
+
+let reportStatus = 'Lost';
+
+const reportItemName = document.getElementById('reportItemName');
+const reportCategory = document.getElementById('reportCategory');
+const reportLocation = document.getElementById('reportLocation');
+const reportPhoto = document.getElementById('reportPhoto');
+const reportDescription =
+  document.getElementById('reportDescription');
+
+function openReportModal(status) {
+  reportStatus = status;
+  reportModalTitle.textContent =
+    status === 'Lost' ? 'Report Lost Item' : 'Report Found Item';
+
+  reportModal.classList.add('active');
+}
+
+lostBtn.addEventListener('click', function() {
+  openReportModal('Lost');
+});
+
+foundBtn.addEventListener('click', function() {
+  openReportModal('Found');
+});
+
+function closeReportModal() {
+  reportModal.classList.remove('active');
+}
+
+closeReportModalBtn.addEventListener('click', closeReportModal);
+
+reportModal.addEventListener('click', function(e) {
+  if (e.target === reportModal) closeReportModal();
+});
+
+// Submit a new lost/found report
+reportForm.addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const name = reportItemName.value.trim();
+  const category = reportCategory.value;
+  const location = reportLocation.value.trim();
+  const description = reportDescription.value.trim();
+  const photo = reportPhoto.files[0];
+
+  if (!name || !category || !location || !description || !photo) {
+    alert('Please complete all fields and upload an item photo.');
+    return;
+  }
+
+  if (!photo.type.startsWith('image/')) {
+    alert('Please select a valid image file.');
+    return;
+  }
+
+
+  const card = document.createElement('div');
+
+  card.className = 'item-card';
+  card.tabIndex = 0;
+  card.setAttribute('role', 'button');
+  card.setAttribute('aria-label', 'View details for ' + name);
+  card.dataset.description = description;
+
+  
+  card.innerHTML = `
+    <div class="item-image">
+      <img alt="">
+      <span class="item-status"></span>
+    </div>
+    <div class="item-info">
+      <p class="categories"></p>
+      <h2 class="itemName"></h2>
+      <p class="loc">
+        <img src="found.png" alt="">
+        <span class="loc-text"></span>
+      </p>
+      <div class="item-time-wrapper">
+        <img src="clock.png" alt="">
+        <p class="item-time"></p>
+      </div>
+    </div>
+  `;
+
+  const cardImage = card.querySelector('.item-image img');
+  cardImage.src = URL.createObjectURL(photo);
+  cardImage.alt = name;
+
+  const statusLabel = card.querySelector('.item-status');
+  statusLabel.textContent = reportStatus;
+  statusLabel.classList.add(
+    reportStatus === 'Found' ? 'status-found' : 'status-lost'
+  );
+
+  card.querySelector('.categories').textContent = category;
+  card.querySelector('.itemName').textContent = name;
+  card.querySelector('.loc-text').textContent = location;
+
+  const now = new Date();
+  const time = now.toLocaleTimeString('en-US', {
+    hour: 'numeric',
+    minute: '2-digit'
+  });
+
+  card.querySelector('.item-time').textContent =
+    'Reported at ' + time;
+
+  
+  itemsContainer.prepend(card);
+
+ 
+  activeStatus = 'All';
+  activeCategory = 'All Categories';
+  searchInput.value = '';
+
+  statusChips.forEach(chip => {
+    chip.classList.toggle(
+      'active',
+      chip.textContent.trim() === activeStatus
+    );
+  });
+
+  categoryChips.forEach(chip => {
+    chip.classList.toggle(
+      'active',
+      chip.textContent.trim() === activeCategory
+    );
+  });
+
+  filterItems();
+
+  reportForm.reset();
+  closeReportModal();
+
+  
+});
+
+  
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      itemModal.classList.remove('active');
+      claimModal.classList.remove('active');
+      reportModal.classList.remove('active');
+      claimToast.classList.remove('show');
+      closeSideMenu();
+    }
+  });
+
+  const notifBtn = document.getElementById('notifBtn');
+const notifDropdown = document.getElementById('notifDropdown');
+const signInBtn = document.getElementById('signInBtn');
+const userDropdown = document.getElementById('userDropdown');
+
+// Toggle Notification Dropdown
+notifBtn.addEventListener('click', function(e) {
+  e.stopPropagation();
+  notifDropdown.classList.toggle('active');
+  userDropdown.classList.remove('active');
+});
+
+
+signInBtn.addEventListener('click', function(e) {
+  e.stopPropagation();
+  userDropdown.classList.toggle('active');
+  notifDropdown.classList.remove('active'); 
+});
+
+
+document.addEventListener('click', function() {
+  notifDropdown.classList.remove('active');
+  userDropdown.classList.remove('active');
+});
+
+
+  const savedUserName = localStorage.getItem('iFoundUserName') || 'Ruffa';
+  const savedIdentifier = localStorage.getItem('iFoundIdentifier');
+  
+  
+  const signInSpan = document.querySelector('.sign-in span');
+  if (signInSpan) {
+      signInSpan.textContent = savedUserName;
+  }
+
+
+  const userNameDropdown = document.querySelector('.user-name');
+  const userEmailDropdown = document.querySelector('.user-email');
+
+  if (userNameDropdown) {
+      userNameDropdown.textContent = savedUserName;
+  }
+if (userEmailDropdown && savedIdentifier) {
+    userEmailDropdown.textContent = savedIdentifier;
+}
+</script>
+
+</body>
+</html>
