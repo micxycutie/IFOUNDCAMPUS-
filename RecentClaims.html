@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="RC.css">
+  <title>iFoundCampus - Recent Claims</title>
+
+
+</head>
+
+<body>
+
+<nav class="navbar">
+  <div class="nav-bottom">
+    <div class="hamburger" id="menuBtn">
+      <img src="hamburger.png" alt="menu">
+    </div>
+    <div class="logo">
+      <span class="ifound">iFOUND</span><span class="campus">CAMPUS</span>
+      <div class="subtitle"><i>FIND.REPORT.RECOVER.</i></div>
+    </div>
+  </div>
+  
+  <div class="nav-top">
+    <div class="nav-right">
+      <!-- NOTIFICATION BELL WITH DROPDOWN -->
+      <div class="notification" id="notifBtn">
+        <img src="bell (1).png" alt="notification">
+        <span class="badge">3</span>
+        
+        <!-- Notification Dropdown Menu -->
+        <div class="notif-dropdown" id="notifDropdown">
+          <div class="notif-header">
+            <h4>Notifications</h4>
+            <span>3 New</span>
+          </div>
+          <div class="notif-list">
+            <div class="notif-item">
+              <p><strong>Claim Approved:</strong> Your claim request for <em>School ID</em> was approved.</p>
+              <span class="notif-time">10m ago</span>
+            </div>
+            <div class="notif-item">
+              <p><strong>Potential Match:</strong> A new item matches your lost report.</p>
+              <span class="notif-time">1h ago</span>
+            </div>
+            <div class="notif-item">
+              <p><strong>Report Posted:</strong> Your found item report is now live.</p>
+              <span class="notif-time">3h ago</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SIGN IN / USER PROFILE DROPDOWN -->
+      <div class="sign-in" id="signInBtn">
+        <img src="kiwi.jpg" alt="Profile">
+        <span>Ruffa</span> 
+        
+        <!-- User Dropdown Menu -->
+        <div class="user-dropdown" id="userDropdown">
+          <div class="user-dropdown-header">
+            <p class="user-name">Ruffa Micayla</p>
+            <p class="user-email">2023-00123</p>
+          </div>
+          <div class="user-dropdown-links">
+            <a href="#">👤 My Profile</a>
+            <a href="#">⚙️ Account Settings</a>
+            <a href="#" id="logoutLink">🚪 Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- SIDEBAR -->
+<div id="sideMenu" class="side-menu">
+  <div class="side-menu-header">
+    <div class="logo">
+      <span class="ifound">iFOUND</span><span class="campus">CAMPUS</span>
+    </div>
+    <div class="close-btn" id="closeBtn">✕</div>
+  </div>
+
+  <div class="side-menu-links">
+    <a href="DASHBOARD.html">
+      <img src="home.png" alt="Home" class="menu-icon"> Home
+    </a>
+    <a href="RECENT_CLAIMS.html" class="active">
+      <img src="wirte.png" alt="Recent Claims" class="menu-icon"> Recent Claims
+    </a>
+    <a href="#">
+      <img src="user.png" alt="Profile" class="menu-icon"> Profile
+    </a>
+  </div>
+
+  <div class="side-menu-footer">
+    <a href="IFC_Login.html" class="sign-out-link">
+      <img src="exit.png" alt="Sign out" class="menu-icon"> Logout
+    </a>
+  </div>
+</div>
+
+<div id="overlay" class="overlay" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:1500;"></div>
+
+<!-- RECENT CLAIMS MAIN CONTENT -->
+<main class="claims-main">
+    
+    <!-- COMMUNITY IMPACT BANNER -->
+    <div class="impact-banner">
+        <div>
+            <p class="impact-title">Community Impact</p>
+            <h2 class="impact-count">24 items</h2>
+            <p class="impact-sub">returned to their owners this month</p>
+        </div>
+        <div class="success-badge-box">
+            <span class="success-rate">86%</span>
+            <span class="success-label">Success Rate</span>
+        </div>
+    </div>
+
+    <!-- SEARCH & FILTER BAR -->
+    <div class="search-filter-section">
+        <div class="search-box-wrapper">
+            <img src="search.png" alt="search" class="search-icon">
+            <input type="text" id="searchInput" placeholder="Search item, location, or claim ID...">
+        </div>
+        <div class="filter-pills" id="filterPills">
+            <button class="pill-btn active" data-filter="all">All</button>
+            <button class="pill-btn" data-filter="electronics">Electronics</button>
+            <button class="pill-btn" data-filter="accessories">Accessories</button>
+            <button class="pill-btn" data-filter="id / cards">ID / Cards</button>
+            <button class="pill-btn" data-filter="keys">Keys</button>
+        </div>
+    </div>
+
+    <!-- SECTION HEADING WITH SORT DROPDOWN -->
+    <div class="claims-heading-row">
+        <div class="heading-left">
+            <h3>Claimed items</h3>
+            <span id="resultsCount">Verified items returned through the campus community. (6 results)</span>
+        </div>
+        <div class="heading-right">
+            <select class="sort-select" id="sortSelect">
+                <option value="newest">Sort by: Newest</option>
+                <option value="oldest">Sort by: Oldest</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- CARDS GRID -->
+    <div class="claims-grid" id="claimsGrid">
+        
+        <!-- Card 1 -->
+        <div class="claim-card" data-category="electronics" data-date="2025-09-12">
+            <div>
+                <div class="card-top">
+                    <div class="card-title-group">
+                        <div class="item-initial-badge">S</div>
+                        <div>
+                            <h4>Scientific Calculator</h4>
+                            <p>Electronics • CLM-0912-041</p>
+                        </div>
+                    </div>
+                    <span class="claimed-badge">Claimed</span>
+                </div>
+                <div class="card-details-grid">
+                    <div>
+                        <div class="detail-label">Found At</div>
+                        <div class="detail-value">📍 Room 204</div>
+                    </div>
+                    <div>
+                        <div class="detail-label">Returned</div>
+                        <div class="detail-value">Sep 12, 2025</div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer-row">
+                <span class="resolved-time">Resolved in: 1 day</span>
+                <a href="#" class="receipt-link">View receipt</a>
+            </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="claim-card" data-category="electronics" data-date="2025-09-11">
+            <div>
+                <div class="card-top">
+                    <div class="card-title-group">
+                        <div class="item-initial-badge">U</div>
+                        <div>
+                            <h4>USB-C Charger</h4>
+                            <p>Electronics • CLM-0911-038</p>
+                        </div>
+                    </div>
+                    <span class="claimed-badge">Claimed</span>
+                </div>
+                <div class="card-details-grid">
+                    <div>
+                        <div class="detail-label">Found At</div>
+                        <div class="detail-value">📍 Computer Lab</div>
+                    </div>
+                    <div>
+                        <div class="detail-label">Returned</div>
+                        <div class="detail-value">Sep 11, 2025</div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer-row">
+                <span class="resolved-time">Resolved in: 4 hours</span>
+                <a href="#" class="receipt-link">View receipt</a>
+            </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="claim-card" data-category="accessories" data-date="2025-09-10">
+            <div>
+                <div class="card-top">
+                    <div class="card-title-group">
+                        <div class="item-initial-badge">G</div>
+                        <div>
+                            <h4>Green Umbrella</h4>
+                            <p>Accessories • CLM-0910-033</p>
+                        </div>
+                    </div>
+                    <span class="claimed-badge">Claimed</span>
+                </div>
+                <div class="card-details-grid">
+                    <div>
+                        <div class="detail-label">Found At</div>
+                        <div class="detail-value">📍 Main Gate</div>
+                    </div>
+                    <div>
+                        <div class="detail-label">Returned</div>
+                        <div class="detail-value">Sep 10, 2025</div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer-row">
+                <span class="resolved-time">Resolved in: 2 days</span>
+                <a href="#" class="receipt-link">View receipt</a>
+            </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="claim-card" data-category="id / cards" data-date="2025-09-08">
+            <div>
+                <div class="card-top">
+                    <div class="card-title-group">
+                        <div class="item-initial-badge">S</div>
+                        <div>
+                            <h4>School Lanyard</h4>
+                            <p>ID / Cards • CLM-0908-029</p>
+                        </div>
+                    </div>
+                    <span class="claimed-badge">Claimed</span>
+                </div>
+                <div class="card-details-grid">
+                    <div>
+                        <div class="detail-label">Found At</div>
+                        <div class="detail-value">📍 Library</div>
+                    </div>
+                    <div>
+                        <div class="detail-label">Returned</div>
+                        <div class="detail-value">Sep 8, 2025</div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer-row">
+                <span class="resolved-time">Resolved in: 6 hours</span>
+                <a href="#" class="receipt-link">View receipt</a>
+            </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="claim-card" data-category="electronics" data-date="2025-09-06">
+            <div>
+                <div class="card-top">
+                    <div class="card-title-group">
+                        <div class="item-initial-badge">W</div>
+                        <div>
+                            <h4>Wireless Earbuds</h4>
+                            <p>Electronics • CLM-0906-021</p>
+                        </div>
+                    </div>
+                    <span class="claimed-badge">Claimed</span>
+                </div>
+                <div class="card-details-grid">
+                    <div>
+                        <div class="detail-label">Found At</div>
+                        <div class="detail-value">📍 Study Hall</div>
+                    </div>
+                    <div>
+                        <div class="detail-label">Returned</div>
+                        <div class="detail-value">Sep 6, 2025</div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer-row">
+                <span class="resolved-time">Resolved in: 3 days</span>
+                <a href="#" class="receipt-link">View receipt</a>
+            </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="claim-card" data-category="keys" data-date="2025-09-04">
+            <div>
+                <div class="card-top">
+                    <div class="card-title-group">
+                        <div class="item-initial-badge">H</div>
+                        <div>
+                            <h4>House Keys</h4>
+                            <p>Keys • CLM-0904-016</p>
+                        </div>
+                    </div>
+                    <span class="claimed-badge">Claimed</span>
+                </div>
+                <div class="card-details-grid">
+                    <div>
+                        <div class="detail-label">Found At</div>
+                        <div class="detail-value">📍 Canteen</div>
+                    </div>
+                    <div>
+                        <div class="detail-label">Returned</div>
+                        <div class="detail-value">Sep 4, 2025</div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer-row">
+                <span class="resolved-time">Resolved in: 1 day</span>
+                <a href="#" class="receipt-link">View receipt</a>
+            </div>
+        </div>
+
+    </div>
+</main>
+
+<!-- VIEW RECEIPT MODAL -->
+<div class="modal-overlay" id="receiptModalOverlay">
+  <div class="receipt-modal">
+    <div class="modal-header">
+      <h4>iFoundCampus Receipt</h4>
+      <button class="modal-close-btn" id="modalCloseBtn">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="receipt-badge-status">
+        <span>Verified Return</span>
+      </div>
+      <div class="receipt-row">
+        <span class="receipt-label">Claim Reference ID:</span>
+        <span class="receipt-value" id="modalClaimId">CLM-0000-000</span>
+      </div>
+      <div class="receipt-row">
+        <span class="receipt-label">Item Name:</span>
+        <span class="receipt-value" id="modalItemName">Item Name</span>
+      </div>
+      <div class="receipt-row">
+        <span class="receipt-label">Category:</span>
+        <span class="receipt-value" id="modalCategory">Category</span>
+      </div>
+      <div class="receipt-divider"></div>
+      <div class="receipt-row">
+        <span class="receipt-label">Found Location:</span>
+        <span class="receipt-value" id="modalLocation">Location</span>
+      </div>
+      <div class="receipt-row">
+        <span class="receipt-label">Date Returned:</span>
+        <span class="receipt-value" id="modalDate">Date</span>
+      </div>
+      <div class="receipt-row">
+        <span class="receipt-label">Turnaround Time:</span>
+        <span class="receipt-value" id="modalResolution">Resolution Time</span>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-close-modal" id="modalCloseBtnFooter">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <span class="ifound">iFOUND</span><span class="campus">CAMPUS</span>
+        <p>Pamantasan ng Lungsod ng Muntinlupa</p>
+      </div>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Contact Support</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 iFoundCampus. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+  // Sidebar Menu Logic
+  const menuBtn = document.getElementById('menuBtn');
+  const sideMenu = document.getElementById('sideMenu');
+  const closeBtn = document.getElementById('closeBtn');
+  const overlay = document.getElementById('overlay');
+
+  menuBtn.addEventListener('click', function() {
+    sideMenu.classList.add('active');
+    overlay.style.display = 'block';
+  });
+
+  function closeSideMenu() {
+    sideMenu.classList.remove('active');
+    overlay.style.display = 'none';
+  }
+  closeBtn.addEventListener('click', closeSideMenu);
+  overlay.addEventListener('click', closeSideMenu);
+
+  // Dropdown menus logic
+  const notifBtn = document.getElementById('notifBtn');
+  const notifDropdown = document.getElementById('notifDropdown');
+  const signInBtn = document.getElementById('signInBtn');
+  const userDropdown = document.getElementById('userDropdown');
+
+  notifBtn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    notifDropdown.classList.toggle('active');
+    userDropdown.classList.remove('active');
+  });
+
+  signInBtn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    userDropdown.classList.toggle('active');
+    notifDropdown.classList.remove('active');
+  });
+
+  document.addEventListener('click', function() {
+    notifDropdown.classList.remove('active');
+    userDropdown.classList.remove('active');
+  });
+
+  // LocalStorage data loader
+  const savedUserName = localStorage.getItem('iFoundUserName') || 'Ruffa';
+  const savedIdentifier = localStorage.getItem('iFoundIdentifier') || '2023-00123';
+  
+  const signInSpan = document.querySelector('.sign-in span');
+  if (signInSpan) {
+      signInSpan.textContent = savedUserName;
+  }
+
+  const userNameDropdown = document.querySelector('.user-name');
+  const userEmailDropdown = document.querySelector('.user-email');
+
+  if (userNameDropdown) {
+      userNameDropdown.textContent = savedUserName;
+  }
+  if (userEmailDropdown) {
+      userEmailDropdown.textContent = savedIdentifier;
+  }
+
+  // --- SEARCH, FILTER, AND SORT FUNCTIONALITY ---
+  const searchInput = document.getElementById('searchInput');
+  const filterButtons = document.querySelectorAll('.filter-pills .pill-btn');
+  const sortSelect = document.getElementById('sortSelect');
+  const claimsGrid = document.getElementById('claimsGrid');
+  const resultsCount = document.getElementById('resultsCount');
+
+  let currentCategory = 'all';
+
+  function filterSearchAndSortCards() {
+    const searchTerm = searchInput.value.toLowerCase().trim();
+    let cards = Array.from(document.querySelectorAll('.claim-card'));
+    let visibleCount = 0;
+
+    cards.forEach(card => {
+      const cardCategory = card.getAttribute('data-category');
+      const cardText = card.textContent.toLowerCase();
+
+      const matchesCategory = (currentCategory === 'all' || cardCategory === currentCategory);
+      const matchesSearch = cardText.includes(searchTerm);
+
+      if (matchesCategory && matchesSearch) {
+        card.style.display = 'flex';
+        visibleCount++;
+      } else {
+        card.style.display = 'none';
+      }
+    });
+
+    const sortValue = sortSelect.value;
+    cards.sort((a, b) => {
+      const dateA = new Date(a.getAttribute('data-date'));
+      const dateB = new Date(b.getAttribute('data-date'));
+
+      return sortValue === 'newest' ? dateB - dateA : dateA - dateB;
+    });
+
+    cards.forEach(card => claimsGrid.appendChild(card));
+    resultsCount.textContent = `Verified items returned through the campus community. (${visibleCount} results)`;
+  }
+
+  searchInput.addEventListener('input', filterSearchAndSortCards);
+  sortSelect.addEventListener('change', filterSearchAndSortCards);
+
+  filterButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      filterButtons.forEach(btn => btn.classList.remove('active'));
+      this.classList.add('active');
+      currentCategory = this.getAttribute('data-filter');
+      filterSearchAndSortCards();
+    });
+  });
+
+  // --- RECEIPT MODAL LOGIC ---
+  const receiptModalOverlay = document.getElementById('receiptModalOverlay');
+  const modalCloseBtn = document.getElementById('modalCloseBtn');
+  const modalCloseBtnFooter = document.getElementById('modalCloseBtnFooter');
+
+  const modalClaimId = document.getElementById('modalClaimId');
+  const modalItemName = document.getElementById('modalItemName');
+  const modalCategory = document.getElementById('modalCategory');
+  const modalLocation = document.getElementById('modalLocation');
+  const modalDate = document.getElementById('modalDate');
+  const modalResolution = document.getElementById('modalResolution');
+
+  // Event Delegation para sa "View receipt" links
+  document.addEventListener('click', function(e) {
+    if (e.target.classList.contains('receipt-link')) {
+      e.preventDefault();
+      
+      const card = e.target.closest('.claim-card');
+      const itemName = card.querySelector('h4').textContent;
+      const subtitleText = card.querySelector('.card-title-group p').textContent; // "Electronics • CLM-0912-041"
+      const [category, claimId] = subtitleText.split('•').map(str => str.trim());
+      
+      const location = card.querySelectorAll('.detail-value')[0].textContent;
+      const dateReturned = card.querySelectorAll('.detail-value')[1].textContent;
+      const resolution = card.querySelector('.resolved-time').textContent;
+
+      // Set Modal content
+      modalItemName.textContent = itemName;
+      modalClaimId.textContent = claimId;
+      modalCategory.textContent = category;
+      modalLocation.textContent = location;
+      modalDate.textContent = dateReturned;
+      modalResolution.textContent = resolution;
+
+      // Open Modal
+      receiptModalOverlay.classList.add('active');
+    }
+  });
+
+  function closeReceiptModal() {
+    receiptModalOverlay.classList.remove('active');
+  }
+
+  modalCloseBtn.addEventListener('click', closeReceiptModal);
+  modalCloseBtnFooter.addEventListener('click', closeReceiptModal);
+
+  receiptModalOverlay.addEventListener('click', function(e) {
+    if (e.target === receiptModalOverlay) {
+      closeReceiptModal();
+    }
+  });
+</script>
+
+</body>
+</html>
