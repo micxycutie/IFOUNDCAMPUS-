@@ -41,11 +41,11 @@
                 </select>
 
                 <label id="loginLabel" for="loginInput">Student Number</label>
-                <input class="input-field" id="loginInput" type="text" placeholder="Student Number" required>
+                <input class="input-field" id="loginInput" type="text" placeholder="22221159" required>
 
                 <label>Password</label>
                 <div class="password-container">
-                <input class="input-field password-input" id="password" type="password" placeholder="Password" required>
+                <input class="input-field password-input" id="password" type="password" placeholder="*******" required>
                 <img src="eye.png" alt="Show/Hide Password" class="eye-icon" id="eye">
                </div>
               
@@ -94,13 +94,13 @@
     role.addEventListener("change", function () {
         if (this.value === "student") {
             loginLabel.textContent = "Student Number";
-            loginInput.placeholder = "Student Number";
+            loginInput.placeholder = "22221159";
         } else if (this.value === "staff") {
             loginLabel.textContent = "Employee ID";
-            loginInput.placeholder = "Employee ID";
+            loginInput.placeholder = "EMP17829";
         } else {
             loginLabel.textContent = "Username";
-            loginInput.placeholder = "Username";
+            loginInput.placeholder = "juan.dela.cruz";
         }
 
         loginInput.value = "";
@@ -179,15 +179,36 @@
             : role.value === "student";
 
         if (
-            identifierMatches &&
-            passwordMatches &&
-            roleMatches
-        ) {
-           
-            localStorage.setItem(
-                "iFoundLoginRole",
-                role.value
-            );
+    identifierMatches &&
+    passwordMatches &&
+    roleMatches
+) {
+
+    // SAVE LOGGED-IN USER INFORMATION
+    localStorage.setItem(
+        "iFoundUserName",
+        regUsername
+    );
+
+    localStorage.setItem(
+        "iFoundIdentifier",
+        regIdentifier
+    );
+
+    localStorage.setItem(
+        "iFoundLoginRole",
+        role.value
+    );
+
+    showToast(
+        "Login Successful!",
+        "Welcome back, " + (regUsername || "User") + "!"
+    );
+
+    setTimeout(function () {
+        window.location.href = "DASHBOARD.html";
+    }, 1500);
+
 
             showToast(
                 "Login Successful!",
