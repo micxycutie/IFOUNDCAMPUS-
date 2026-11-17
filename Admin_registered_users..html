@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="ADMIN_SIDEBAR.css">
+  <link rel="stylesheet" href="ADMIN_REGISTERED_USER.css">
+ <title>iFoundCampus | Registered Users</title>
+</head>
+<body>
+      
+  <aside class="admin-sidebar">
+
+    <button type="button" class="sidebar-close" aria-label="Close sidebar">
+      &times;
+    </button>
+    
+    <!-- LOGO -->
+    <div class="admin-logo">
+      <a href="ADMIN_DASHBOARD.html">
+        <span class="logo-ifound">iFOUND</span>
+        <span class="logo-campus">CAMPUS</span>
+      </a>
+    </div>
+
+    <!-- MAIN -->
+    <div class="sidebar-section">
+      <p class="sidebar-label">MAIN</p>
+      <a href="ADMIN_DASHBOARD.html" class="sidebar-link">
+        <img src="images/dashboard.png" alt="">
+        <span>Dashboard</span>
+      </a>
+    </div>
+
+    <!-- ITEM -->
+    <div class="sidebar-section">
+      <p class="sidebar-label">ITEM</p>
+      <a href="ADMIN_LOST_ITEMS.html" class="sidebar-link">
+        <img src="images/lost-items.png" alt="">
+        <span>Lost Items</span>
+      </a>
+      <a href="ADMIN_FOUND_ITEMS.html" class="sidebar-link">
+        <img src="images/found-items.png" alt="">
+        <span>Found Items</span>
+      </a>
+      <a href="ADMIN_CLAIM_VERIFICATION.html" class="sidebar-link">
+        <img src="images/claim-verification.png" alt="">
+        <span>Claim Verification</span>
+      </a>
+    </div>
+
+    <!-- ADMINISTRATOR -->
+    <div class="sidebar-section">
+      <p class="sidebar-label">ADMINISTRATOR</p>
+      <a href="ADMIN_USER_MANAGEMENT.html" class="sidebar-link">
+        <img src="images/user-management.png" alt="">
+        <span>User Management</span>
+      </a>
+      <a href="ADMIN_REGISTERED_USERS.html" class="sidebar-link active">
+        <img src="images/registered-users.png" alt="">
+        <span>Registered Users</span>
+      </a>
+      <a href="ADMIN_REPORTS.html" class="sidebar-link">
+        <img src="images/reports.png" alt="">
+        <span>Reports</span>
+      </a>
+    </div>
+
+    <!-- LOGOUT -->
+    <div class="sidebar-logout">
+      <a href="LOGIN.html" class="sidebar-link logout-link">
+        <img src="images/logout.png" alt="">
+        <span>Logout</span>
+      </a>
+    </div>
+
+  </aside>
+
+<!-- ADMIN HEADER -->
+<header class="admin-header">
+
+  <div class="header-left">
+    <button class="sidebar-toggle" type="button" aria-label="Toggle sidebar menu">
+      <img src="images/sidebar-toggle.png" alt="">
+    </button>
+  </div>
+
+  <div class="header-right">
+
+    <!-- SEARCH -->
+    <div class="admin-search">
+      <img src="images/search.png" alt="">
+      <input
+        type="search"
+        id="adminSearchInput"
+        placeholder="Search..."
+        aria-label="Search dashboard"
+      >
+      <button type="button" id="clearSearch" aria-label="Clear search" hidden>
+        &times;
+      </button>
+    </div>
+
+    <!-- NOTIFICATION -->
+    <div class="header-dropdown notification-wrapper">
+
+      <button
+        class="header-icon notification-btn"
+        type="button"
+        aria-label="Notifications"
+        aria-expanded="false"
+        aria-controls="notificationDropdown"
+      >
+        <img src="images/notification.png" alt="">
+        <span class="notification-badge" id="notificationBadge">3</span>
+      </button>
+
+      <div class="header-dropdown-menu notif-dropdown" id="notificationDropdown">
+
+        <div class="dropdown-heading">
+          <div>
+            <h3>Notifications</h3>
+            <p>You have 3 unread notifications</p>
+          </div>
+          <button type="button" id="markAllRead">Mark all read</button>
+        </div>
+
+        <div class="notification-list">
+
+          <div class="notification-item unread">
+            <span class="notif-indicator"></span>
+            <div>
+              <strong>New Claim Request</strong>
+              <p>A student submitted a claim request.</p>
+              <small>Just now</small>
+            </div>
+          </div>
+
+          <div class="notification-item unread">
+            <span class="notif-indicator"></span>
+            <div>
+              <strong>New Lost Item Report</strong>
+              <p>A new lost item has been reported.</p>
+              <small>10 minutes ago</small>
+            </div>
+          </div>
+
+          <div class="notification-item unread">
+            <span class="notif-indicator"></span>
+            <div>
+              <strong>New Found Item Report</strong>
+              <p>A found item report needs review.</p>
+              <small>30 minutes ago</small>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="dropdown-footer">
+          <a href="ADMIN_NOTIFICATIONS.html">View all notifications</a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ADMIN PROFILE -->
+    <div class="admin-profile header-dropdown">
+
+      <button
+        class="profile-trigger"
+        type="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+        aria-controls="profileDropdown"
+      >
+        <img src="images/admin-profile.png" class="profile-picture" alt="Admin profile">
+
+        <div class="profile-info">
+          <span class="profile-name">System Administrator</span>
+          <span class="profile-role">Administrator</span>
+        </div>
+
+        <img src="images/chevron-down.png" class="profile-arrow" alt="">
+      </button>
+
+      <div class="header-dropdown-menu profile-dropdown" id="profileDropdown">
+
+        <div class="profile-dropdown-header">
+          <img src="images/admin-profile.png" alt="">
+          <div>
+            <strong>System Administrator</strong>
+            <span>Administrator</span>
+          </div>
+        </div>
+
+        <div class="profile-dropdown-links">
+          <button type="button" data-message="Profile settings will be available soon.">
+            <span>♙</span> My Profile
+          </button>
+
+          <button type="button" data-message="Account settings will be available soon.">
+            <span>⚙</span> Account Settings
+          </button>
+        </div>
+
+        <div class="profile-logout">
+          <a href="LOGIN.html">
+            <img src="images/logout.png" alt="">
+            Logout
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</header>
+
+  
+<!-- =================================
+     ADMIN REGISTERED USERS
+================================= -->
+
+<main class="admin-main-content">
+
+  <!-- PAGE HEADING -->
+  <section class="registered-page-heading">
+    <div>
+      <h1>Registered Users</h1>
+      <p>
+        Manage and monitor all student and staff accounts
+        registered in the iFound Campus system.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- REGISTERED USERS CONTAINER -->
+  <section class="registered-users-section">
+
+    <!-- TOOLBAR -->
+    <div class="registered-toolbar">
+
+      <div class="registered-search">
+        <img src="images/search.png" alt="">
+
+        <input
+          type="search"
+          id="registeredSearch"
+          placeholder="Search users..."
+          aria-label="Search registered users"
+        >
+
+        <button
+          type="button"
+          id="clearRegisteredSearch"
+          aria-label="Clear search"
+          hidden
+        >
+          &times;
+        </button>
+      </div>
+
+
+      <!-- USER FILTER -->
+      <div class="registered-toolbar-actions">
+
+        <div class="registered-filter custom-filter" id="registeredFilter">
+
+  <button
+    type="button"
+    class="registered-filter-trigger"
+    id="registeredFilterTrigger"
+    aria-expanded="false"
+  >
+    <span id="registeredFilterLabel">All Users</span>
+    <span class="registered-filter-arrow">▼</span>
+  </button>
+
+  <div class="registered-filter-menu" id="registeredFilterMenu">
+    <button type="button" class="selected" data-value="all">
+      All Users
+    </button>
+
+    <button type="button" data-value="student">
+      Students
+    </button>
+
+    <button type="button" data-value="staff">
+      Staff
+    </button>
+  </div>
+
+</div>
+
+        <button
+          type="button"
+          class="registered-refresh-btn"
+          id="refreshRegisteredUsers"
+          aria-label="Refresh registered users"
+          title="Refresh"
+        >
+          <img src="images/refresh.png" alt="">
+        </button>
+
+      </div>
+
+    </div>
+
+
+    
+<!-- TABLE CONTAINER -->
+<div class="registered-table-container">
+
+  <!-- HORIZONTAL SCROLL: TABLE ONLY -->
+  <div class="registered-table-wrapper">
+
+    <table class="registered-users-table">
+
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Account Type</th>
+          <th>Institutional ID</th>
+          <th>Email Address</th>
+          <th>Joined Date</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+
+      <tbody id="registeredUsersTableBody">
+
+        <tr data-user-id="1">
+          <td>
+            <div class="registered-user-name">
+              <span class="user-avatar">JD</span>
+              <span>Juan Dela Cruz</span>
+            </div>
+          </td>
+          <td><span class="account-type student">Student</span></td>
+          <td>2022-00123</td>
+          <td>juan.delacruz@plmun.edu.ph</td>
+          <td>November 10, 2026</td>
+          <td>
+            <div class="registered-action-buttons">
+              <button type="button" class="registered-update-btn"
+                data-action="update" data-user-id="1"
+                title="Update User" aria-label="Update Juan Dela Cruz">
+                <img src="images/edit.png" alt="">
+              </button>
+              <button type="button" class="registered-delete-btn"
+                data-action="delete" data-user-id="1"
+                title="Delete User" aria-label="Delete Juan Dela Cruz">
+                <img src="images/delete.png" alt="">
+              </button>
+            </div>
+          </td>
+        </tr>
+
+        <tr data-user-id="2">
+          <td>
+            <div class="registered-user-name">
+              <span class="user-avatar">MS</span>
+              <span>Maria Santos</span>
+            </div>
+          </td>
+          <td><span class="account-type staff">Staff</span></td>
+          <td>EMP-0012</td>
+          <td>maria.santos@plmun.edu.ph</td>
+          <td>November 12, 2026</td>
+          <td>
+            <div class="registered-action-buttons">
+              <button type="button" class="registered-update-btn"
+                data-action="update" data-user-id="2"
+                title="Update User" aria-label="Update Maria Santos">
+                <img src="images/edit.png" alt="">
+              </button>
+              <button type="button" class="registered-delete-btn"
+                data-action="delete" data-user-id="2"
+                title="Delete User" aria-label="Delete Maria Santos">
+                <img src="images/delete.png" alt="">
+              </button>
+            </div>
+          </td>
+        </tr>
+
+        <tr data-user-id="3">
+          <td>
+            <div class="registered-user-name">
+              <span class="user-avatar">AR</span>
+              <span>Angela Reyes</span>
+            </div>
+          </td>
+          <td><span class="account-type student">Student</span></td>
+          <td>2023-00456</td>
+          <td>angela.reyes@plmun.edu.ph</td>
+          <td>November 14, 2026</td>
+          <td>
+            <div class="registered-action-buttons">
+              <button type="button" class="registered-update-btn"
+                data-action="update" data-user-id="3"
+                title="Update User" aria-label="Update Angela Reyes">
+                <img src="images/edit.png" alt="">
+              </button>
+              <button type="button" class="registered-delete-btn"
+                data-action="delete" data-user-id="3"
+                title="Delete User" aria-label="Delete Angela Reyes">
+                <img src="images/delete.png" alt="">
+              </button>
+            </div>
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <!-- EMPTY STATE -->
+  <div class="registered-empty-state" id="registeredEmptyState" hidden>
+    <img src="images/empty-box.png" alt="">
+    <h3>No Registered Users Found</h3>
+    <p>Try changing your search or filter.</p>
+  </div>
+
+  <!-- PAGINATION: OUTSIDE HORIZONTAL SCROLL -->
+  <div class="registered-pagination" id="registeredPagination">
+
+    <div class="registered-pagination-info">
+      Showing <span id="registeredShowingStart">1</span>–
+      <span id="registeredShowingEnd">3</span>
+      of <span id="registeredTotalUsers">3</span> users
+    </div>
+
+    <div class="registered-pagination-controls">
+
+      <button
+        type="button"
+        id="registeredPrevPage"
+        class="pagination-btn"
+        aria-label="Previous page"
+        disabled
+      >
+        &laquo;
+      </button>
+
+      <div class="registered-page-numbers" id="registeredPageNumbers"></div>
+
+      <button
+        type="button"
+        id="registeredNextPage"
+        class="pagination-btn"
+        aria-label="Next page"
+        disabled
+      >
+        &raquo;
+      </button>
+
+    </div>
+  </div>
+
+</div>
+
+
+      <!-- EMPTY STATE -->
+      <div class="registered-empty-state" id="registeredEmptyState" hidden>
+        <img src="images/empty-box.png" alt="">
+        <h3>No Registered Users Found</h3>
+        <p>Try changing your search or filter.</p>
+      </div>
+
+    
+
+
+    
+
+  </section>
+
+</main>
+
+  
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+
+    // SIDEBAR TOGGLE (Mobile View)
+    const sidebarToggle = document.querySelector('.sidebar-toggle');
+    const sidebarClose = document.querySelector('.sidebar-close');
+
+    if (sidebarToggle) {
+      sidebarToggle.addEventListener('click', function() {
+        document.body.classList.toggle('sidebar-open');
+        const isOpen = document.body.classList.contains('sidebar-open');
+        sidebarToggle.setAttribute('aria-expanded', isOpen);
+      });
+    }
+
+    if (sidebarClose) {
+      sidebarClose.addEventListener('click', function() {
+        document.body.classList.remove('sidebar-open');
+        if (sidebarToggle) {
+          sidebarToggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+
+    // HEADER DROPDOWNS
+    const headerDropdowns = document.querySelectorAll('.header-dropdown');
+
+    headerDropdowns.forEach(dropdown => {
+      const trigger = dropdown.querySelector('button');
+      if (!trigger) return;
+
+      trigger.addEventListener('click', function(event) {
+        event.stopPropagation();
+        const wasOpen = dropdown.classList.contains('open');
+
+        // Close other dropdowns
+        headerDropdowns.forEach(item => {
+          item.classList.remove('open');
+          const btn = item.querySelector('button');
+          if (btn) btn.setAttribute('aria-expanded', 'false');
+        });
+
+        // Toggle selected dropdown
+        if (!wasOpen) {
+          dropdown.classList.add('open');
+          trigger.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(event) {
+      if (!event.target.closest('.header-dropdown')) {
+        headerDropdowns.forEach(dropdown => {
+          dropdown.classList.remove('open');
+          const trigger = dropdown.querySelector('button');
+          if (trigger) trigger.setAttribute('aria-expanded', 'false');
+        });
+      }
+    });
+
+    // Close dropdown using Escape key
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        headerDropdowns.forEach(dropdown => {
+          dropdown.classList.remove('open');
+          const trigger = dropdown.querySelector('button');
+          if (trigger) trigger.setAttribute('aria-expanded', 'false');
+        });
+      }
+    });
+
+    // NOTIFICATION FUNCTIONALITY
+    const notificationItems = document.querySelectorAll('.notification-item');
+    const notificationBadge = document.getElementById('notificationBadge');
+    const notificationButton = document.querySelector('.notification-btn');
+    const markAllRead = document.getElementById('markAllRead');
+    const notificationDescription = document.querySelector('.dropdown-heading p');
+
+    function updateNotificationCount() {
+      const unreadCount = document.querySelectorAll('.notification-item.unread').length;
+
+      if (notificationBadge) {
+        notificationBadge.textContent = unreadCount;
+        notificationBadge.style.display = unreadCount > 0 ? 'flex' : 'none';
+      }
+
+      if (notificationButton) {
+        notificationButton.setAttribute('aria-label', unreadCount + ' unread notifications');
+      }
+
+      if (notificationDescription) {
+        notificationDescription.textContent = unreadCount === 0
+          ? 'You are all caught up!'
+          : 'You have ' + unreadCount + ' unread notifications';
+      }
+    }
+
+    notificationItems.forEach(item => {
+      item.addEventListener('click', function() {
+        item.classList.remove('unread');
+        updateNotificationCount();
+      });
+    });
+
+    if (markAllRead) {
+      markAllRead.addEventListener('click', function() {
+        notificationItems.forEach(item => {
+          item.classList.remove('unread');
+        });
+        updateNotificationCount();
+      });
+    }
+
+    updateNotificationCount();
+
+    // PROFILE MENU ALERTS
+    const profileActions = document.querySelectorAll('.profile-dropdown-links button');
+    profileActions.forEach(button => {
+      button.addEventListener('click', function() {
+        alert(button.dataset.message);
+      });
+    });
+
+    // SEARCH FUNCTION (Optional/Placeholder for layout testing)
+    const searchInput = document.getElementById('adminSearchInput');
+    const clearSearch = document.getElementById('clearSearch');
+
+    if (searchInput) {
+      searchInput.addEventListener('input', function() {
+        const query = searchInput.value.trim();
+        if (clearSearch) clearSearch.hidden = !query;
+      });
+    }
+
+    if (clearSearch) {
+      clearSearch.addEventListener('click', function() {
+        searchInput.value = '';
+        clearSearch.hidden = true;
+        searchInput.focus();
+      });
+    }
+
+  
+// =================================
+// REGISTERED USERS TABLE
+// =================================
+
+const registeredSearch = document.getElementById("registeredSearch");
+const clearRegisteredSearch = document.getElementById("clearRegisteredSearch");
+const registeredUserFilter = document.getElementById("registeredUserFilter");
+const refreshRegisteredUsers = document.getElementById("refreshRegisteredUsers");
+
+const registeredTableBody = document.getElementById("registeredUsersTableBody");
+const registeredTableWrapper = document.querySelector(".registered-table-wrapper");
+const registeredEmptyState = document.getElementById("registeredEmptyState");
+
+const registeredPagination = document.getElementById("registeredPagination");
+const registeredShowingStart = document.getElementById("registeredShowingStart");
+const registeredShowingEnd = document.getElementById("registeredShowingEnd");
+const registeredTotalUsers = document.getElementById("registeredTotalUsers");
+
+const registeredPrevPage = document.getElementById("registeredPrevPage");
+const registeredNextPage = document.getElementById("registeredNextPage");
+const registeredPageNumbers = document.getElementById("registeredPageNumbers");
+
+const registeredRows = Array.from(
+  registeredTableBody.querySelectorAll("tr")
+);
+
+const registeredRowsPerPage = 5;
+let registeredCurrentPage = 1;
+
+function getFilteredRegisteredUsers() {
+  const searchValue = registeredSearch.value.trim().toLowerCase();
+  const filterValue = registeredFilterValue;
+
+  return registeredRows.filter(row => {
+    const rowText = row.textContent.toLowerCase();
+
+    const accountType = row.querySelector(".account-type");
+
+    const matchesSearch = rowText.includes(searchValue);
+
+    const matchesFilter =
+      filterValue === "all" ||
+      (accountType && accountType.classList.contains(filterValue));
+
+    return matchesSearch && matchesFilter;
+  });
+}
+
+function displayRegisteredUsers() {
+  const filteredUsers = getFilteredRegisteredUsers();
+
+  const totalUsers = filteredUsers.length;
+  const totalPages = Math.ceil(totalUsers / registeredRowsPerPage);
+
+  if (registeredCurrentPage > totalPages) {
+    registeredCurrentPage = Math.max(1, totalPages);
+  }
+
+  const startIndex = (registeredCurrentPage - 1) * registeredRowsPerPage;
+  const endIndex = Math.min(
+    startIndex + registeredRowsPerPage,
+    totalUsers
+  );
+
+  // Hide all rows first
+  registeredRows.forEach(row => {
+    row.style.display = "none";
+  });
+
+  // Display only current page
+  filteredUsers.slice(startIndex, endIndex).forEach(row => {
+    row.style.display = "";
+  });
+
+  // Empty state
+  const hasUsers = totalUsers > 0;
+
+  registeredEmptyState.hidden = hasUsers;
+  registeredTableWrapper.hidden = !hasUsers;
+
+  // Pagination information
+  registeredShowingStart.textContent = hasUsers ? startIndex + 1 : 0;
+  registeredShowingEnd.textContent = endIndex;
+  registeredTotalUsers.textContent = totalUsers;
+
+  // Pagination visibility
+  registeredPagination.hidden = !hasUsers || totalPages <= 1;
+
+  // Previous and Next buttons
+  registeredPrevPage.disabled = registeredCurrentPage === 1;
+  registeredNextPage.disabled = registeredCurrentPage === totalPages;
+
+  // Page number buttons
+  registeredPageNumbers.innerHTML = "";
+
+  for (let page = 1; page <= totalPages; page++) {
+    const pageButton = document.createElement("button");
+
+    pageButton.type = "button";
+    pageButton.className = "pagination-page";
+    pageButton.textContent = page;
+
+    if (page === registeredCurrentPage) {
+      pageButton.classList.add("active");
+      pageButton.setAttribute("aria-current", "page");
+    }
+
+    pageButton.addEventListener("click", function() {
+      registeredCurrentPage = page;
+      displayRegisteredUsers();
+    });
+
+    registeredPageNumbers.appendChild(pageButton);
+  }
+
+  // Clear search visibility
+  clearRegisteredSearch.hidden = registeredSearch.value.trim() === "";
+}
+
+// SEARCH
+registeredSearch.addEventListener("input", function() {
+  registeredCurrentPage = 1;
+  displayRegisteredUsers();
+});
+
+// CLEAR SEARCH
+clearRegisteredSearch.addEventListener("click", function() {
+  registeredSearch.value = "";
+  registeredCurrentPage = 1;
+
+  displayRegisteredUsers();
+  registeredSearch.focus();
+});
+
+// CUSTOM ACCOUNT TYPE DROPDOWN
+
+registeredFilterTrigger.addEventListener("click", function(event) {
+  event.stopPropagation();
+
+  registeredFilter.classList.toggle("open");
+
+  registeredFilterTrigger.setAttribute(
+    "aria-expanded",
+    registeredFilter.classList.contains("open")
+  );
+});
+
+registeredFilterMenu.querySelectorAll("button").forEach(option => {
+  option.addEventListener("click", function() {
+
+    registeredFilterValue = option.dataset.value;
+    registeredFilterLabel.textContent = option.textContent.trim();
+
+    registeredFilterMenu.querySelectorAll("button").forEach(button => {
+      button.classList.remove("selected");
+    });
+
+    option.classList.add("selected");
+
+    registeredFilter.classList.remove("open");
+    registeredFilterTrigger.setAttribute("aria-expanded", "false");
+
+    registeredCurrentPage = 1;
+    displayRegisteredUsers();
+  });
+});
+
+// CLOSE WHEN CLICKING OUTSIDE
+document.addEventListener("click", function(event) {
+  if (!registeredFilter.contains(event.target)) {
+    registeredFilter.classList.remove("open");
+    registeredFilterTrigger.setAttribute("aria-expanded", "false");
+  }
+});
+
+// PREVIOUS PAGE
+registeredPrevPage.addEventListener("click", function() {
+  if (registeredCurrentPage > 1) {
+    registeredCurrentPage--;
+    displayRegisteredUsers();
+  }
+});
+
+// NEXT PAGE
+registeredNextPage.addEventListener("click", function() {
+  const totalPages = Math.ceil(
+    getFilteredRegisteredUsers().length / registeredRowsPerPage
+  );
+
+  if (registeredCurrentPage < totalPages) {
+    registeredCurrentPage++;
+    displayRegisteredUsers();
+  }
+});
+
+// REFRESH
+refreshRegisteredUsers.addEventListener("click", function() {
+  registeredSearch.value = "";
+  registeredFilterValue = "all";
+registeredFilterLabel.textContent = "All Users";
+
+registeredFilterMenu.querySelectorAll("button").forEach(button => {
+  button.classList.toggle("selected", button.dataset.value === "all");
+});
+  registeredCurrentPage = 1;
+
+  displayRegisteredUsers();
+
+  refreshRegisteredUsers.classList.add("refreshing");
+
+  setTimeout(() => {
+    refreshRegisteredUsers.classList.remove("refreshing");
+  }, 500);
+});
+
+// INITIAL DISPLAY
+displayRegisteredUsers();
+
+
+  });
+</script>
+
+</body>
+</html>
