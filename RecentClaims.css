@@ -95,11 +95,86 @@ body {
   width: 28px;
   height: 28px;
   object-fit: contain;
-  filter: brightness(0) invert(1);
+  filter: brightness(0) invert(1); 
 }
 
 .notification, .sign-in {
   position: relative;
+  
+}
+
+.notif-dropdown, .user-dropdown {
+  display: none;
+  position: absolute;
+  top: 45px;
+  right: 0;
+  width: 280px;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  border: 1px solid #eaeaea;
+  z-index: 3000;
+  overflow: hidden;
+  animation: fadeIn 0.2s ease;
+}
+
+.notif-dropdown.active, .user-dropdown.active {
+  display: block;
+}
+
+/* Notif Content */
+.notif-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: #18453B;
+  color: #fff;
+  font-size: 13px;
+}
+
+.notif-list {
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+.notif-item {
+  padding: 12px 16px;
+  border-bottom: 1px solid #f0f0f0;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.notif-item:hover {
+  background: #f8faf9;
+}
+
+.notif-item p {
+  font-size: 12px;
+  color: #333;
+  margin: 0 0 4px 0;
+  line-height: 1.4;
+}
+
+.notif-time {
+  font-size: 10px;
+  color: #888;
+}
+
+.notif-view-all {
+  display: block;
+  text-align: center;
+  padding: 14px;
+  color: #18453B;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  border-top: 1px solid #E8ECE9;
+  transition: 0.2s ease;
+}
+
+.notif-view-all:hover {
+  background: #F1F6F3;
 }
 
 .badge {
@@ -249,6 +324,8 @@ body {
   align-items: center;
   justify-content: space-between;
   margin-bottom: 30px;
+  border-bottom: 1px solid #E8EDE9;
+  padding: 22px 22px;
 }
 
 .side-menu-header .ifound {
@@ -277,9 +354,9 @@ body {
   display: flex;
   flex-direction: column;
   gap: 6px;
+  padding: 18px 12px;
   flex: 1;
 }
-
 .side-menu-links a,
 .side-menu-footer a {
   text-decoration: none;
@@ -314,8 +391,9 @@ body {
 }
 
 .side-menu-footer {
-  border-top: 1px solid #f0f0f0;
-  padding-top: 16px;
+  border-top: 2px solid #f0f0f0;
+  padding-top: 14px 12px;
+  margin-top: auto;
 }
 
 .claims-main {
@@ -837,4 +915,4 @@ body {
   .search-box-wrapper {
     width: 100%;
   }
-}
+  }
