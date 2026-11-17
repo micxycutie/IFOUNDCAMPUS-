@@ -23,6 +23,7 @@
   
   <div class="nav-top">
     <div class="nav-right">
+      
   <!-- NOTIFICATION BELL WITH DROPDOWN -->
   <div class="notification" id="notifBtn">
     <img src="bell (1).png" alt="notification">
@@ -30,42 +31,77 @@
     
     <!-- Notification Dropdown Menu -->
     <div class="notif-dropdown" id="notifDropdown">
-      <div class="notif-header">
-        <h4>Notifications</h4>
-        <span>3 New</span>
-      </div>
-      <div class="notif-list">
-        <div class="notif-item">
-          <p><strong>Claim Approved:</strong> Your claim request for <em>School ID</em> was approved.</p>
-          <span class="notif-time">10m ago</span>
-        </div>
-        <div class="notif-item">
-          <p><strong>Potential Match:</strong> A new item matches your lost report.</p>
-          <span class="notif-time">1h ago</span>
-        </div>
-        <div class="notif-item">
-          <p><strong>Report Posted:</strong> Your found item report is now live.</p>
-          <span class="notif-time">3h ago</span>
-        </div>
-      </div>
-    </div>
+
+  <div class="notif-header">
+    <h4>Notifications</h4>
+    <span>3 New</span>
   </div>
 
-  <!-- SIGN IN / USER PROFILE DROPDOWN -->
-  <div class="sign-in" id="signInBtn">
+  <div class="notif-list">
+
+    <div class="notif-item">
+      <p>
+        <strong>Claim Approved:</strong>
+        Your claim request for <em>School ID</em> was approved.
+      </p>
+      <span class="notif-time">10m ago</span>
+    </div>
+
+    <div class="notif-item">
+      <p>
+        <strong>Potential Match:</strong>
+        A new item matches your lost report.
+      </p>
+      <span class="notif-time">1h ago</span>
+    </div>
+
+    <div class="notif-item">
+      <p>
+        <strong>Report Posted:</strong>
+        Your found item report is now live.
+      </p>
+      <span class="notif-time">3h ago</span>
+    </div>
+
+  </div>
+
+  <a href="Notification.html" class="notif-view-all">
+    View All Notifications →
+  </a>
+
+</div>
+  </div>
+
+
+<div class="sign-in" id="signInBtn">
     <img src="kiwi.jpg" alt="Profile">
-    <span>Ruffa</span> <!-- Pwede mong gawing pangalan ng user o "Sign in" -->
+    <span>Ruffa</span>
     
     <!-- User Dropdown Menu -->
     <div class="user-dropdown" id="userDropdown">
       <div class="user-dropdown-header">
         <p class="user-name">Ruffa Micayla</p>
-        <p class="user-email">2023-00123@plmun.edu.ph</p>
+        <p class="user-email">2023-00123</p>
       </div>
-      <div class="user-dropdown-links">
-        <a href="#">👤 My Profile</a>
-        <a href="#">⚙️ Account Settings</a>
-        <a href="#" id="logoutLink">🚪 Logout</a>
+      <div class="user-dropdown-links"> <!--aayusin itong username at student id-->
+        
+<div class="user-dropdown-links">
+  <a href="#">
+    <img src="user.png" alt="" class="profile-icon">
+    My Profile
+  </a>
+
+  <a href="#">
+    <img src="settings.png" alt="" class="profile-icon">
+    Account Settings
+  </a>
+
+  <a href="IFC_Login.html" id="logoutLink">
+    <img src="exit.png" alt="" class="profile-icon">
+    Logout
+  </a>
+</div>
+
       </div>
     </div>
   </div>
@@ -85,16 +121,17 @@
     <a href="#" class="active">
       <img src="home.png" alt="Home" class="menu-icon"> Home
     </a>
-    <a href="#">
-      <img src="wirte.png" alt="Recent Claims" class="menu-icon"> Recent Claims
-    </a>
+    <a href="RecentClaims.html">
+  <img src="wirte.png" alt="My Claims" class="menu-icon">
+  My Claims
+</a>
     <a href="#">
       <img src="user.png" alt="Profile" class="menu-icon"> Profile
     </a>
   </div>
 
   <div class="side-menu-footer">
-    <a href="#" class="sign-out-link">
+    <a href="IFC_Login.html" class="sign-out-link">
       <img src="exit.png" alt="Sign out" class="menu-icon"> Logout
     </a>
   </div>
@@ -433,13 +470,53 @@
         <span class="item-status status-found" id="modalItemStatus">Found</span>
       </div>
       <div class="modal-details">
-        <p class="categories" id="modalItemCategory">Electronics</p>
-        <h2 id="modalItemName">Earpods</h2>
-        <p class="loc"><strong>Location:</strong> <span id="modalItemLocation">Emerald Hall</span></p>
-        <p class="item-time"><strong>Reported:</strong> <span id="modalItemTime">Today at 9:00 AM</span></p>
-        <p class="modal-desc"><strong>Description:</strong> <span id="modalItemDescription">Item details will appear here.</span></p>
-        <button class="claim-btn" id="openClaimModalBtn" type="button">Claim Item</button>
-      </div>
+
+  <div class="details-heading">
+    
+    <p class="categories" id="modalItemCategory">Electronics</p>
+    <h2 id="modalItemName">Earpods</h2>
+    <p class="details-subtitle">Review the item information below.</p>
+  </div>
+
+  <div class="details-info-grid">
+
+    <div class="details-info-card">
+      <span class="details-info-label">LOCATION</span>
+      <p id="modalItemLocation">Emerald Hall</p>
+    </div>
+
+    <div class="details-info-card">
+      <span class="details-info-label">BRAND</span>
+      <p id="modalItemBrand">Not specified</p>
+    </div>
+
+    <div class="details-info-card">
+      <span class="details-info-label">DATE LOST/FOUND</span>
+      <p id="modalItemDate">Not specified</p>
+    </div>
+
+    <div class="details-info-card">
+      <span class="details-info-label">REPORTED</span>
+      <p id="modalItemTime">Today at 9:00 AM</p>
+    </div>
+
+  </div>
+
+  <div class="modal-desc">
+    <div class="description-heading">
+      <span class="description-dot"></span>
+      <strong>ITEM DESCRIPTION</strong>
+    </div>
+    <p id="modalItemDescription">
+      Item details will appear here.
+    </p>
+  </div>
+
+  <button class="claim-btn" id="openClaimModalBtn" type="button">
+    Claim Item
+  </button>
+
+</div>
     </div>
   </div>
 
@@ -494,6 +571,29 @@
       placeholder="e.g. Black Wallet, Student ID" required>
   </div>
 
+    <div class="form-group">
+  <label for="reportBrand">Brand (Optional)</label>
+  <input
+    id="reportBrand"
+    type="text"
+    placeholder="e.g. Samsung, Nike, Logitech"
+  >
+</div>
+          
+
+<div class="form-group">
+  <label for="reportItemDate">Date Lost/Found</label>
+  <input
+  id="reportItemDate"
+  type="date"
+  placeholder="Select date"
+  required
+>
+<small>Select the date when the item was lost or found.</small>
+</div>
+  
+
+
   <div class="form-group">
     <label for="reportCategory">Category</label>
     <select id="reportCategory" required>
@@ -509,6 +609,15 @@
       <option value="Others">Others</option>
     </select>
   </div>
+
+    <div class="form-group" id="customCategoryGroup" hidden>
+  <label for="customCategory">Specify Category</label>
+  <input
+    id="customCategory"
+    type="text"
+    placeholder="e.g. Jackets, Toys, Makeup"
+  >
+</div>
 
   <div class="form-group">
     <label for="reportLocation">Location</label>
@@ -537,397 +646,616 @@
     </div>
   </div>
 
-  <div class="toast-message" id="claimToast" role="status" aria-live="polite">
-    <span class="toast-icon">✓</span>
-    <div>
-      <strong>Claim request submitted!</strong>
-      <p>Your request is pending review by the campus administrator.</p>
-    </div>
-    <button type="button" id="closeToastBtn" aria-label="Close notification">✕</button>
+
+<div class="toast-message" id="claimToast" role="status" aria-live="polite">
+  <span class="toast-icon">✓</span>
+
+  <div>
+    <strong id="toastTitle">Notification</strong>
+    <p id="toastDescription">Your request has been submitted.</p>
   </div>
 
+  <button type="button" id="closeToastBtn" aria-label="Close notification">
+    ✕
+  </button>
+</div>
+    
 <script>
-  // Sidebar Menu Logic
+  // ========================================
+  // SIDEBAR MENU
+  // ========================================
   const menuBtn = document.getElementById('menuBtn');
   const sideMenu = document.getElementById('sideMenu');
   const closeBtn = document.getElementById('closeBtn');
   const overlay = document.getElementById('overlay');
 
-  menuBtn.addEventListener('click', function() {
+  menuBtn?.addEventListener('click', function() {
     sideMenu.classList.add('active');
     overlay.classList.add('active');
   });
 
   function closeSideMenu() {
-    sideMenu.classList.remove('active');
-    overlay.classList.remove('active');
+    sideMenu?.classList.remove('active');
+    overlay?.classList.remove('active');
   }
-  closeBtn.addEventListener('click', closeSideMenu);
-  overlay.addEventListener('click', closeSideMenu);
 
-  
+  closeBtn?.addEventListener('click', closeSideMenu);
+  overlay?.addEventListener('click', closeSideMenu);
+
+
+  // ========================================
+  // SEARCH AND FILTERS
+  // ========================================
   const searchForm = document.querySelector('.searchbar');
   const searchInput = document.querySelector('.searchbar input');
   const statusChips = document.querySelectorAll('.status-chip');
   const categoryChips = document.querySelectorAll('.filter-chip');
+
   let activeStatus = 'All';
   let activeCategory = 'All Categories';
 
   function filterItems() {
     const query = (searchInput?.value || '').trim().toLowerCase();
+
     document.querySelectorAll('.item-card').forEach(card => {
-      const name = card.querySelector('.itemName')?.textContent.toLowerCase() || '';
-      const category = card.querySelector('.categories')?.textContent.trim().toLowerCase() || '';
-      const location = card.querySelector('.loc-text')?.textContent.toLowerCase() || '';
-      const status = card.querySelector('.item-status')?.textContent.trim().toLowerCase() || '';
-      const matchesQuery = !query || `${name} ${category} ${location} ${status}`.includes(query);
-      const matchesStatus = activeStatus === 'All' || status === activeStatus.toLowerCase();
-      const matchesCategory = activeCategory === 'All Categories' || category === activeCategory.toLowerCase();
+      const name =
+        card.querySelector('.itemName')?.textContent.toLowerCase() || '';
+
+      const category =
+        card.querySelector('.categories')?.textContent.trim().toLowerCase() || '';
+
+      const location =
+        card.querySelector('.loc-text')?.textContent.toLowerCase() || '';
+
+      const status =
+        card.querySelector('.item-status')?.textContent.trim().toLowerCase() || '';
+
+      const matchesQuery =
+        !query || `${name} ${category} ${location} ${status}`.includes(query);
+
+      const matchesStatus =
+        activeStatus === 'All' || status === activeStatus.toLowerCase();
+
+      const matchesCategory =
+        activeCategory === 'All Categories' ||
+        category === activeCategory.toLowerCase();
+
       card.hidden = !(matchesQuery && matchesStatus && matchesCategory);
     });
   }
 
-  statusChips.forEach(chip => chip.addEventListener('click', () => {
-    activeStatus = chip.textContent.trim();
-    statusChips.forEach(item => item.classList.toggle('active', item === chip));
-    filterItems();
-  }));
-
-  categoryChips.forEach(chip => chip.addEventListener('click', () => {
-    activeCategory = chip.textContent.trim();
-    categoryChips.forEach(item => item.classList.toggle('active', item === chip));
-    filterItems();
-  }));
-
-  searchInput?.addEventListener('input', filterItems);
-  searchForm?.addEventListener('submit', event => {
-    event.preventDefault();
-    filterItems();
-    document.querySelector('.items-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  });
-
-
-const itemsContainer = document.querySelector('.items-placeholder');
-const itemModal = document.getElementById('itemModal');
-const closeModalBtn = document.getElementById('closeModalBtn');
-const modalImage = document.getElementById('modalItemImage');
-const modalName = document.getElementById('modalItemName');
-const modalCategory = document.getElementById('modalItemCategory');
-const modalLocation = document.getElementById('modalItemLocation');
-const modalTime = document.getElementById('modalItemTime');
-const modalStatus = document.getElementById('modalItemStatus');
-const modalDescription = document.getElementById('modalItemDescription');
-const openClaimModalBtn = document.getElementById('openClaimModalBtn');
-
-function openCardDetails(card) {
-  const cardImage = card.querySelector('.item-image img');
-  const cardName = card.querySelector('.itemName');
-  const cardCategory = card.querySelector('.categories');
-  const cardLocation = card.querySelector('.loc-text');
-  const cardTime = card.querySelector('.item-time');
-  const cardStatus = card.querySelector('.item-status');
-
-  modalImage.src = cardImage.src;
-  modalImage.alt = cardImage.alt;
-  modalName.textContent = cardName.textContent;
-  modalCategory.textContent = cardCategory.textContent;
-  modalLocation.textContent = cardLocation ? cardLocation.textContent : 'Not specified';
-  modalTime.textContent = cardTime ? cardTime.textContent : 'Not specified';
-
-  modalStatus.textContent = cardStatus.textContent;
-  modalStatus.className = 'item-status ' +
-    (cardStatus.classList.contains('status-lost') ? 'status-lost' : 'status-found');
-
-  modalDescription.textContent = card.dataset.description || 'No description available.';
-
-  const isFoundItem = cardStatus.classList.contains('status-found');
-
-  if (isFoundItem) {
-    openClaimModalBtn.hidden = false;
-    openClaimModalBtn.textContent = 'Claim Item';
-  } else {
-    openClaimModalBtn.hidden = true;
-  }
-
-  itemModal.classList.add('active');
-}
-
-  itemsContainer.addEventListener('click', function(e) {
-  const card = e.target.closest('.item-card');
-
-  if (card && itemsContainer.contains(card)) {
-    openCardDetails(card);
-  }
-});
-
-// Keyboard support
-itemsContainer.addEventListener('keydown', function(e) {
-  if (e.key !== 'Enter' && e.key !== ' ') return;
-
-  const card = e.target.closest('.item-card');
-
-  if (card && itemsContainer.contains(card)) {
-    e.preventDefault();
-    openCardDetails(card);
-  }
-});
-
-function closeItemModal() {
-  itemModal.classList.remove('active');
-}
-closeModalBtn.addEventListener('click', closeItemModal);
-itemModal.addEventListener('click', function(e) {
-  if (e.target === itemModal) closeItemModal();
-});
-  
-  
-  function closeItemModal() {
-    itemModal.classList.remove('active');
-  }
-  closeModalBtn.addEventListener('click', closeItemModal);
-  itemModal.addEventListener('click', function(e) {
-    if (e.target === itemModal) closeItemModal();
-  });
-
-  // Claim verification modal
-  const claimModal = document.getElementById('claimModal');
-  const closeClaimModalBtn = document.getElementById('closeClaimModalBtn');
-  const cancelClaimBtn = document.getElementById('cancelClaimBtn');
-  const claimForm = document.getElementById('claimForm');
-  const claimItemName = document.getElementById('claimItemName');
-  const claimToast = document.getElementById('claimToast');
-  const closeToastBtn = document.getElementById('closeToastBtn');
-
-  openClaimModalBtn.addEventListener('click', function() {
-    claimItemName.textContent = modalName.textContent;
-    claimModal.classList.add('active');
-  });
-
-  function closeClaimModal() {
-    claimModal.classList.remove('active');
-  }
-  closeClaimModalBtn.addEventListener('click', closeClaimModal);
-  cancelClaimBtn.addEventListener('click', closeClaimModal);
-  claimModal.addEventListener('click', function(e) {
-    if (e.target === claimModal) closeClaimModal();
-  });
-
-  claimForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    closeClaimModal();
-    closeItemModal();
-    claimForm.reset();
-    claimToast.classList.add('show');
-  });
-
-  closeToastBtn.addEventListener('click', function() {
-    claimToast.classList.remove('show');
-  });
-
-  
-  // Lost / Found report modal
-const lostBtn = document.getElementById('lostBtn');
-const foundBtn = document.getElementById('foundBtn');
-const reportModal = document.getElementById('reportModal');
-const closeReportModalBtn =
-  document.getElementById('closeReportModalBtn');
-const reportModalTitle =
-  document.getElementById('reportModalTitle');
-const reportForm = document.getElementById('reportForm');
-
-let reportStatus = 'Lost';
-
-const reportItemName = document.getElementById('reportItemName');
-const reportCategory = document.getElementById('reportCategory');
-const reportLocation = document.getElementById('reportLocation');
-const reportPhoto = document.getElementById('reportPhoto');
-const reportDescription =
-  document.getElementById('reportDescription');
-
-function openReportModal(status) {
-  reportStatus = status;
-  reportModalTitle.textContent =
-    status === 'Lost' ? 'Report Lost Item' : 'Report Found Item';
-
-  reportModal.classList.add('active');
-}
-
-lostBtn.addEventListener('click', function() {
-  openReportModal('Lost');
-});
-
-foundBtn.addEventListener('click', function() {
-  openReportModal('Found');
-});
-
-function closeReportModal() {
-  reportModal.classList.remove('active');
-}
-
-closeReportModalBtn.addEventListener('click', closeReportModal);
-
-reportModal.addEventListener('click', function(e) {
-  if (e.target === reportModal) closeReportModal();
-});
-
-// Submit a new lost/found report
-reportForm.addEventListener('submit', function(e) {
-  e.preventDefault();
-
-  const name = reportItemName.value.trim();
-  const category = reportCategory.value;
-  const location = reportLocation.value.trim();
-  const description = reportDescription.value.trim();
-  const photo = reportPhoto.files[0];
-
-  if (!name || !category || !location || !description || !photo) {
-    alert('Please complete all fields and upload an item photo.');
-    return;
-  }
-
-  if (!photo.type.startsWith('image/')) {
-    alert('Please select a valid image file.');
-    return;
-  }
-
-
-  const card = document.createElement('div');
-
-  card.className = 'item-card';
-  card.tabIndex = 0;
-  card.setAttribute('role', 'button');
-  card.setAttribute('aria-label', 'View details for ' + name);
-  card.dataset.description = description;
-
-  
-  card.innerHTML = `
-    <div class="item-image">
-      <img alt="">
-      <span class="item-status"></span>
-    </div>
-    <div class="item-info">
-      <p class="categories"></p>
-      <h2 class="itemName"></h2>
-      <p class="loc">
-        <img src="found.png" alt="">
-        <span class="loc-text"></span>
-      </p>
-      <div class="item-time-wrapper">
-        <img src="clock.png" alt="">
-        <p class="item-time"></p>
-      </div>
-    </div>
-  `;
-
-  const cardImage = card.querySelector('.item-image img');
-  cardImage.src = URL.createObjectURL(photo);
-  cardImage.alt = name;
-
-  const statusLabel = card.querySelector('.item-status');
-  statusLabel.textContent = reportStatus;
-  statusLabel.classList.add(
-    reportStatus === 'Found' ? 'status-found' : 'status-lost'
-  );
-
-  card.querySelector('.categories').textContent = category;
-  card.querySelector('.itemName').textContent = name;
-  card.querySelector('.loc-text').textContent = location;
-
-  const now = new Date();
-  const time = now.toLocaleTimeString('en-US', {
-    hour: 'numeric',
-    minute: '2-digit'
-  });
-
-  card.querySelector('.item-time').textContent =
-    'Reported at ' + time;
-
-  
-  itemsContainer.prepend(card);
-
- 
-  activeStatus = 'All';
-  activeCategory = 'All Categories';
-  searchInput.value = '';
-
   statusChips.forEach(chip => {
-    chip.classList.toggle(
-      'active',
-      chip.textContent.trim() === activeStatus
-    );
+    chip.addEventListener('click', () => {
+      activeStatus = chip.textContent.trim();
+
+      statusChips.forEach(item => {
+        item.classList.toggle('active', item === chip);
+      });
+
+      filterItems();
+    });
   });
 
   categoryChips.forEach(chip => {
-    chip.classList.toggle(
-      'active',
-      chip.textContent.trim() === activeCategory
+    chip.addEventListener('click', () => {
+      activeCategory = chip.textContent.trim();
+
+      categoryChips.forEach(item => {
+        item.classList.toggle('active', item === chip);
+      });
+
+      filterItems();
+    });
+  });
+
+  searchInput?.addEventListener('input', filterItems);
+
+  searchForm?.addEventListener('submit', event => {
+    event.preventDefault();
+    filterItems();
+
+    document.querySelector('.items-section')?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
+  });
+
+
+  // ========================================
+  // MODAL ELEMENTS
+  // ========================================
+  const itemsContainer = document.querySelector('.items-placeholder');
+
+  const itemModal = document.getElementById('itemModal');
+  const claimModal = document.getElementById('claimModal');
+  const reportModal = document.getElementById('reportModal');
+
+  const closeModalBtn = document.getElementById('closeModalBtn');
+  const closeClaimModalBtn = document.getElementById('closeClaimModalBtn');
+  const cancelClaimBtn = document.getElementById('cancelClaimBtn');
+  const closeReportModalBtn = document.getElementById('closeReportModalBtn');
+
+  const modalImage = document.getElementById('modalItemImage');
+  const modalName = document.getElementById('modalItemName');
+  const modalCategory = document.getElementById('modalItemCategory');
+  const modalLocation = document.getElementById('modalItemLocation');
+  const modalTime = document.getElementById('modalItemTime');
+  const modalBrand = document.getElementById('modalItemBrand');
+  const modalDate = document.getElementById('modalItemDate');
+  const modalStatus = document.getElementById('modalItemStatus');
+  const modalDescription = document.getElementById('modalItemDescription');
+
+  const openClaimModalBtn = document.getElementById('openClaimModalBtn');
+
+  function closeAllModals() {
+    itemModal?.classList.remove('active');
+    claimModal?.classList.remove('active');
+    reportModal?.classList.remove('active');
+  }
+
+  function openModal(modalId) {
+    closeAllModals();
+
+    const modal = document.getElementById(modalId);
+
+    if (modal) {
+      modal.classList.add('active');
+    }
+  }
+
+
+  // ========================================
+  // ITEM DETAILS MODAL
+  // ========================================
+  function openCardDetails(card) {
+    const cardImage = card.querySelector('.item-image img');
+    const cardName = card.querySelector('.itemName');
+    const cardCategory = card.querySelector('.categories');
+    const cardLocation = card.querySelector('.loc-text');
+    const cardTime = card.querySelector('.item-time');
+    const cardStatus = card.querySelector('.item-status');
+
+    if (!cardName || !cardStatus) return;
+
+    modalImage.src = cardImage?.src || '';
+    modalImage.alt = cardImage?.alt || cardName.textContent;
+
+    modalName.textContent = cardName.textContent;
+    modalCategory.textContent = cardCategory?.textContent || 'Not specified';
+    modalLocation.textContent = cardLocation?.textContent || 'Not specified';
+    modalTime.textContent = cardTime?.textContent || 'Not specified';
+
+    modalBrand.textContent = card.dataset.brand || 'Not specified';
+    modalDate.textContent = card.dataset.itemDate || 'Not specified';
+
+    modalDescription.textContent =
+      card.dataset.description || 'No description available.';
+// Determine status: prioritize the card's saved status
+const itemStatus = (
+  card.dataset.status ||
+  (cardStatus.classList.contains('status-lost')
+    ? 'Lost'
+    : cardStatus.classList.contains('status-found')
+      ? 'Found'
+      : cardStatus.textContent.trim())
+).toLowerCase();
+
+const isLost = itemStatus === 'lost';
+const isFound = itemStatus === 'found';
+    
+    modalStatus.textContent = isLost ? 'Lost' : (isFound ? 'Found' : cardStatus.textContent.trim());
+
+    modalStatus.className = 'item-status';
+
+    if (isLost) {
+      modalStatus.classList.add('status-lost');
+    } else {
+      modalStatus.classList.add('status-found');
+    }
+
+    // Only found items can be claimed
+    if (isFound) {
+      openClaimModalBtn.hidden = false;
+      openClaimModalBtn.textContent = 'Claim Item';
+    } else {
+      openClaimModalBtn.hidden = true;
+    }
+
+    openModal('itemModal');
+  }
+
+  itemsContainer?.addEventListener('click', function(e) {
+    const card = e.target.closest('.item-card');
+
+    if (card && itemsContainer.contains(card)) {
+      openCardDetails(card);
+    }
+  });
+
+  // Keyboard support for item cards
+  itemsContainer?.addEventListener('keydown', function(e) {
+    if (e.key !== 'Enter' && e.key !== ' ') return;
+
+    const card = e.target.closest('.item-card');
+
+    if (card && itemsContainer.contains(card)) {
+      e.preventDefault();
+      openCardDetails(card);
+    }
+  });
+
+  function closeItemModal() {
+    itemModal?.classList.remove('active');
+  }
+
+  closeModalBtn?.addEventListener('click', closeItemModal);
+
+  itemModal?.addEventListener('click', function(e) {
+    if (e.target === itemModal) {
+      closeItemModal();
+    }
+  });
+
+
+  // ========================================
+// GLOBAL TOAST
+// ========================================
+const claimToast = document.getElementById('claimToast');
+const closeToastBtn = document.getElementById('closeToastBtn');
+const toastTitle = document.getElementById('toastTitle');
+const toastDescription = document.getElementById('toastDescription');
+
+let toastTimer;
+
+function showToast(title, message) {
+  if (!claimToast || !toastTitle || !toastDescription) {
+    console.error('Toast elements not found. Check toast HTML IDs.');
+    return;
+  }
+
+  clearTimeout(toastTimer);
+
+  toastTitle.textContent = title;
+  toastDescription.textContent = message;
+
+  claimToast.classList.remove('show');
+
+  // Wait for modal closing/layout to finish, then show toast
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      claimToast.classList.add('show');
+    });
+  });
+
+  // Automatically hide after 4 seconds
+  toastTimer = setTimeout(() => {
+    hideToast();
+  }, 4000);
+}
+
+function hideToast() {
+  claimToast?.classList.remove('show');
+  clearTimeout(toastTimer);
+}
+
+closeToastBtn?.addEventListener('click', hideToast);
+
+
+  // ========================================
+  // CLAIM VERIFICATION MODAL
+  // ========================================
+  const claimForm = document.getElementById('claimForm');
+  const claimItemName = document.getElementById('claimItemName');
+
+  openClaimModalBtn?.addEventListener('click', function() {
+    claimItemName.textContent = modalName.textContent;
+    openModal('claimModal');
+  });
+
+  function closeClaimModal() {
+    claimModal?.classList.remove('active');
+  }
+
+  closeClaimModalBtn?.addEventListener('click', closeClaimModal);
+  cancelClaimBtn?.addEventListener('click', closeClaimModal);
+
+  claimModal?.addEventListener('click', function(e) {
+    if (e.target === claimModal) {
+      closeClaimModal();
+    }
+  });
+
+  claimForm?.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    closeClaimModal();
+    closeItemModal();
+    claimForm.reset();
+
+    showToast(
+      'Claim request submitted!',
+      'Your request is pending review by the campus administrator.'
     );
   });
 
-  filterItems();
 
-  reportForm.reset();
-  closeReportModal();
+  // ========================================
+  // LOST / FOUND REPORT MODAL
+  // ========================================
+  const lostBtn = document.getElementById('lostBtn');
+  const foundBtn = document.getElementById('foundBtn');
 
-  
-});
+  const reportModalTitle = document.getElementById('reportModalTitle');
+  const reportForm = document.getElementById('reportForm');
 
-  
+  let reportStatus = 'Lost';
+
+  const reportItemName = document.getElementById('reportItemName');
+  const reportCategory = document.getElementById('reportCategory');
+  const customCategoryGroup = document.getElementById('customCategoryGroup');
+  const customCategory = document.getElementById('customCategory');
+  const reportLocation = document.getElementById('reportLocation');
+  const reportPhoto = document.getElementById('reportPhoto');
+  const reportDescription = document.getElementById('reportDescription');
+
+  reportCategory?.addEventListener('change', function() {
+    const isOthers = reportCategory.value === 'Others';
+
+    customCategoryGroup.hidden = !isOthers;
+    customCategory.required = isOthers;
+
+    if (!isOthers) {
+      customCategory.value = '';
+    }
+  });
+
+  function openReportModal(status) {
+    reportStatus = status;
+
+    reportModalTitle.textContent =
+      status === 'Lost' ? 'Report Lost Item' : 'Report Found Item';
+
+    openModal('reportModal');
+  }
+
+  lostBtn?.addEventListener('click', function() {
+    openReportModal('Lost');
+  });
+
+  foundBtn?.addEventListener('click', function() {
+    openReportModal('Found');
+  });
+
+  function closeReportModal() {
+    reportModal?.classList.remove('active');
+  }
+
+  closeReportModalBtn?.addEventListener('click', closeReportModal);
+
+  reportModal?.addEventListener('click', function(e) {
+    if (e.target === reportModal) {
+      closeReportModal();
+    }
+  });
+
+
+  // ========================================
+  // SUBMIT LOST / FOUND REPORT
+  // ========================================
+  reportForm?.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const name = reportItemName.value.trim();
+
+    const category =
+      reportCategory.value === 'Others'
+        ? customCategory.value.trim()
+        : reportCategory.value;
+
+    const location = reportLocation.value.trim();
+    const description = reportDescription.value.trim();
+    const photo = reportPhoto.files[0];
+
+    const brand = document.getElementById('reportBrand').value.trim();
+const itemDate = document.getElementById('reportItemDate').value;
+
+// AUTOMATIC REPORTER INFORMATION
+const reporterName =
+  localStorage.getItem('iFoundUserName') || '';
+
+const reporterIdentifier =
+  localStorage.getItem('iFoundIdentifier') || '';
+
+  if (!reporterName || !reporterIdentifier) {
+  alert('Unable to identify your account. Please log in again.');
+  return;
+}
+
+    if (!name || !category || !location || !description || !photo || !itemDate) {
+      alert('Please complete all fields and upload an item photo.');
+      return;
+    }
+
+    if (!photo.type.startsWith('image/')) {
+      alert('Please select a valid image file.');
+      return;
+    }
+
+    // Create new item card
+    const card = document.createElement('div');
+
+    card.className = 'item-card';
+    card.tabIndex = 0;
+    card.setAttribute('role', 'button');
+    card.setAttribute('aria-label', 'View details for ' + name);
+
+    card.dataset.description = description;
+card.dataset.brand = brand;
+card.dataset.itemDate = itemDate;
+card.dataset.status = reportStatus;
+
+// REPORTER INFORMATION
+card.dataset.reporterName = reporterName;
+card.dataset.reporterIdentifier = reporterIdentifier;
+card.dataset.reporterType = 'PLMun User';
+
+    card.innerHTML = `
+      <div class="item-image">
+        <img alt="">
+        <span class="item-status"></span>
+      </div>
+
+      <div class="item-info">
+        <p class="categories"></p>
+        <h2 class="itemName"></h2>
+
+        <p class="loc">
+          <img src="pin.png" alt="">
+          <span class="loc-text"></span>
+        </p>
+
+        <div class="item-time-wrapper">
+          <img src="time.png" alt="">
+          <p class="item-time"></p>
+        </div>
+      </div>
+    `;
+
+    const cardImage = card.querySelector('.item-image img');
+
+    cardImage.src = URL.createObjectURL(photo);
+    cardImage.alt = name;
+
+    // Correct Lost / Found status
+    const statusLabel = card.querySelector('.item-status');
+
+    statusLabel.textContent = reportStatus;
+    statusLabel.classList.add(
+      reportStatus === 'Lost' ? 'status-lost' : 'status-found'
+    );
+
+    card.querySelector('.categories').textContent = category;
+    card.querySelector('.itemName').textContent = name;
+    card.querySelector('.loc-text').textContent = location;
+
+    const now = new Date();
+
+    const time = now.toLocaleTimeString('en-US', {
+      hour: 'numeric',
+      minute: '2-digit'
+    });
+
+    card.querySelector('.item-time').textContent = 'Reported at ' + time;
+
+    // Add new card to the top
+    itemsContainer.prepend(card);
+
+    // Reset filters to show the new report
+    activeStatus = 'All';
+    activeCategory = 'All Categories';
+
+    if (searchInput) {
+      searchInput.value = '';
+    }
+
+    statusChips.forEach(chip => {
+      chip.classList.toggle(
+        'active',
+        chip.textContent.trim() === activeStatus
+      );
+    });
+
+    categoryChips.forEach(chip => {
+      chip.classList.toggle(
+        'active',
+        chip.textContent.trim() === activeCategory
+      );
+    });
+
+    filterItems();
+
+    // Reset form
+    reportForm.reset();
+
+    customCategoryGroup.hidden = true;
+    customCategory.required = false;
+
+    closeReportModal();
+
+showToast(
+  reportStatus === 'Lost'
+    ? 'Lost item report submitted!'
+    : 'Found item report submitted!',
+  'Your item report has been successfully added to the dashboard.'
+);
+
+  });
+
+
+  // ========================================
+  // ESCAPE KEY - CLOSE MODALS
+  // ========================================
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
-      itemModal.classList.remove('active');
-      claimModal.classList.remove('active');
-      reportModal.classList.remove('active');
-      claimToast.classList.remove('show');
+      closeAllModals();
+      hideToast();
       closeSideMenu();
     }
   });
 
+
+  // ========================================
+  // NOTIFICATION AND USER DROPDOWNS
+  // ========================================
   const notifBtn = document.getElementById('notifBtn');
-const notifDropdown = document.getElementById('notifDropdown');
-const signInBtn = document.getElementById('signInBtn');
-const userDropdown = document.getElementById('userDropdown');
+  const notifDropdown = document.getElementById('notifDropdown');
 
-// Toggle Notification Dropdown
-notifBtn.addEventListener('click', function(e) {
-  e.stopPropagation();
-  notifDropdown.classList.toggle('active');
-  userDropdown.classList.remove('active');
-});
+  const signInBtn = document.getElementById('signInBtn');
+  const userDropdown = document.getElementById('userDropdown');
+
+  notifBtn?.addEventListener('click', function(e) {
+    e.stopPropagation();
+
+    notifDropdown.classList.toggle('active');
+    userDropdown.classList.remove('active');
+  });
+
+  signInBtn?.addEventListener('click', function(e) {
+    e.stopPropagation();
+
+    userDropdown.classList.toggle('active');
+    notifDropdown.classList.remove('active');
+  });
+
+  document.addEventListener('click', function() {
+    notifDropdown?.classList.remove('active');
+    userDropdown?.classList.remove('active');
+  });
 
 
-signInBtn.addEventListener('click', function(e) {
-  e.stopPropagation();
-  userDropdown.classList.toggle('active');
-  notifDropdown.classList.remove('active'); 
-});
-
-
-document.addEventListener('click', function() {
-  notifDropdown.classList.remove('active');
-  userDropdown.classList.remove('active');
-});
-
-
+  // ========================================
+  // USER PROFILE INFO
+  // ========================================
   const savedUserName = localStorage.getItem('iFoundUserName') || 'Ruffa';
   const savedIdentifier = localStorage.getItem('iFoundIdentifier');
-  
-  
-  const signInSpan = document.querySelector('.sign-in span');
-  if (signInSpan) {
-      signInSpan.textContent = savedUserName;
-  }
 
+  const signInSpan = document.querySelector('.sign-in span');
+
+  if (signInSpan) {
+    signInSpan.textContent = savedUserName;
+  }
 
   const userNameDropdown = document.querySelector('.user-name');
   const userEmailDropdown = document.querySelector('.user-email');
 
   if (userNameDropdown) {
-      userNameDropdown.textContent = savedUserName;
+    userNameDropdown.textContent = savedUserName;
   }
-if (userEmailDropdown && savedIdentifier) {
+
+  if (userEmailDropdown && savedIdentifier) {
     userEmailDropdown.textContent = savedIdentifier;
-}
+  }
+
 </script>
 
 </body>
