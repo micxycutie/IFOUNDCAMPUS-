@@ -42,23 +42,23 @@
             
                 <form id="registerForm">
                     <label>Username</label>
-                    <input class="input-field" id="username" type="text" placeholder="Username" required>
+                    <input class="input-field" id="username" type="text" placeholder="juan.dela.cruz" required>
                     
                     <label>Email</label>
-                    <input class="input-field" id="email" type="email" placeholder="name@plmun.edu.ph" required>
+                    <input class="input-field" id="email" type="email" placeholder="delacruzjuan@plmun.edu.ph" required>
                     
                     <label id="identifierLabel">Student Number</label>
-                    <input class="input-field" id="identifierInput" type="text" placeholder="Student Number" required>
+                    <input class="input-field" id="identifierInput" type="text" placeholder="22221156" required>
 
                     <label>Password</label>
                     <div class="password-container">
-                        <input class="input-field password-input" id="password" type="password" placeholder="Password" required>
+                        <input class="input-field password-input" id="password" type="password" placeholder="******" required>
                         <img src="eye.png" alt="Show/Hide Password" class="eye-icon" id="eye">
                     </div>
 
                     <label>Confirm Password</label>
                     <div class="password-container">
-                        <input class="input-field" id="confirmPassword" type="password" placeholder="Confirm Password" required>
+                        <input class="input-field" id="confirmPassword" type="password" placeholder="******" required>
                         <!-- Inayos ang ID para hindi mag-clash -->
                         <img src="eye.png" alt="Show/Hide Password" class="eye-icon" id="confirmEye">
                     </div>
@@ -103,7 +103,7 @@
         studentBtn.classList.remove('active');
 
         identifierLabel.textContent = "Employee ID";
-        identifierInput.placeholder = "Employee ID";
+        identifierInput.placeholder = "EMP17829";
     });
 
     // Password Toggle Visibility (Main Password)
