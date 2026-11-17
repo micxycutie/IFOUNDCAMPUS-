@@ -1,0 +1,1986 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="ADMIN_SIDEBAR.css">
+  <link rel="stylesheet" href="ADMIN_FOUND_ITEM.css">
+
+  <title>iFoundCampus | ADMIN_FOUND_ITEMS</title>
+</head>
+<body>
+
+  <!-- SIDEBAR -->
+  <aside class="admin-sidebar">
+
+    <button type="button" class="sidebar-close" aria-label="Close sidebar">
+      &times;
+    </button>
+
+    <div class="admin-logo">
+      <a href="ADMIN_DASHBOARD.html">
+        <span class="logo-ifound">iFOUND</span>
+        <span class="logo-campus">CAMPUS</span>
+      </a>
+    </div>
+
+    <div class="sidebar-section">
+      <p class="sidebar-label">MAIN</p>
+      <a href="ADMIN_DASHBOARD.html" class="sidebar-link">
+        <img src="home.png" alt="">
+        <span>Dashboard</span>
+      </a>
+    </div>
+
+    <div class="sidebar-section">
+      <p class="sidebar-label">ITEM</p>
+
+      <a href="ADMIN_LOST_ITEMS.html" class="sidebar-link">
+        <img src="images/lost-items.png" alt="">
+        <span>Lost Items</span>
+      </a>
+
+      <a href="ADMIN_FOUND_ITEMS.html" class="sidebar-link active">
+        <img src="images/found-items.png" alt="">
+        <span>Found Items</span>
+      </a>
+
+      <a href="ADMIN_CLAIM_VERIFICATION.html" class="sidebar-link">
+        <img src="images/claim-verification.png" alt="">
+        <span>Claim Verification</span>
+      </a>
+    </div>
+
+    <div class="sidebar-section">
+      <p class="sidebar-label">ADMINISTRATOR</p>
+
+      <a href="ADMIN_USER_MANAGEMENT.html" class="sidebar-link">
+        <img src="images/user-management.png" alt="">
+        <span>User Management</span>
+      </a>
+
+      <a href="ADMIN_REGISTERED_USERS.html" class="sidebar-link">
+        <img src="images/registered-users.png" alt="">
+        <span>Registered Users</span>
+      </a>
+
+      <a href="ADMIN_REPORTS.html" class="sidebar-link">
+        <img src="images/reports.png" alt="">
+        <span>Reports</span>
+      </a>
+    </div>
+
+    <div class="sidebar-logout">
+      <a href="LOGIN.html" class="sidebar-link logout-link">
+        <img src="images/logout.png" alt="">
+        <span>Logout</span>
+      </a>
+    </div>
+
+  </aside>
+
+
+  <!-- ADMIN HEADER -->
+  <header class="admin-header">
+
+    <div class="header-left">
+      <button class="sidebar-toggle" type="button"
+        aria-label="Toggle sidebar menu">
+        <img src="images/sidebar-toggle.png" alt="">
+      </button>
+    </div>
+
+    <div class="header-right">
+
+      <!-- SEARCH -->
+      <div class="admin-search">
+        <img src="images/search.png" alt="">
+
+        <input
+          type="search"
+          id="adminSearchInput"
+          placeholder="Search..."
+          aria-label="Search dashboard"
+        >
+
+        <button type="button" id="clearSearch"
+          aria-label="Clear search" hidden>
+          &times;
+        </button>
+      </div>
+
+      <!-- NOTIFICATIONS -->
+      <div class="header-dropdown notification-wrapper">
+
+        <button
+          class="header-icon notification-btn"
+          type="button"
+          aria-label="Notifications"
+          aria-expanded="false"
+          aria-controls="notificationDropdown"
+        >
+          <img src="images/notification.png" alt="">
+          <span class="notification-badge" id="notificationBadge">3</span>
+        </button>
+
+        <div class="header-dropdown-menu notif-dropdown"
+          id="notificationDropdown">
+
+          <div class="dropdown-heading">
+            <div>
+              <h3>Notifications</h3>
+              <p>You have 3 unread notifications</p>
+            </div>
+
+            <button type="button" id="markAllRead">
+              Mark all read
+            </button>
+          </div>
+
+          <div class="notification-list">
+
+            <div class="notification-item unread">
+              <span class="notif-indicator"></span>
+              <div>
+                <strong>New Claim Request</strong>
+                <p>A student submitted a claim request.</p>
+                <small>Just now</small>
+              </div>
+            </div>
+
+            <div class="notification-item unread">
+              <span class="notif-indicator"></span>
+              <div>
+                <strong>New Lost Item Report</strong>
+                <p>A new lost item has been reported.</p>
+                <small>10 minutes ago</small>
+              </div>
+            </div>
+
+            <div class="notification-item unread">
+              <span class="notif-indicator"></span>
+              <div>
+                <strong>New Found Item Report</strong>
+                <p>A found item report needs review.</p>
+                <small>30 minutes ago</small>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="dropdown-footer">
+            <a href="ADMIN_NOTIFICATIONS.html">
+              View all notifications
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+
+      <!-- ADMIN PROFILE -->
+      <div class="admin-profile header-dropdown">
+
+        <button
+          class="profile-trigger"
+          type="button"
+          aria-haspopup="true"
+          aria-expanded="false"
+          aria-controls="profileDropdown"
+        >
+          <img src="images/admin-profile.png"
+            class="profile-picture" alt="Admin profile">
+
+          <div class="profile-info">
+            <span class="profile-name">System Administrator</span>
+            <span class="profile-role">Administrator</span>
+          </div>
+
+          <img src="images/chevron-down.png"
+            class="profile-arrow" alt="">
+        </button>
+
+        <div class="header-dropdown-menu profile-dropdown"
+          id="profileDropdown">
+
+          <div class="profile-dropdown-header">
+            <img src="images/admin-profile.png" alt="">
+            <div>
+              <strong>System Administrator</strong>
+              <span>Administrator</span>
+            </div>
+          </div>
+
+          <div class="profile-dropdown-links">
+
+            <button type="button"
+              data-message="Profile settings will be available soon.">
+              <span>♙</span> My Profile
+            </button>
+
+            <button type="button"
+              data-message="Account settings will be available soon.">
+              <span>⚙</span> Account Settings
+            </button>
+
+          </div>
+
+          <div class="profile-logout">
+            <a href="LOGIN.html">
+              <img src="images/logout.png" alt="">
+              Logout
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+
+
+<!-- FOUND ITEMS MAIN CONTENT -->
+<main class="admin-main-content">
+
+  <!-- PAGE HEADING -->
+  <div class="found-page-heading">
+    <h1>Found Item Management</h1>
+    <p>Manage items turned over to campus security</p>
+  </div>
+
+  <!-- TOOLBAR -->
+  <section class="found-toolbar">
+
+    <!-- TOOLBAR TOP -->
+    <div class="found-toolbar-top">
+      <div class="found-toolbar-title">
+        <h2>Found Items</h2>
+        <span>Search and manage recorded found items</span>
+      </div>
+    </div>
+
+    <!-- FILTERS -->
+    <div class="found-toolbar-filters">
+
+      <!-- 1. SEARCH & REFRESH GROUP -->
+      <div class="found-filter-group found-search-group">
+        <label for="foundSearch">Search</label>
+        <div class="found-search-actions">
+          <div class="found-search">
+            <span>⌕</span>
+            <input
+              type="search"
+              id="foundSearch"
+              placeholder="Search item name..."
+              aria-label="Search found items"
+            >
+          </div>
+
+          <button
+            type="button"
+            class="found-refresh-btn"
+            id="foundRefresh"
+            title="Reset filters"
+            aria-label="Reset filters"
+          >
+            ↻
+          </button>
+        </div>
+      </div>
+
+      <!-- 2. CATEGORY -->
+      <div class="found-filter-group">
+        <label>Category</label>
+
+        <div class="custom-select-wrapper">
+          <input type="hidden" id="foundCategory" value="">
+
+          <button
+            type="button"
+            class="custom-select-trigger"
+            aria-expanded="false"
+          >
+            <span class="selected-text">All Categories</span>
+            <span class="dropdown-arrow">▼</span>
+          </button>
+
+          <ul class="custom-options">
+            <li class="custom-option selected" data-value="">All Categories</li>
+            <li class="custom-option" data-value="electronics">Electronics</li>
+            <li class="custom-option" data-value="bags">Bags</li>
+            <li class="custom-option" data-value="personal items">Personal Items</li>
+            <li class="custom-option" data-value="school supplies">School Supplies</li>
+            <li class="custom-option" data-value="clothing">Clothing</li>
+            <li class="custom-option" data-value="others">Others</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 3. STATUS -->
+      <div class="found-filter-group">
+        <label>Status</label>
+
+        <div class="custom-select-wrapper">
+          <input type="hidden" id="foundStatus" value="">
+
+          <button
+            type="button"
+            class="custom-select-trigger"
+            aria-expanded="false"
+          >
+            <span class="selected-text">All Status</span>
+            <span class="dropdown-arrow">▼</span>
+          </button>
+
+          <ul class="custom-options">
+            <li class="custom-option selected" data-value="">All Status</li>
+            <li class="custom-option" data-value="unclaimed">Unclaimed</li>
+            <li class="custom-option" data-value="claimed">Claimed</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 4. RECORD COUNT -->
+      <div class="found-record-count">
+        <span class="found-record-dot"></span>
+        <span id="foundRecordCount">3 Records</span>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- FOUND ITEMS TABLE -->
+  <section class="found-items-container">
+
+    <!-- TABLE HEADING -->
+    <div class="found-table-heading">
+      <div>
+        <h2>Found Items List</h2>
+        <p>View and manage all recorded found items.</p>
+      </div>
+
+      <span class="mobile-scroll-hint">
+        Swipe to view table →
+      </span>
+    </div>
+
+    <!-- TABLE SCROLL -->
+    <div class="found-table-wrapper">
+
+      <table class="found-table">
+
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Category</th>
+            <th>Date Found</th>
+            <th>Location</th>
+            <th>Turned Over By</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+
+        <tbody id="foundTableBody">
+
+          <tr data-category="Electronics"
+              data-status="Unclaimed"
+              data-date="2026-11-10">
+
+            <td>
+              <div class="found-item-info">
+                <img src="earpods.jpg" alt="Earphones">
+                <div>
+                  <strong>Wireless Earphones</strong>
+                  <span>Found Item</span>
+                </div>
+              </div>
+            </td>
+
+            <td>Electronics</td>
+            <td>Nov 10, 2026</td>
+            <td>Library</td>
+            <td>Juan Dela Cruz</td>
+
+            <td>
+              <span class="status-badge unclaimed">Unclaimed</span>
+            </td>
+
+            <td>
+              <div class="found-row-actions">
+                <button class="view-found-btn" type="button">View</button>
+              </div>
+            </td>
+          </tr>
+
+          <tr data-category="School Supplies"
+              data-status="Unclaimed"
+              data-date="2026-11-09">
+
+            <td>
+              <div class="found-item-info">
+                <img src="books.jpg" alt="Notebook">
+                <div>
+                  <strong>Blue Notebook</strong>
+                  <span>Found Item</span>
+                </div>
+              </div>
+            </td>
+
+            <td>School Supplies</td>
+            <td>Nov 09, 2026</td>
+            <td>Room 204</td>
+            <td>Maria Santos</td>
+
+            <td>
+              <span class="status-badge unclaimed">Unclaimed</span>
+            </td>
+
+            <td>
+              <div class="found-row-actions">
+                <button class="view-found-btn" type="button">View</button>
+              </div>
+            </td>
+          </tr>
+
+          <tr data-category="School Supplies"
+              data-status="Unclaimed"
+              data-date="2026-11-09">
+
+            <td>
+              <div class="found-item-info">
+                <img src="books.jpg" alt="Notebook">
+                <div>
+                  <strong>Blue Notebook</strong>
+                  <span>Found Item</span>
+                </div>
+              </div>
+            </td>
+
+            <td>School Supplies</td>
+            <td>Nov 09, 2026</td>
+            <td>Room 204</td>
+            <td>Maria Santos</td>
+
+            <td>
+              <span class="status-badge unclaimed">Unclaimed</span>
+            </td>
+
+            <td>
+              <div class="found-row-actions">
+                <button class="view-found-btn" type="button">View</button>
+              </div>
+            </td>
+          </tr>
+          
+          <tr data-category="School Supplies"
+              data-status="Unclaimed"
+              data-date="2026-11-09">
+
+            <td>
+              <div class="found-item-info">
+                <img src="books.jpg" alt="Notebook">
+                <div>
+                  <strong>Blue Notebook</strong>
+                  <span>Found Item</span>
+                </div>
+              </div>
+            </td>
+
+            <td>School Supplies</td>
+            <td>Nov 09, 2026</td>
+            <td>Room 204</td>
+            <td>Maria Santos</td>
+
+            <td>
+              <span class="status-badge unclaimed">Unclaimed</span>
+            </td>
+
+            <td>
+              <div class="found-row-actions">
+                <button class="view-found-btn" type="button">View</button>
+              </div>
+            </td>
+          </tr>
+
+          <tr data-category="School Supplies"
+              data-status="Unclaimed"
+              data-date="2026-11-09">
+
+            <td>
+              <div class="found-item-info">
+                <img src="books.jpg" alt="Notebook">
+                <div>
+                  <strong>Blue Notebook</strong>
+                  <span>Found Item</span>
+                </div>
+              </div>
+            </td>
+
+            <td>School Supplies</td>
+            <td>Nov 09, 2026</td>
+            <td>Room 204</td>
+            <td>Maria Santos</td>
+
+            <td>
+              <span class="status-badge unclaimed">Unclaimed</span>
+            </td>
+
+            <td>
+              <div class="found-row-actions">
+                <button class="view-found-btn" type="button">View</button>
+              </div>
+            </td>
+          </tr>
+
+          <tr data-category="School Supplies"
+              data-status="Unclaimed"
+              data-date="2026-11-09">
+
+            <td>
+              <div class="found-item-info">
+                <img src="books.jpg" alt="Notebook">
+                <div>
+                  <strong>Blue Notebook</strong>
+                  <span>Found Item</span>
+                </div>
+              </div>
+            </td>
+
+            <td>School Supplies</td>
+            <td>Nov 09, 2026</td>
+            <td>Room 204</td>
+            <td>Maria Santos</td>
+
+            <td>
+              <span class="status-badge unclaimed">Unclaimed</span>
+            </td>
+
+            <td>
+              <div class="found-row-actions">
+                <button class="view-found-btn" type="button">View</button>
+              </div>
+            </td>
+          </tr>
+
+          <tr data-category="School Supplies"
+              data-status="Unclaimed"
+              data-date="2026-11-09">
+
+            <td>
+              <div class="found-item-info">
+                <img src="books.jpg" alt="Notebook">
+                <div>
+                  <strong>Blue Notebook</strong>
+                  <span>Found Item</span>
+                </div>
+              </div>
+            </td>
+
+            <td>School Supplies</td>
+            <td>Nov 09, 2026</td>
+            <td>Room 204</td>
+            <td>Maria Santos</td>
+
+            <td>
+              <span class="status-badge unclaimed">Unclaimed</span>
+            </td>
+
+            <td>
+              <div class="found-row-actions">
+                <button class="view-found-btn" type="button">View</button>
+              </div>
+            </td>
+          </tr>
+
+
+          <tr data-category="School Supplies"
+              data-status="Unclaimed"
+              data-date="2026-11-09">
+
+            <td>
+              <div class="found-item-info">
+                <img src="books.jpg" alt="Notebook">
+                <div>
+                  <strong>Blue Notebook</strong>
+                  <span>Found Item</span>
+                </div>
+              </div>
+            </td>
+
+            <td>School Supplies</td>
+            <td>Nov 09, 2026</td>
+            <td>Room 204</td>
+            <td>Maria Santos</td>
+
+            <td>
+              <span class="status-badge unclaimed">Unclaimed</span>
+            </td>
+
+            <td>
+              <div class="found-row-actions">
+                <button class="view-found-btn" type="button">View</button>
+              </div>
+            </td>
+          </tr>
+
+
+
+
+
+          <tr data-category="Personal Items"
+              data-status="Claimed"
+              data-date="2026-11-07">
+
+            <td>
+              <div class="found-item-info">
+                <img src="umbrella.jpg" alt="School ID">
+                <div>
+                  <strong>School ID</strong>
+                  <span>Found Item</span>
+                </div>
+              </div>
+            </td>
+
+            <td>Personal Items</td>
+            <td>Nov 07, 2026</td>
+            <td>Cafeteria</td>
+            <td>Pedro Reyes</td>
+
+            <td>
+              <span class="status-badge claimed">Claimed</span>
+            </td>
+
+            <td>
+              <div class="found-row-actions">
+                <button class="view-found-btn" type="button">View</button>
+              </div>
+            </td>
+          </tr>
+
+        </tbody>
+
+      </table>
+
+           
+
+    <p class="no-found-results" id="noFoundResults" hidden>
+      No found items match your search.
+    </p>
+
+
+
+    
+    
+
+  </section>
+     <!-- TABLE FOOTER & PAGINATION (NAKAPALOOB NA DITO SA CONTAINER) -->
+      <div class="found-table-footer">
+        <span id="foundTableFooter">Showing 3 sample records</span>
+
+        <div class="found-pagination" id="foundPagination">
+          <div class="found-pagination-controls" id="foundPaginationControls"></div>
+        </div>
+      </div>
+
+
+  
+  <!-- VIEW FOUND ITEM MODAL -->
+<div class="found-modal-overlay" id="foundViewModal">
+
+  <div class="found-modal">
+
+    <div class="found-modal-header">
+      <div>
+        <h2>Found Item Details</h2>
+        <p>View complete information about this item.</p>
+      </div>
+
+      <button type="button"
+        class="found-modal-close"
+        id="closeFoundModal">
+        &times;
+      </button>
+    </div>
+
+    <div class="found-modal-body">
+
+      <div class="found-modal-image">
+        <img id="viewFoundImage" src="" alt="Found item">
+      </div>
+
+      <h3 id="viewFoundName"></h3>
+
+      <span id="viewFoundStatus" class="status-badge"></span>
+
+      <div class="found-modal-details">
+
+        <div>
+          <span>Category</span>
+          <strong id="viewFoundCategory"></strong>
+        </div>
+
+        <div>
+          <span>Date Found</span>
+          <strong id="viewFoundDate"></strong>
+        </div>
+
+        <div>
+          <span>Location Found</span>
+          <strong id="viewFoundLocation"></strong>
+        </div>
+
+        <div>
+          <span>Turned Over By</span>
+          <strong id="viewFoundPerson"></strong>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+  <!-- ADD FOUND ITEM BUTTON (Nasa labas ng table section para laging nakalutang sa screen) -->
+  <div class="found-add-button-wrapper">
+    <button
+      type="button"
+      class="add-found-item-btn"
+      id="openAddfoundModal"
+      aria-label="Add Found Item"
+      title="Add Found Item"
+    >
+      +
+    </button>
+  </div>
+
+  
+<!-- ADD FOUND ITEM MODAL -->
+<div class="found-modal-overlay" id="foundAddModal">
+  <div class="found-modal found-add-modal">
+
+    <div class="found-modal-header">
+      <div>
+        <h2>Add Found Item</h2>
+        <p>Enter the details of the item turned over to the office.</p>
+      </div>
+
+      <button type="button"
+        class="found-modal-close"
+        id="closeAddFoundModal">&times;</button>
+    </div>
+
+    <form id="addFoundForm" class="found-add-form">
+
+      <!-- IMAGE UPLOAD -->
+      <div class="found-upload-area">
+        <img id="addFoundImagePreview" src="" alt="Item preview" hidden>
+
+        <div id="foundUploadPlaceholder">
+          <span class="upload-icon">+</span>
+          <strong>Upload Item Image</strong>
+          <small>Choose a clear photo of the found item</small>
+        </div>
+
+        <input
+          type="file"
+          id="addFoundImage"
+          accept="image/*"
+          required
+        >
+      </div>
+
+      <div class="found-form-grid">
+
+        <div class="found-form-group full">
+          <label for="addFoundName">Item Name</label>
+          <input
+            type="text"
+            id="addFoundName"
+            placeholder="e.g. Black Wireless Earbuds"
+            required
+          >
+        </div>
+
+        <div class="found-form-group">
+          <label for="addFoundCategory">Category</label>
+          <select id="addFoundCategory" required>
+            <option value="">Select Category</option>
+            <option value="Electronics">Electronics</option>
+            <option value="Bags">Bags</option>
+            <option value="Personal Items">Personal Items</option>
+            <option value="School Supplies">School Supplies</option>
+            <option value="Clothing">Clothing</option>
+            <option value="Others">Others</option>
+          </select>
+        </div>
+
+        <div class="found-form-group" id="otherFoundCategoryGroup" hidden>
+          <label for="addFoundOtherCategory">Specify Category</label>
+          <input
+            type="text"
+            id="addFoundOtherCategory"
+            placeholder="Enter category"
+          >
+        </div>
+
+        <div class="found-form-group">
+          <label for="addFoundDate">Date Found</label>
+          <input type="date" id="addFoundDate" required>
+        </div>
+
+        <div class="found-form-group full">
+          <label for="addFoundLocation">Location Found</label>
+          <input
+            type="text"
+            id="addFoundLocation"
+            placeholder="e.g. Library, Room 201"
+            required
+          >
+        </div>
+
+        <div class="found-form-group full">
+          <label for="addFoundPerson">Turned Over By</label>
+          <input
+            type="text"
+            id="addFoundPerson"
+            placeholder="Enter name of person"
+            required
+          >
+        </div>
+
+      </div>
+
+      <div class="found-add-form-actions">
+        <button type="button" id="cancelAddFound" class="found-cancel-btn">
+          Cancel
+        </button>
+
+        <button type="submit" class="found-save-btn">
+          Save Found Item
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+  
+
+
+</main>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+
+  // =================================
+  // SIDEBAR TOGGLE
+  // =================================
+
+  const sidebarToggle = document.querySelector(".sidebar-toggle");
+  const sidebarClose = document.querySelector(".sidebar-close");
+
+  if (sidebarToggle) {
+    sidebarToggle.addEventListener("click", function() {
+      document.body.classList.toggle("sidebar-open");
+
+      const isOpen = document.body.classList.contains("sidebar-open");
+      sidebarToggle.setAttribute("aria-expanded", isOpen);
+    });
+  }
+
+  if (sidebarClose) {
+    sidebarClose.addEventListener("click", function() {
+      document.body.classList.remove("sidebar-open");
+
+      if (sidebarToggle) {
+        sidebarToggle.setAttribute("aria-expanded", "false");
+      }
+    });
+  }
+
+
+  // =================================
+  // HEADER DROPDOWNS
+  // =================================
+
+  const headerDropdowns = document.querySelectorAll(".header-dropdown");
+
+  headerDropdowns.forEach(dropdown => {
+
+    const trigger = dropdown.querySelector("button");
+    if (!trigger) return;
+
+    trigger.addEventListener("click", function(event) {
+      event.stopPropagation();
+
+      const wasOpen = dropdown.classList.contains("open");
+
+      headerDropdowns.forEach(item => {
+        item.classList.remove("open");
+
+        const btn = item.querySelector("button");
+
+        if (btn) {
+          btn.setAttribute("aria-expanded", "false");
+        }
+      });
+
+      if (!wasOpen) {
+        dropdown.classList.add("open");
+        trigger.setAttribute("aria-expanded", "true");
+      }
+    });
+  });
+
+
+  // CLOSE HEADER DROPDOWNS
+  document.addEventListener("click", function(event) {
+
+    if (!event.target.closest(".header-dropdown")) {
+
+      headerDropdowns.forEach(dropdown => {
+        dropdown.classList.remove("open");
+
+        const trigger = dropdown.querySelector("button");
+
+        if (trigger) {
+          trigger.setAttribute("aria-expanded", "false");
+        }
+      });
+    }
+  });
+
+
+  // =================================
+  // NOTIFICATIONS
+  // =================================
+
+  const notificationItems =
+    document.querySelectorAll(".notification-item");
+
+  const notificationBadge =
+    document.getElementById("notificationBadge");
+
+  const notificationButton =
+    document.querySelector(".notification-btn");
+
+  const markAllRead =
+    document.getElementById("markAllRead");
+
+  const notificationDescription =
+    document.querySelector(".dropdown-heading p");
+
+
+  function updateNotificationCount() {
+
+    const unreadCount =
+      document.querySelectorAll(".notification-item.unread").length;
+
+    if (notificationBadge) {
+      notificationBadge.textContent = unreadCount;
+      notificationBadge.style.display =
+        unreadCount > 0 ? "flex" : "none";
+    }
+
+    if (notificationButton) {
+      notificationButton.setAttribute(
+        "aria-label",
+        unreadCount + " unread notifications"
+      );
+    }
+
+    if (notificationDescription) {
+      notificationDescription.textContent =
+        unreadCount === 0
+          ? "You are all caught up!"
+          : "You have " + unreadCount + " unread notifications";
+    }
+  }
+
+
+  notificationItems.forEach(item => {
+    item.addEventListener("click", function() {
+      item.classList.remove("unread");
+      updateNotificationCount();
+    });
+  });
+
+
+  if (markAllRead) {
+    markAllRead.addEventListener("click", function() {
+
+      notificationItems.forEach(item => {
+        item.classList.remove("unread");
+      });
+
+      updateNotificationCount();
+    });
+  }
+
+  updateNotificationCount();
+
+
+  // =================================
+  // PROFILE MENU
+  // =================================
+
+  const profileActions =
+    document.querySelectorAll(".profile-dropdown-links button");
+
+  profileActions.forEach(button => {
+    button.addEventListener("click", function() {
+      alert(button.dataset.message);
+    });
+  });
+
+
+  // =================================
+  // HEADER SEARCH
+  // =================================
+
+  const searchInput =
+    document.getElementById("adminSearchInput");
+
+  const clearSearch =
+    document.getElementById("clearSearch");
+
+  if (searchInput) {
+    searchInput.addEventListener("input", function() {
+
+      const query = searchInput.value.trim();
+
+      if (clearSearch) {
+        clearSearch.hidden = !query;
+      }
+    });
+  }
+
+  if (clearSearch) {
+    clearSearch.addEventListener("click", function() {
+
+      if (searchInput) {
+        searchInput.value = "";
+        clearSearch.hidden = true;
+        searchInput.focus();
+      }
+    });
+  }
+
+
+  // =================================
+  // FOUND ITEMS SEARCH AND FILTER
+  // =================================
+
+  const foundSearch = document.getElementById("foundSearch");
+  const foundCategory = document.getElementById("foundCategory");
+  const foundStatus = document.getElementById("foundStatus");
+  const foundRefresh = document.getElementById("foundRefresh");
+  const foundTableBody = document.getElementById("foundTableBody");
+  const noFoundResults = document.getElementById("noFoundResults");
+  const foundRecordCount = document.getElementById("foundRecordCount");
+  const foundTableFooter = document.getElementById("foundTableFooter");
+
+  const foundDropdowns = document.querySelectorAll(
+    ".found-toolbar .custom-select-wrapper"
+  );
+
+
+  // =================================
+  // PAGINATION SETTINGS
+  // =================================
+
+  let currentPage = 1;
+  const recordsPerPage = 5;
+
+  const foundPagination =
+    document.getElementById("foundPagination");
+
+  const foundPaginationControls =
+    document.getElementById("foundPaginationControls");
+
+
+  // =================================
+// UPDATE FOUND ITEMS
+// =================================
+
+function updateFoundItems() {
+
+  if (!foundTableBody) return;
+
+  const searchValue = foundSearch
+    ? foundSearch.value.toLowerCase().trim()
+    : "";
+
+  const categoryValue = foundCategory
+    ? foundCategory.value.toLowerCase()
+    : "";
+
+  const statusValue = foundStatus
+    ? foundStatus.value.toLowerCase()
+    : "";
+
+  const rows = Array.from(
+    foundTableBody.querySelectorAll("tr")
+  );
+
+  // FILTER RECORDS
+  const filteredRows = rows.filter(row => {
+
+    const rowText = row.textContent.toLowerCase();
+
+    const rowCategory =
+      (row.dataset.category || "").toLowerCase();
+
+    const rowStatus =
+      (row.dataset.status || "").toLowerCase();
+
+    const matchesSearch =
+      rowText.includes(searchValue);
+
+    const matchesCategory =
+      !categoryValue || rowCategory === categoryValue;
+
+    const matchesStatus =
+      !statusValue || rowStatus === statusValue;
+
+    return matchesSearch && matchesCategory && matchesStatus;
+  });
+
+  // PAGINATION COMPUTATION
+  const totalRecords = filteredRows.length;
+
+  const totalPages = Math.ceil(
+    totalRecords / recordsPerPage
+  );
+
+  if (currentPage > totalPages) {
+    currentPage = Math.max(totalPages, 1);
+  }
+
+  const startIndex =
+    (currentPage - 1) * recordsPerPage;
+
+  const endIndex =
+    startIndex + recordsPerPage;
+
+  const paginatedRows =
+    filteredRows.slice(startIndex, endIndex);
+
+  // HIDE ALL ROWS
+  rows.forEach(row => {
+    row.style.display = "none";
+  });
+
+  // SHOW CURRENT PAGE RECORDS
+  paginatedRows.forEach(row => {
+    row.style.display = "";
+  });
+
+  // UPDATE RECORD COUNT
+  if (foundRecordCount) {
+    foundRecordCount.textContent =
+      totalRecords +
+      (totalRecords === 1 ? " Record" : " Records");
+  }
+
+  // UPDATE TABLE FOOTER
+  if (foundTableFooter) {
+    foundTableFooter.textContent =
+      "Showing " + totalRecords +
+      (totalRecords === 1 ? " record" : " records");
+  }
+
+  // EMPTY RESULTS MESSAGE
+  if (noFoundResults) {
+    noFoundResults.hidden = totalRecords > 0;
+  }
+
+  // UPDATE PAGE BUTTONS
+  renderFoundPagination(totalPages);
+}
+
+
+// =================================
+// RENDER PAGINATION BUTTONS
+// =================================
+
+function renderFoundPagination(totalPages) {
+
+  if (!foundPaginationControls) return;
+
+  foundPaginationControls.innerHTML = "";
+
+  // PREVIOUS BUTTON
+  const previousButton = document.createElement("button");
+
+  previousButton.type = "button";
+  previousButton.className = "found-page-btn";
+  previousButton.textContent = "‹";
+  previousButton.disabled = currentPage === 1;
+  previousButton.setAttribute("aria-label", "Previous page");
+  previousButton.dataset.page = currentPage - 1;
+
+  foundPaginationControls.appendChild(previousButton);
+
+  // PAGE NUMBERS
+  for (let page = 1; page <= totalPages; page++) {
+
+    const pageButton = document.createElement("button");
+
+    pageButton.type = "button";
+    pageButton.className = "found-page-btn";
+    pageButton.textContent = page;
+    pageButton.dataset.page = page;
+
+    pageButton.setAttribute(
+      "aria-label",
+      "Page " + page
+    );
+
+    if (page === currentPage) {
+      pageButton.classList.add("active");
+      pageButton.setAttribute("aria-current", "page");
+    }
+
+    foundPaginationControls.appendChild(pageButton);
+  }
+
+  // NEXT BUTTON
+  const nextButton = document.createElement("button");
+
+  nextButton.type = "button";
+  nextButton.className = "found-page-btn";
+  nextButton.textContent = "›";
+
+  nextButton.disabled =
+    totalPages === 0 || currentPage === totalPages;
+
+  nextButton.setAttribute("aria-label", "Next page");
+  nextButton.dataset.page = currentPage + 1;
+
+  foundPaginationControls.appendChild(nextButton);
+
+  // HIDE PAGINATION IF ONLY ONE PAGE
+  if (foundPagination) {
+    foundPagination.style.display =
+      totalPages <= 1 ? "none" : "flex";
+  }
+}
+
+
+// =================================
+// PAGINATION CLICK EVENT
+// =================================
+
+if (foundPaginationControls) {
+
+  foundPaginationControls.addEventListener("click", function(event) {
+
+    const button = event.target.closest(".found-page-btn");
+
+    if (!button || button.disabled) return;
+
+    const selectedPage = Number(button.dataset.page);
+
+    if (!selectedPage || selectedPage === currentPage) return;
+
+    currentPage = selectedPage;
+
+    updateFoundItems();
+  });
+}
+
+  // =================================
+  // PAGINATION CLICK EVENT
+  // =================================
+
+  if (foundPaginationControls) {
+
+    foundPaginationControls.addEventListener("click", function(event) {
+
+      const button = event.target.closest(".found-page-btn");
+
+      if (!button || button.disabled) return;
+
+      const selectedPage = Number(button.dataset.page);
+
+      if (!selectedPage || selectedPage === currentPage) return;
+
+      currentPage = selectedPage;
+
+      updateFoundItems();
+    });
+  }
+
+
+  // =================================
+  // SEARCH
+  // =================================
+
+  if (foundSearch) {
+
+    foundSearch.addEventListener("input", function() {
+
+      currentPage = 1;
+      updateFoundItems();
+    });
+  }
+
+
+  // =================================
+  // CUSTOM DROPDOWNS
+  // =================================
+
+  foundDropdowns.forEach(dropdown => {
+
+    const trigger =
+      dropdown.querySelector(".custom-select-trigger");
+
+    const options =
+      dropdown.querySelectorAll(".custom-option");
+
+    const hiddenInput =
+      dropdown.querySelector("input[type='hidden']");
+
+    const selectedText =
+      dropdown.querySelector(".selected-text");
+
+    if (!trigger || !hiddenInput || !selectedText) return;
+
+
+    trigger.addEventListener("click", () => {
+
+      foundDropdowns.forEach(otherDropdown => {
+
+        if (otherDropdown !== dropdown) {
+
+          otherDropdown.classList.remove("open");
+
+          const otherTrigger =
+            otherDropdown.querySelector(".custom-select-trigger");
+
+          if (otherTrigger) {
+            otherTrigger.setAttribute("aria-expanded", "false");
+          }
+        }
+      });
+
+      const isOpen = dropdown.classList.toggle("open");
+
+      trigger.setAttribute("aria-expanded", isOpen);
+    });
+
+
+    options.forEach(option => {
+
+      option.addEventListener("click", () => {
+
+        hiddenInput.value =
+          option.dataset.value || "";
+
+        selectedText.textContent =
+          option.textContent.trim();
+
+        options.forEach(item => {
+          item.classList.remove("selected");
+        });
+
+        option.classList.add("selected");
+
+        dropdown.classList.remove("open");
+
+        trigger.setAttribute("aria-expanded", "false");
+
+        currentPage = 1;
+        updateFoundItems();
+      });
+    });
+  });
+
+
+  // =================================
+  // CLOSE DROPDOWNS WHEN CLICKING OUTSIDE
+  // =================================
+
+  document.addEventListener("click", function(event) {
+
+    foundDropdowns.forEach(dropdown => {
+
+      if (!dropdown.contains(event.target)) {
+
+        dropdown.classList.remove("open");
+
+        const trigger =
+          dropdown.querySelector(".custom-select-trigger");
+
+        if (trigger) {
+          trigger.setAttribute("aria-expanded", "false");
+        }
+      }
+    });
+  });
+
+
+  // =================================
+  // REFRESH / RESET FILTERS
+  // =================================
+
+  if (foundRefresh) {
+
+    foundRefresh.addEventListener("click", function() {
+
+      if (foundSearch) {
+        foundSearch.value = "";
+      }
+
+      foundDropdowns.forEach(dropdown => {
+
+        const hiddenInput =
+          dropdown.querySelector("input[type='hidden']");
+
+        const selectedText =
+          dropdown.querySelector(".selected-text");
+
+        const options =
+          dropdown.querySelectorAll(".custom-option");
+
+        const trigger =
+          dropdown.querySelector(".custom-select-trigger");
+
+
+        if (hiddenInput) {
+          hiddenInput.value = "";
+        }
+
+        if (selectedText) {
+          selectedText.textContent =
+            options[0]?.textContent.trim() || "";
+        }
+
+        options.forEach((option, index) => {
+          option.classList.toggle("selected", index === 0);
+        });
+
+        dropdown.classList.remove("open");
+
+        if (trigger) {
+          trigger.setAttribute("aria-expanded", "false");
+        }
+      });
+
+      currentPage = 1;
+      updateFoundItems();
+    });
+  }
+
+
+  // INITIAL DISPLAY
+  updateFoundItems();
+
+
+  // =================================
+  // VIEW FOUND ITEM MODAL
+  // EVENT DELEGATION
+  // =================================
+
+  const foundViewModal =
+    document.getElementById("foundViewModal");
+
+  const closeFoundModal =
+    document.getElementById("closeFoundModal");
+
+
+  if (foundTableBody && foundViewModal) {
+
+    foundTableBody.addEventListener("click", function(event) {
+
+      const button =
+        event.target.closest(".view-found-btn");
+
+      if (!button) return;
+
+      const row = button.closest("tr");
+
+      if (!row) return;
+
+      const image =
+        row.querySelector(".found-item-info img");
+
+      const name =
+        row.querySelector(".found-item-info strong");
+
+      const cells = row.querySelectorAll("td");
+
+      const category = cells[1].textContent.trim();
+      const date = cells[2].textContent.trim();
+      const location = cells[3].textContent.trim();
+      const person = cells[4].textContent.trim();
+
+      const status =
+        row.dataset.status || "Unclaimed";
+
+
+      document.getElementById("viewFoundImage").src =
+        image ? image.src : "";
+
+      document.getElementById("viewFoundName").textContent =
+        name ? name.textContent.trim() : "Unknown Item";
+
+      document.getElementById("viewFoundCategory").textContent =
+        category;
+
+      document.getElementById("viewFoundDate").textContent =
+        date;
+
+      document.getElementById("viewFoundLocation").textContent =
+        location;
+
+      document.getElementById("viewFoundPerson").textContent =
+        person;
+
+
+      const statusBadge =
+        document.getElementById("viewFoundStatus");
+
+      statusBadge.textContent = status;
+
+      statusBadge.className =
+        "status-badge " + status.toLowerCase();
+
+      foundViewModal.classList.add("show");
+    });
+  }
+
+
+  // =================================
+  // CLOSE VIEW MODAL
+  // =================================
+
+  if (closeFoundModal && foundViewModal) {
+
+    closeFoundModal.addEventListener("click", function() {
+      foundViewModal.classList.remove("show");
+    });
+
+    foundViewModal.addEventListener("click", function(event) {
+
+      if (event.target === foundViewModal) {
+        foundViewModal.classList.remove("show");
+      }
+    });
+  }
+
+
+  // =================================
+  // ADD FOUND ITEM MODAL
+  // =================================
+
+  const openAddFoundModal =
+    document.getElementById("openAddfoundModal");
+
+  const addFoundModal =
+    document.getElementById("foundAddModal");
+
+  const closeAddFoundModal =
+    document.getElementById("closeAddFoundModal");
+
+  const cancelAddFound =
+    document.getElementById("cancelAddFound");
+
+  const addFoundForm =
+    document.getElementById("addFoundForm");
+
+  const addFoundImage =
+    document.getElementById("addFoundImage");
+
+  const addFoundImagePreview =
+    document.getElementById("addFoundImagePreview");
+
+  const foundUploadPlaceholder =
+    document.getElementById("foundUploadPlaceholder");
+
+  const addFoundCategory =
+    document.getElementById("addFoundCategory");
+
+  const otherFoundCategoryGroup =
+    document.getElementById("otherFoundCategoryGroup");
+
+  const addFoundOtherCategory =
+    document.getElementById("addFoundOtherCategory");
+
+  let foundPreviewURL = null;
+
+
+  // OPEN ADD MODAL
+  if (openAddFoundModal && addFoundModal) {
+
+    openAddFoundModal.addEventListener("click", function() {
+      addFoundModal.classList.add("show");
+    });
+  }
+
+
+  // CLOSE ADD MODAL
+  function closeAddFoundItemModal() {
+
+    if (addFoundModal) {
+      addFoundModal.classList.remove("show");
+    }
+  }
+
+
+  if (closeAddFoundModal) {
+    closeAddFoundModal.addEventListener(
+      "click",
+      closeAddFoundItemModal
+    );
+  }
+
+  if (cancelAddFound) {
+    cancelAddFound.addEventListener(
+      "click",
+      closeAddFoundItemModal
+    );
+  }
+
+  if (addFoundModal) {
+
+    addFoundModal.addEventListener("click", function(event) {
+
+      if (event.target === addFoundModal) {
+        closeAddFoundItemModal();
+      }
+    });
+  }
+
+
+  // =================================
+  // IMAGE PREVIEW
+  // =================================
+
+  if (addFoundImage) {
+
+    addFoundImage.addEventListener("change", function() {
+
+      const file = this.files[0];
+
+      if (foundPreviewURL) {
+        URL.revokeObjectURL(foundPreviewURL);
+        foundPreviewURL = null;
+      }
+
+      if (!file) {
+        addFoundImagePreview.hidden = true;
+        foundUploadPlaceholder.style.display = "flex";
+        return;
+      }
+
+      if (!file.type.startsWith("image/")) {
+
+        alert("Please select a valid image file.");
+
+        this.value = "";
+
+        addFoundImagePreview.hidden = true;
+        foundUploadPlaceholder.style.display = "flex";
+
+        return;
+      }
+
+      foundPreviewURL = URL.createObjectURL(file);
+
+      addFoundImagePreview.src = foundPreviewURL;
+      addFoundImagePreview.hidden = false;
+
+      foundUploadPlaceholder.style.display = "none";
+    });
+  }
+
+
+  // =================================
+  // SHOW CUSTOM CATEGORY FIELD
+  // =================================
+
+  if (addFoundCategory) {
+
+    addFoundCategory.addEventListener("change", function() {
+
+      const isOthers = this.value === "Others";
+
+      otherFoundCategoryGroup.hidden = !isOthers;
+      addFoundOtherCategory.required = isOthers;
+
+      if (!isOthers) {
+        addFoundOtherCategory.value = "";
+      }
+    });
+  }
+
+
+  // =================================
+  // RESET ADD FORM
+  // =================================
+
+  function resetAddFoundForm() {
+
+    if (!addFoundForm) return;
+
+    addFoundForm.reset();
+
+    if (foundPreviewURL) {
+      URL.revokeObjectURL(foundPreviewURL);
+      foundPreviewURL = null;
+    }
+
+    addFoundImagePreview.src = "";
+    addFoundImagePreview.hidden = true;
+
+    foundUploadPlaceholder.style.display = "flex";
+
+    otherFoundCategoryGroup.hidden = true;
+    addFoundOtherCategory.required = false;
+  }
+
+
+  // =================================
+  // SAVE NEW FOUND ITEM
+  // =================================
+
+  if (addFoundForm) {
+
+    addFoundForm.addEventListener("submit", function(event) {
+
+      event.preventDefault();
+
+      const file = addFoundImage.files[0];
+
+      if (!file || !file.type.startsWith("image/")) {
+        alert("Please upload an item image.");
+        return;
+      }
+
+
+      const itemName =
+        document.getElementById("addFoundName").value.trim();
+
+      const category = addFoundCategory.value;
+
+      const otherCategory =
+        addFoundOtherCategory.value.trim();
+
+      const date =
+        document.getElementById("addFoundDate").value;
+
+      const location =
+        document.getElementById("addFoundLocation").value.trim();
+
+      const person =
+        document.getElementById("addFoundPerson").value.trim();
+
+
+      if (category === "Others" && !otherCategory) {
+        alert("Please specify the item category.");
+        return;
+      }
+
+
+      const categoryLabel = category === "Others"
+        ? "Others (" + otherCategory + ")"
+        : category;
+
+
+      const formattedDate = new Date(date + "T00:00:00")
+        .toLocaleDateString("en-US", {
+          month: "short",
+          day: "2-digit",
+          year: "numeric"
+        });
+
+
+      // CREATE NEW TABLE ROW
+      const row = document.createElement("tr");
+
+      row.dataset.category = category.toLowerCase();
+      row.dataset.status = "Unclaimed";
+      row.dataset.date = date;
+
+
+      // ITEM COLUMN
+      const itemCell = document.createElement("td");
+
+      const itemInfo = document.createElement("div");
+      itemInfo.className = "found-item-info";
+
+      const itemImage = document.createElement("img");
+
+      // Separate image URL for the table row
+      itemImage.src = URL.createObjectURL(file);
+      itemImage.alt = itemName;
+
+      const itemText = document.createElement("div");
+
+      const itemTitle = document.createElement("strong");
+      itemTitle.textContent = itemName;
+
+      const itemSubtitle = document.createElement("span");
+      itemSubtitle.textContent = "Found Item";
+
+      itemText.append(itemTitle, itemSubtitle);
+
+      itemInfo.append(itemImage, itemText);
+      itemCell.appendChild(itemInfo);
+
+
+      // CATEGORY COLUMN
+      const categoryCell = document.createElement("td");
+      categoryCell.textContent = categoryLabel;
+
+
+      // DATE COLUMN
+      const dateCell = document.createElement("td");
+      dateCell.textContent = formattedDate;
+
+
+      // LOCATION COLUMN
+      const locationCell = document.createElement("td");
+      locationCell.textContent = location;
+
+
+      // TURNED OVER BY COLUMN
+      const personCell = document.createElement("td");
+      personCell.textContent = person;
+
+
+      // STATUS COLUMN
+      const statusCell = document.createElement("td");
+
+      const statusBadge = document.createElement("span");
+
+      statusBadge.className = "status-badge unclaimed";
+      statusBadge.textContent = "Unclaimed";
+
+      statusCell.appendChild(statusBadge);
+
+
+      // ACTION COLUMN
+      const actionCell = document.createElement("td");
+
+      const actionWrapper = document.createElement("div");
+      actionWrapper.className = "found-row-actions";
+
+      const viewButton = document.createElement("button");
+
+      viewButton.type = "button";
+      viewButton.className = "view-found-btn";
+      viewButton.textContent = "View";
+
+      actionWrapper.appendChild(viewButton);
+      actionCell.appendChild(actionWrapper);
+
+
+      // APPEND ALL COLUMNS
+      row.append(
+        itemCell,
+        categoryCell,
+        dateCell,
+        locationCell,
+        personCell,
+        statusCell,
+        actionCell
+      );
+
+
+      // INSERT NEW ROW AT THE TOP
+      if (foundTableBody) {
+        foundTableBody.prepend(row);
+      }
+
+
+      // RESET FILTERS AND SHOW FIRST PAGE
+      currentPage = 1;
+
+      if (foundRefresh) {
+        foundRefresh.click();
+      } else {
+        updateFoundItems();
+      }
+
+
+      // RESET AND CLOSE FORM
+      resetAddFoundForm();
+      closeAddFoundItemModal();
+
+      alert("Found item added successfully!");
+
+    });
+  }
+
+
+  // =================================
+  // GLOBAL ESCAPE KEY
+  // =================================
+
+  document.addEventListener("keydown", function(event) {
+
+    if (event.key !== "Escape") return;
+
+
+    // CLOSE VIEW MODAL
+    if (
+      foundViewModal &&
+      foundViewModal.classList.contains("show")
+    ) {
+      foundViewModal.classList.remove("show");
+    }
+
+
+    // CLOSE ADD MODAL
+    if (
+      addFoundModal &&
+      addFoundModal.classList.contains("show")
+    ) {
+      closeAddFoundItemModal();
+    }
+
+
+    // CLOSE HEADER DROPDOWNS
+    headerDropdowns.forEach(dropdown => {
+
+      dropdown.classList.remove("open");
+
+      const trigger = dropdown.querySelector("button");
+
+      if (trigger) {
+        trigger.setAttribute("aria-expanded", "false");
+      }
+    });
+
+
+    // CLOSE FILTER DROPDOWNS
+    foundDropdowns.forEach(dropdown => {
+
+      dropdown.classList.remove("open");
+
+      const trigger =
+        dropdown.querySelector(".custom-select-trigger");
+
+      if (trigger) {
+        trigger.setAttribute("aria-expanded", "false");
+      }
+    });
+
+  });
+
+});
+</script>
+
+
+</body>
+</html>
