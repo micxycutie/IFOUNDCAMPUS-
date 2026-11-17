@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="ADMIN_DASHBOARD.css">
+  <link rel="stylesheet" href="ADMIN_SIDEBAR.css">
+  <title>iFoundCampus | ADMIN_DASHBOARD</title>
+</head>
+<body>
+      
+  <aside class="admin-sidebar">
+
+    <button type="button" class="sidebar-close" aria-label="Close sidebar">
+  &times;
+</button>
+    
+    <!-- LOGO -->
+    <div class="admin-logo">
+      <a href="ADMIN_DASHBOARD.html">
+        <span class="logo-ifound">iFOUND</span>
+        <span class="logo-campus">CAMPUS</span>
+      </a>
+    </div>
+
+    <!-- MAIN -->
+    <div class="sidebar-section">
+      <p class="sidebar-label">MAIN</p>
+      <a href="ADMIN_DASHBOARD.html" class="sidebar-link active">
+        <img src="images/dashboard.png" alt="">
+        <span>Dashboard</span>
+      </a>
+    </div>
+
+    <!-- ITEM -->
+    <div class="sidebar-section">
+      <p class="sidebar-label">ITEM</p>
+      <a href="ADMIN_LOST_ITEMS.html" class="sidebar-link">
+        <img src="images/lost-items.png" alt="">
+        <span>Lost Items</span>
+      </a>
+      <a href="ADMIN_FOUND_ITEMS.html" class="sidebar-link">
+        <img src="images/found-items.png" alt="">
+        <span>Found Items</span>
+      </a>
+      <a href="ADMIN_CLAIM_VERIFICATION.html" class="sidebar-link">
+        <img src="images/claim-verification.png" alt="">
+        <span>Claim Verification</span>
+      </a>
+    </div>
+
+    <!-- ADMINISTRATOR -->
+    <div class="sidebar-section">
+      <p class="sidebar-label">ADMINISTRATOR</p>
+      <a href="ADMIN_USER_MANAGEMENT.html" class="sidebar-link">
+        <img src="images/user-management.png" alt="">
+        <span>User Management</span>
+      </a>
+      <a href="ADMIN_REGISTERED_USERS.html" class="sidebar-link">
+        <img src="images/registered-users.png" alt="">
+        <span>Registered Users</span>
+      </a>
+      <a href="ADMIN_REPORTS.html" class="sidebar-link">
+        <img src="images/reports.png" alt="">
+        <span>Reports</span>
+      </a>
+    </div>
+
+    <!-- LOGOUT -->
+    <div class="sidebar-logout">
+      <a href="LOGIN.html" class="sidebar-link logout-link">
+        <img src="images/logout.png" alt="">
+        <span>Logout</span>
+      </a>
+    </div>
+
+  </aside>
+
+<!-- ADMIN HEADER papalitan yang hamburger -->
+<header class="admin-header">
+
+  <div class="header-left">
+    <button class="sidebar-toggle" type="button" aria-label="Toggle sidebar menu">
+      <img src="hamburger.png" alt="">
+    </button>
+  </div>
+
+  <div class="header-right">
+
+    <!-- SEARCH -->
+    <div class="admin-search">
+      <img src="images/search.png" alt="">
+      <input
+        type="search"
+        id="adminSearchInput"
+        placeholder="Search..."
+        aria-label="Search dashboard"
+      >
+      <button type="button" id="clearSearch" aria-label="Clear search" hidden>
+        &times;
+      </button>
+    </div>
+
+    <!-- NOTIFICATION -->
+    <div class="header-dropdown notification-wrapper">
+
+      <button
+        class="header-icon notification-btn"
+        type="button"
+        aria-label="Notifications"
+        aria-expanded="false"
+        aria-controls="notificationDropdown"
+      >
+        <img src="images/notification.png" alt="">
+        <span class="notification-badge" id="notificationBadge">3</span>
+      </button>
+
+      <div class="header-dropdown-menu notif-dropdown" id="notificationDropdown">
+
+        <div class="dropdown-heading">
+          <div>
+            <h3>Notifications</h3>
+            <p>You have 3 unread notifications</p>
+          </div>
+          <button type="button" id="markAllRead">Mark all read</button>
+        </div>
+
+        <div class="notification-list">
+
+          <div class="notification-item unread">
+            <span class="notif-indicator"></span>
+            <div>
+              <strong>New Claim Request</strong>
+              <p>A student submitted a claim request.</p>
+              <small>Just now</small>
+            </div>
+          </div>
+
+          <div class="notification-item unread">
+            <span class="notif-indicator"></span>
+            <div>
+              <strong>New Lost Item Report</strong>
+              <p>A new lost item has been reported.</p>
+              <small>10 minutes ago</small>
+            </div>
+          </div>
+
+          <div class="notification-item unread">
+            <span class="notif-indicator"></span>
+            <div>
+              <strong>New Found Item Report</strong>
+              <p>A found item report needs review.</p>
+              <small>30 minutes ago</small>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="dropdown-footer">
+          <a href="ADMIN_NOTIFICATIONS.html">View all notifications</a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ADMIN PROFILE -->
+    <div class="admin-profile header-dropdown">
+
+      <button
+        class="profile-trigger"
+        type="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+        aria-controls="profileDropdown"
+      >
+        <img src="images/admin-profile.png" class="profile-picture" alt="Admin profile">
+
+        <div class="profile-info">
+          <span class="profile-name">System Administrator</span>
+          <span class="profile-role">Administrator</span>
+        </div>
+
+        <img src="images/chevron-down.png" class="profile-arrow" alt="">
+      </button>
+
+      <div class="header-dropdown-menu profile-dropdown" id="profileDropdown">
+
+        <div class="profile-dropdown-header">
+          <img src="images/admin-profile.png" alt="">
+          <div>
+            <strong>System Administrator</strong>
+            <span>Administrator</span>
+          </div>
+        </div>
+
+        <div class="profile-dropdown-links">
+          <button type="button" data-message="Profile settings will be available soon.">
+            <span>♙</span> My Profile
+          </button>
+
+          <button type="button" data-message="Account settings will be available soon.">
+            <span>⚙</span> Account Settings
+          </button>
+        </div>
+
+        <div class="profile-logout">
+          <a href="LOGIN.html">
+            <img src="images/logout.png" alt="">
+            Logout
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</header>
+
+
+<main class="admin-main"> 
+  <div class="dashboard-content">
+    <h1>Dashboard</h1>
+    <p>Overview of campus lost and found activities</p>
+
+    <!-- 1. DASHBOARD STATISTICS -->
+    <section class="dashboard-stats">
+      <!-- LOST ITEMS -->
+      <div class="stat-card">
+        <div class="stat-info">
+          <p class="stat-label">Lost Items</p>
+          <h2 class="stat-number" id="num-lost">24</h2>
+          <span class="stat-description">Reported lost items</span>
+        </div>
+        <div class="stat-icon">
+          <img src="images/lost-items.png" alt="">
+        </div>
+      </div>
+
+      <!-- FOUND ITEMS -->
+      <div class="stat-card">
+        <div class="stat-info">
+          <p class="stat-label">Found Items</p>
+          <h2 class="stat-number" id="num-found">38</h2>
+          <span class="stat-description">Items recovered</span>
+        </div>
+        <div class="stat-icon">
+          <img src="images/found-items.png" alt="">
+        </div>
+      </div>
+
+      <!-- PENDING CLAIMS -->
+      <div class="stat-card">
+        <div class="stat-info">
+          <p class="stat-label">Pending Claims</p>
+          <h2 class="stat-number" id="num-pending">12</h2>
+          <span class="stat-description">Awaiting verification</span>
+        </div>
+        <div class="stat-icon">
+          <img src="images/pending-claims.png" alt="">
+        </div>
+      </div>
+
+      <!-- TOTAL MATCHES -->
+      <div class="stat-card">
+        <div class="stat-info">
+          <p class="stat-label">Total Matches</p>
+          <h2 class="stat-number" id="num-matches">16</h2>
+          <span class="stat-description">Successfully resolved</span>
+        </div>
+        <div class="stat-icon">
+          <img src="images/total-matches.png" alt="">
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. DASHBOARD CHARTS (Dito lang dapat ang Bar at Pie Chart) -->
+    <section class="dashboard-charts">
+      <!-- BAR GRAPH CONTAINER -->
+      <div class="chart-card bar-chart-card">
+        <div class="chart-header">
+          <div>
+            <h3>Lost & Found Items</h3>
+            <p>Monthly overview of reported items</p>
+          </div>
+        </div>
+
+        <div class="chart-legend">
+          <span>
+            <i class="legend-dot lost-dot"></i>
+            Lost Items
+          </span>
+          <span>
+            <i class="legend-dot found-dot"></i>
+            Found Items
+          </span>
+        </div>
+
+        <div class="bar-chart">
+          <div class="chart-y-labels">
+            <span>40</span>
+            <span>30</span>
+            <span>20</span>
+            <span>10</span>
+            <span>0</span>
+          </div>
+
+          <div class="chart-plot">
+            <div class="chart-grid-lines">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+
+            <div class="chart-bars">
+              <div class="bar-group">
+                <div class="bar-pair">
+                  <div class="bar lost-bar" style="height: 45%;"></div>
+                  <div class="bar found-bar" style="height: 65%;"></div>
+                </div>
+                <span class="month-label">Jan</span>
+              </div>
+
+              <div class="bar-group">
+                <div class="bar-pair">
+                  <div class="bar lost-bar" style="height: 60%;"></div>
+                  <div class="bar found-bar" style="height: 75%;"></div>
+                </div>
+                <span class="month-label">Feb</span>
+              </div>
+
+              <div class="bar-group">
+                <div class="bar-pair">
+                  <div class="bar lost-bar" style="height: 40%;"></div>
+                  <div class="bar found-bar" style="height: 55%;"></div>
+                </div>
+                <span class="month-label">Mar</span>
+              </div>
+
+              <div class="bar-group">
+                <div class="bar-pair">
+                  <div class="bar lost-bar" style="height: 70%;"></div>
+                  <div class="bar found-bar" style="height: 85%;"></div>
+                </div>
+                <span class="month-label">Apr</span>
+              </div>
+
+              <div class="bar-group">
+                <div class="bar-pair">
+                  <div class="bar lost-bar" style="height: 55%;"></div>
+                  <div class="bar found-bar" style="height: 70%;"></div>
+                </div>
+                <span class="month-label">May</span>
+              </div>
+
+              <div class="bar-group">
+                <div class="bar-pair">
+                  <div class="bar lost-bar" style="height: 80%;"></div>
+                  <div class="bar found-bar" style="height: 95%;"></div>
+                </div>
+                <span class="month-label">Jun</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PIE GRAPH CONTAINER -->
+      <div class="chart-card pie-chart-card">
+        <div class="chart-header">
+          <div>
+            <h3>Claim Status</h3>
+            <p>Overview of claim requests</p>
+          </div>
+        </div>
+
+        <div class="pie-chart-container">
+          <div class="pie-chart-visual"></div>
+          
+          <div class="pie-chart-legend">
+            <div class="pie-legend-item">
+              <i class="legend-dot claim-approved"></i>
+              <span class="pie-label">Approved (50%)</span>
+            </div>
+            <div class="pie-legend-item">
+              <i class="legend-dot claim-pending"></i>
+              <span class="pie-label">Pending (35%)</span>
+            </div>
+            <div class="pie-legend-item">
+              <i class="legend-dot claim-rejected"></i>
+              <span class="pie-label">Rejected (15%)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section> <!-- TAMANG PAGSASARA NG CHARTS SECTION -->
+
+
+    <!-- 3. DASHBOARD ANALYTICS (Nasa tamang labas na ng charts, at magkasama na ang dalawang cards) -->
+    <section class="dashboard-analytics">
+
+      <!-- CLAIM RATE CARD -->
+      <div class="analytics-card claim-rate-card">
+        <div class="analytics-header">
+          <div>
+            <h3>Claim Rate</h3>
+            <p>Overview of claim request statuses</p>
+          </div>
+          <span class="analytics-icon">✓</span>
+        </div>
+
+        <div class="claim-rate-summary">
+          <h2 id="claimRate">—%</h2>
+          <p>Successful Claim Rate</p>
+        </div>
+
+        <div class="claim-status-list">
+          <div class="claim-status-item">
+            <span class="status-dot approved-dot"></span>
+            <span>Approved</span>
+            <strong id="approvedClaims">—</strong>
+          </div>
+
+          <div class="claim-status-item">
+            <span class="status-dot pending-dot"></span>
+            <span>Pending</span>
+            <strong id="pendingClaims">—</strong>
+          </div>
+
+          <div class="claim-status-item">
+            <span class="status-dot rejected-dot"></span>
+            <span>Rejected</span>
+            <strong id="rejectedClaims">—</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- TOP LOCATIONS CARD (Nasa loob na ngayon ng tamang Grid section!) -->
+      <div class="analytics-card top-locations-card">
+        <div class="analytics-header">
+          <div>
+            <h3>Top Locations</h3>
+            <p>Locations with the most reported items</p>
+          </div>
+          <span class="analytics-icon">⌖</span>
+        </div>
+
+        <div class="top-locations-list" id="topLocationsList">
+          <div class="location-item">
+            <span class="location-rank">1</span>
+            <span class="location-name">Waiting for records</span>
+            <strong>—</strong>
+          </div>
+
+          <div class="location-item">
+            <span class="location-rank">2</span>
+            <span class="location-name">Waiting for records</span>
+            <strong>—</strong>
+          </div>
+
+          <div class="location-item">
+            <span class="location-rank">3</span>
+            <span class="location-name">Waiting for records</span>
+            <strong>—</strong>
+          </div>
+
+          <div class="location-item">
+            <span class="location-rank">4</span>
+            <span class="location-name">Waiting for records</span>
+            <strong>—</strong>
+          </div>
+
+          <div class="location-item">
+            <span class="location-rank">5</span>
+            <span class="location-name">Waiting for records</span>
+            <strong>—</strong>
+          </div>
+        </div>
+      </div>
+
+    </section> <!-- TAMANG PAGSASARA NG ANALYTICS SECTION -->
+
+  </div> <!-- Dulo ng dashboard-content -->
+</main>
+
+  
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // 1. KUHANIN ANG MGA LIVE DATA MULA SA STAT CARDS (HTML IDs)
+    const lostCount = parseInt(document.getElementById('num-lost').innerText) || 0;
+    const foundCount = parseInt(document.getElementById('num-found').innerText) || 0;
+    const pendingCount = parseInt(document.getElementById('num-pending').innerText) || 0;
+    const approvedCount = parseInt(document.getElementById('num-matches').innerText) || 0;
+
+    // 2. AUTOMATION PARA SA BAR CHART (Kasalukuyang Buwan - Jun)
+    const maxChartValue = 40; // Max value ng Y-Axis mo
+    const lostPercentage = Math.min((lostCount / maxChartValue) * 100, 100);
+    const foundPercentage = Math.min((foundCount / maxChartValue) * 100, 100);
+
+    const latestBarGroup = document.querySelector('.chart-bars .bar-group:last-child');
+    if (latestBarGroup) {
+      const lostBar = latestBarGroup.querySelector('.lost-bar');
+      const foundBar = latestBarGroup.querySelector('.found-bar');
+      if (lostBar) lostBar.style.height = lostPercentage + '%';
+      if (foundBar) foundBar.style.height = foundPercentage + '%';
+    }
+
+    // 3. AUTOMATION PARA SA CLAIM RATE CARD (Kalkulasyon ng Matagumpay na Claims)
+    // Mag-assume tayo ng kaunting rejected claims (halimbawa: 4) para makumpleto ang data
+    const rejectedCount = 4; 
+    const totalClaims = approvedCount + pendingCount + rejectedCount;
+
+    if (totalClaims > 0) {
+      // Compute ng Successful Claim Rate (Approved / Total)
+      const successRate = Math.round((approvedCount / totalClaims) * 100);
+      
+      // I-inject ang mga kalkulado at totoong numero sa Claim Rate UI Card
+      document.getElementById('claimRate').innerText = successRate + '%';
+      document.getElementById('approvedClaims').innerText = approvedCount;
+      document.getElementById('pendingClaims').innerText = pendingCount;
+      document.getElementById('rejectedClaims').innerText = rejectedCount;
+
+      // 4. AUTOMATION PARA SA PIE CHART VISUAL (Conic Gradient Base sa live data)
+      const approvedPercent = Math.round((approvedCount / totalClaims) * 100);
+      const pendingPercent = Math.round((pendingCount / totalClaims) * 100);
+      
+      const slice1 = approvedPercent;
+      const slice2 = approvedPercent + pendingPercent;
+
+      const pieVisual = document.querySelector('.pie-chart-visual');
+      if (pieVisual) {
+        pieVisual.style.background = `conic-gradient(
+          #18453B 0% ${slice1}%,
+          #A8D5B5 ${slice1}% ${slice2}%,
+          #E28743 ${slice2}% 100%
+        )`;
+      }
+
+      // I-update din ang mga porsyento sa Pie Chart Legends
+      const pieLabels = document.querySelectorAll('.pie-chart-legend .pie-label');
+      if (pieLabels.length >= 3) {
+        pieLabels[0].innerText = `Approved (${approvedPercent}%)`;
+        pieLabels[1].innerText = `Pending (${pendingPercent}%)`;
+        pieLabels[2].innerText = `Rejected (${100 - slice2}%)`;
+      }
+    }
+
+    // 5. SAMPLE LIVE RECORDS PARA SA TOP LOCATIONS
+    // Sa hinaharap, ito ay magmumula na sa iyong Database array
+    const sampleLocations = [
+      { name: "University Library", count: 18 },
+      { name: "Gymnasium Lobby", count: 12 },
+      { name: "Student Center Cafeteria", count: 9 },
+      { name: "Engineering Block - Room 302", count: 5 },
+      { name: "Main Campus Oval", count: 3 }
+    ];
+
+    const locationsContainer = document.getElementById('topLocationsList');
+    if (locationsContainer && sampleLocations.length > 0) {
+      locationsContainer.innerHTML = ''; // Linisin ang "Waiting for records"
+      
+      sampleLocations.forEach((loc, index) => {
+        const itemHTML = `
+          <div class="location-item">
+            <span class="location-rank">${index + 1}</span>
+            <span class="location-name">${loc.name}</span>
+            <strong>${loc.count}</strong>
+          </div>
+        `;
+        locationsContainer.innerHTML += itemHTML;
+      });
+    }
+
+    // SIDEBAR TOGGLE
+const sidebarToggle = document.querySelector('.sidebar-toggle');
+
+if (sidebarToggle) {
+  sidebarToggle.addEventListener('click', function() {
+    document.body.classList.toggle('sidebar-open');
+
+    const isOpen = document.body.classList.contains('sidebar-open');
+
+    sidebarToggle.setAttribute('aria-expanded', isOpen);
+  });
+} 
+
+    const sidebarClose = document.querySelector('.sidebar-close');
+
+if (sidebarClose) {
+  sidebarClose.addEventListener('click', function() {
+    document.body.classList.remove('sidebar-open');
+
+    if (sidebarToggle) {
+      sidebarToggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+}
+
+  
+// ================================
+// HEADER DROPDOWNS
+// ================================
+
+const headerDropdowns = document.querySelectorAll('.header-dropdown');
+
+headerDropdowns.forEach(dropdown => {
+  const trigger = dropdown.querySelector('button');
+
+  if (!trigger) return;
+
+  trigger.addEventListener('click', function(event) {
+    event.stopPropagation();
+
+    const wasOpen = dropdown.classList.contains('open');
+
+    // Close other dropdowns
+    headerDropdowns.forEach(item => {
+      item.classList.remove('open');
+
+      const btn = item.querySelector('button');
+      if (btn) btn.setAttribute('aria-expanded', 'false');
+    });
+
+    // Toggle selected dropdown
+    if (!wasOpen) {
+      dropdown.classList.add('open');
+      trigger.setAttribute('aria-expanded', 'true');
+    }
+  });
+});
+
+// Close dropdown when clicking outside
+document.addEventListener('click', function(event) {
+  if (!event.target.closest('.header-dropdown')) {
+    headerDropdowns.forEach(dropdown => {
+      dropdown.classList.remove('open');
+
+      const trigger = dropdown.querySelector('button');
+      if (trigger) trigger.setAttribute('aria-expanded', 'false');
+    });
+  }
+});
+
+// Close dropdown using Escape
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'Escape') {
+    headerDropdowns.forEach(dropdown => {
+      dropdown.classList.remove('open');
+
+      const trigger = dropdown.querySelector('button');
+      if (trigger) trigger.setAttribute('aria-expanded', 'false');
+    });
+  }
+});
+
+
+// ================================
+// NOTIFICATION FUNCTION
+// ================================
+
+const notificationItems = document.querySelectorAll('.notification-item');
+const notificationBadge = document.getElementById('notificationBadge');
+const notificationButton = document.querySelector('.notification-btn');
+const markAllRead = document.getElementById('markAllRead');
+const notificationDescription = document.querySelector('.dropdown-heading p');
+
+function updateNotificationCount() {
+  const unreadCount = document.querySelectorAll(
+    '.notification-item.unread'
+  ).length;
+
+  if (notificationBadge) {
+    notificationBadge.textContent = unreadCount;
+    notificationBadge.style.display =
+      unreadCount > 0 ? 'flex' : 'none';
+  }
+
+  if (notificationButton) {
+    notificationButton.setAttribute(
+      'aria-label',
+      unreadCount + ' unread notifications'
+    );
+  }
+
+  if (notificationDescription) {
+    notificationDescription.textContent =
+      unreadCount === 0
+        ? 'You are all caught up!'
+        : 'You have ' + unreadCount + ' unread notifications';
+  }
+}
+
+// Mark individual notification as read
+notificationItems.forEach(item => {
+  item.addEventListener('click', function() {
+    item.classList.remove('unread');
+    updateNotificationCount();
+  });
+});
+
+// Mark all notifications as read
+if (markAllRead) {
+  markAllRead.addEventListener('click', function() {
+    notificationItems.forEach(item => {
+      item.classList.remove('unread');
+    });
+
+    updateNotificationCount();
+  });
+}
+
+updateNotificationCount();
+
+
+// ================================
+// PROFILE MENU FUNCTION
+// ================================
+
+const profileActions = document.querySelectorAll(
+  '.profile-dropdown-links button'
+);
+
+profileActions.forEach(button => {
+  button.addEventListener('click', function() {
+    alert(button.dataset.message);
+  });
+});
+
+
+// ================================
+// DASHBOARD SEARCH FUNCTION
+// ================================
+
+const searchInput = document.getElementById('adminSearchInput');
+const clearSearch = document.getElementById('clearSearch');
+
+function searchDashboard() {
+  if (!searchInput) return;
+
+  const query = searchInput.value
+    .trim()
+    .toLowerCase();
+
+  // Search dashboard cards
+  const searchableCards = document.querySelectorAll(
+    '.stat-card, .chart-card, .analytics-card'
+  );
+
+  searchableCards.forEach(card => {
+    const text = card.textContent.toLowerCase();
+
+    card.style.display =
+      !query || text.includes(query) ? '' : 'none';
+  });
+
+  // Search individual top locations
+  const locationItems = document.querySelectorAll('.location-item');
+
+  locationItems.forEach(item => {
+    const text = item.textContent.toLowerCase();
+
+    item.style.display =
+      !query || text.includes(query) ? '' : 'none';
+  });
+
+  // Clear button visibility
+  if (clearSearch) {
+    clearSearch.hidden = !query;
+  }
+}
+
+if (searchInput) {
+  searchInput.addEventListener('input', searchDashboard);
+}
+
+if (clearSearch) {
+  clearSearch.addEventListener('click', function() {
+    searchInput.value = '';
+    searchDashboard();
+    searchInput.focus();
+  });
+}
+
+  });
+</script>
+
+
+
+</body>
+</html>
