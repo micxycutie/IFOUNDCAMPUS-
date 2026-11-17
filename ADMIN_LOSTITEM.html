@@ -1,0 +1,2432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="ADMIN_SIDEBAR.css">
+  <link rel="stylesheet" href="ADMIN_LOSTITEM.css">
+
+  <title>iFoundCampus | ADMIN_LOST_ITEMS</title>
+</head>
+<body>
+
+  <!-- ADMIN SIDEBAR -->
+  <aside class="admin-sidebar">
+
+    <button type="button" class="sidebar-close" aria-label="Close sidebar">
+      &times;
+    </button>
+
+    <div class="admin-logo">
+      <a href="ADMIN_DASHBOARD.html">
+        <span class="logo-ifound">iFOUND</span>
+        <span class="logo-campus">CAMPUS</span>
+      </a>
+    </div>
+
+    <div class="sidebar-section">
+      <p class="sidebar-label">MAIN</p>
+
+      <a href="ADMIN_DASHBOARD.html" class="sidebar-link">
+        <img src="home.png" alt="">
+        <span>Dashboard</span>
+      </a>
+    </div>
+
+    <div class="sidebar-section">
+      <p class="sidebar-label">ITEM</p>
+
+      <a href="ADMIN_LOST_ITEMS.html" class="sidebar-link active">
+        <img src="images/lost-items.png" alt="">
+        <span>Lost Items</span>
+      </a>
+
+      <a href="ADMIN_FOUND_ITEMS.html" class="sidebar-link">
+        <img src="images/found-items.png" alt="">
+        <span>Found Items</span>
+      </a>
+
+      <a href="ADMIN_CLAIM_VERIFICATION.html" class="sidebar-link">
+        <img src="images/claim-verification.png" alt="">
+        <span>Claim Verification</span>
+      </a>
+    </div>
+
+    <div class="sidebar-section">
+      <p class="sidebar-label">ADMINISTRATOR</p>
+
+      <a href="ADMIN_USER_MANAGEMENT.html" class="sidebar-link">
+        <img src="images/user-management.png" alt="">
+        <span>User Management</span>
+      </a>
+
+      <a href="ADMIN_REGISTERED_USERS.html" class="sidebar-link">
+        <img src="images/registered-users.png" alt="">
+        <span>Registered Users</span>
+      </a>
+
+      <a href="ADMIN_REPORTS.html" class="sidebar-link">
+        <img src="images/reports.png" alt="">
+        <span>Reports</span>
+      </a>
+    </div>
+
+    <div class="sidebar-logout">
+      <a href="LOGIN.html" class="sidebar-link logout-link">
+        <img src="exit.png" alt="">
+        <span>Logout</span>
+      </a>
+    </div>
+
+  </aside>
+
+
+  <!-- ADMIN HEADER -->
+  <header class="admin-header">
+
+    <div class="header-left">
+      <button
+        class="sidebar-toggle"
+        type="button"
+        aria-label="Toggle sidebar menu"
+        aria-expanded="false"
+      >
+        <img src="hamburger.png" alt="">
+      </button>
+    </div>
+
+    <div class="header-right">
+
+      <!-- SEARCH -->
+      <div class="admin-search">
+        <img src="search.png" alt="">
+
+        <input
+          type="search"
+          id="adminSearchInput"
+          placeholder="Search..."
+          aria-label="Search dashboard"
+        >
+
+        <button
+          type="button"
+          id="clearSearch"
+          aria-label="Clear search"
+          hidden
+        >
+          &times;
+        </button>
+      </div>
+
+      <!-- NOTIFICATIONS -->
+      <div class="header-dropdown notification-wrapper">
+
+        <button
+          class="header-icon notification-btn"
+          type="button"
+          aria-label="Notifications"
+          aria-expanded="false"
+          aria-controls="notificationDropdown"
+        >
+          <img src="bell (1).png" alt="">
+          <span class="notification-badge" id="notificationBadge">3</span>
+        </button>
+
+        <div
+          class="header-dropdown-menu notif-dropdown"
+          id="notificationDropdown"
+        >
+
+          <div class="dropdown-heading">
+            <div>
+              <h3>Notifications</h3>
+              <p>You have 3 unread notifications</p>
+            </div>
+
+            <button type="button" id="markAllRead">
+              Mark all read
+            </button>
+          </div>
+
+          <div class="notification-list">
+
+            <div class="notification-item unread">
+              <span class="notif-indicator"></span>
+              <div>
+                <strong>New Claim Request</strong>
+                <p>A student submitted a claim request.</p>
+                <small>Just now</small>
+              </div>
+            </div>
+
+            <div class="notification-item unread">
+              <span class="notif-indicator"></span>
+              <div>
+                <strong>New Lost Item Report</strong>
+                <p>A new lost item has been reported.</p>
+                <small>10 minutes ago</small>
+              </div>
+            </div>
+
+            <div class="notification-item unread">
+              <span class="notif-indicator"></span>
+              <div>
+                <strong>New Found Item Report</strong>
+                <p>A found item report needs review.</p>
+                <small>30 minutes ago</small>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="dropdown-footer">
+            <a href="ADMIN_NOTIFICATIONS.html">
+              View all notifications
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+
+      <!-- ADMIN PROFILE -->
+      <div class="admin-profile header-dropdown">
+
+        <button
+          class="profile-trigger"
+          type="button"
+          aria-haspopup="true"
+          aria-expanded="false"
+          aria-controls="profileDropdown"
+        >
+          <img
+            src="paru.jpg"
+            class="profile-picture"
+            alt="Admin profile"
+          >
+
+          <div class="profile-info">
+            <span class="profile-name">System Administrator</span>
+            <span class="profile-role">Administrator</span>
+          </div>
+
+          <img
+            src="images/chevron-down.png"
+            class="profile-arrow"
+            alt=""
+          >
+        </button>
+
+        <div
+          class="header-dropdown-menu profile-dropdown"
+          id="profileDropdown"
+        >
+
+          <div class="profile-dropdown-header">
+            <img src="paru.jpg" alt="">
+
+            <div>
+              <strong>System Administrator</strong>
+              <span>Administrator</span>
+            </div>
+          </div>
+
+          <div class="profile-dropdown-links">
+
+            <button
+              type="button"
+              data-message="Profile settings will be available soon."
+            >
+              <span>♙</span>
+              My Profile
+            </button>
+
+            <button
+              type="button"
+              data-message="Account settings will be available soon."
+            >
+              <span>⚙</span>
+              Account Settings
+            </button>
+
+          </div>
+
+          <div class="profile-logout">
+            <a href="LOGIN.html">
+              <img src="exit.png" alt="">
+              Logout
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+
+  <!-- ADMIN LOST ITEMS MAIN CONTENT -->
+  <main class="admin-main-content">
+
+    <!-- PAGE HEADING -->
+    <section class="lost-page-heading">
+      <h1>ALL LOST ITEMS</h1>
+
+      <p>
+        View and manage all lost item reports submitted by students and staff.
+      </p>
+    </section>
+
+    <!-- LOST ITEMS TOOLBAR -->
+    <section class="lost-toolbar">
+
+      <div class="toolbar-top">
+        <div class="toolbar-title">
+          <h2>Lost Item Management</h2>
+          <span>Manage reported items</span>
+        </div>
+      </div>
+
+      <!-- FILTERS & ACTIONS -->
+      <div class="toolbar-filters">
+
+        <!-- 1. SEARCH & REFRESH GROUP -->
+        <div class="filter-group search-filter-group">
+          <label for="lostItemSearch">Search</label>
+          
+          <div class="toolbar-actions">
+            <div class="lost-search">
+              <img src="search.png" alt="">
+              <input
+                type="search"
+                id="lostItemSearch"
+                placeholder="Search item name or ID..."
+                aria-label="Search lost items"
+              >
+            </div>
+
+            <button
+              type="button"
+              class="lost-refresh-btn"
+              id="refreshLostItems"
+              aria-label="Refresh lost items"
+              title="Refresh"
+            >
+              <img src="images/refresh.png" alt="Refresh">
+            </button>
+          </div>
+        </div>
+
+        <!-- 2. CATEGORY FILTER -->
+        <div class="filter-group">
+          <label>Category</label>
+
+          <div
+            class="custom-select-wrapper"
+            data-target="lostCategoryFilter"
+          >
+            <input
+              type="hidden"
+              id="lostCategoryFilter"
+              value=""
+            >
+
+            <button
+              type="button"
+              class="custom-select-trigger"
+              aria-expanded="false"
+            >
+              <span class="selected-text">All Categories</span>
+              <span class="dropdown-arrow">▼</span>
+            </button>
+
+            <ul class="custom-options">
+              <li class="custom-option selected" data-value="">All Categories</li>
+              <li class="custom-option" data-value="electronics">Electronics</li>
+              <li class="custom-option" data-value="bags">Bags</li>
+              <li class="custom-option" data-value="personal">Personal Items</li>
+              <li class="custom-option" data-value="school">School Supplies</li>
+              <li class="custom-option" data-value="clothing">Clothing</li>
+              <li class="custom-option" data-value="others">Others</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 3. SORT FILTER -->
+        <div class="filter-group">
+          <label>Sort</label>
+
+          <div
+            class="custom-select-wrapper"
+            data-target="lostDateFilter"
+          >
+            <input
+              type="hidden"
+              id="lostDateFilter"
+              value="newest"
+            >
+
+            <button
+              type="button"
+              class="custom-select-trigger"
+              aria-expanded="false"
+            >
+              <span class="selected-text">Newest to Oldest</span>
+              <span class="dropdown-arrow">▼</span>
+            </button>
+
+            <ul class="custom-options">
+              <li class="custom-option selected" data-value="newest">
+                Newest to Oldest
+              </li>
+
+              <li class="custom-option" data-value="oldest">
+                Oldest to Newest
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 4. RECORD COUNT -->
+        <div class="records-count">
+          <span class="records-dot"></span>
+          <span id="lostRecordsCount">3 Records</span>
+        </div>
+
+      </div>
+    </section>
+
+
+
+    <!-- LOST ITEMS TABLE -->
+    <section class="lost-table-container">
+
+      <div class="lost-table-heading">
+        <div>
+          <h2>Item Records</h2>
+          <p>A list of all reported lost items.</p>
+        </div>
+
+        <span class="mobile-scroll-hint">
+          Swipe left to see more →
+        </span>
+      </div>
+
+      <div class="lost-table-scroll">
+
+        <table class="lost-items-table">
+
+          <thead>
+            <tr>
+              <th>ITEM DETAILS</th>
+              <th>ITEM ID</th>
+              <th>CATEGORY</th>
+              <th>REPORTED BY</th>
+              <th>DATE REPORTED</th>
+              <th>LOCATION LOST</th>
+              <th>ACTIONS</th>
+            </tr>
+          </thead>
+
+          <tbody id="lostItemsTableBody">
+
+            <!-- SAMPLE ITEM 1 -->
+            <tr
+              data-category="electronics"
+              data-date="2026-11-10"
+            >
+              <td>
+                <div class="lost-item-info">
+                  <img src="earpods.jpg" alt="Wireless earbuds">
+
+                  <div>
+                    <strong>Wireless Earbuds</strong>
+                    <span>Black charging case</span>
+                  </div>
+                </div>
+              </td>
+
+              <td><span class="item-id">LST-001</span></td>
+              <td>Electronics</td>
+              <td>Juan Dela Cruz</td>
+              <td>Nov 10, 2026</td>
+              <td>Library</td>
+
+              <td>
+                <div class="lost-row-actions">
+                  <button type="button" class="view-item-btn" title="View Details">
+                    View
+                  </button>
+
+                  <button type="button" class="update-item-btn" title="Update Item">
+                    Update
+                  </button>
+
+                  <button type="button" class="delete-item-btn" title="Delete Item">
+                    Delete
+                  </button>
+                </div>
+              </td>
+            </tr>
+
+
+            <!-- SAMPLE ITEM 2 -->
+            <tr
+              data-category="bags"
+              data-date="2026-11-11"
+            >
+              <td>
+                <div class="lost-item-info">
+                  <img src="bag.jpg" alt="Black Tote Bag">
+
+                  <div>
+                    <strong>Black Tote Bag</strong>
+                    <span>Medium-sized school bag</span>
+                  </div>
+                </div>
+              </td>
+
+              <td><span class="item-id">LST-002</span></td>
+              <td>Bags</td>
+              <td>Maria Santos</td>
+              <td>Nov 11, 2026</td>
+              <td>Room 204</td>
+
+              <td>
+                <div class="lost-row-actions">
+                  <button type="button" class="view-item-btn" title="View Details">
+                    View
+                  </button>
+
+                  <button type="button" class="update-item-btn" title="Update Item">
+                    Update
+                  </button>
+
+                  <button type="button" class="delete-item-btn" title="Delete Item">
+                    Delete
+                  </button>
+                </div>
+              </td>
+            </tr>
+
+
+            <!-- SAMPLE ITEM 3 -->
+            <tr
+              data-category="personal"
+              data-date="2026-11-12"
+            >
+              <td>
+                <div class="lost-item-info">
+                  <img src="books.jpg" alt="School books">
+
+                  <div>
+                    <strong>Books</strong>
+                    <span>A set of school books</span>
+                  </div>
+                </div>
+              </td>
+
+              <td><span class="item-id">LST-003</span></td>
+              <td>Personal Items</td>
+              <td>Ana Reyes</td>
+              <td>Nov 12, 2026</td>
+              <td>Cafeteria</td>
+
+              <td>
+                <div class="lost-row-actions">
+                  <button type="button" class="view-item-btn" title="View Details">
+                    View
+                  </button>
+
+                  <button type="button" class="update-item-btn" title="Update Item">
+                    Update
+                  </button>
+
+                  <button type="button" class="delete-item-btn" title="Delete Item">
+                    Delete
+                  </button>
+                </div>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+
+      </div>
+
+      <!-- TABLE FOOTER & PAGINATION (NAKAPALOOB NA DITO SA CONTAINER) -->
+      <div class="lost-table-footer">
+        <span id="lostTableFooter">Showing 3 sample records</span>
+
+        <div class="lost-pagination" id="lostPagination">
+          <div class="lost-pagination-controls" id="lostPaginationControls"></div>
+        </div>
+      </div>
+
+      <!-- ADD LOST ITEM BUTTON -->
+      <div class="lost-add-button-wrapper">
+        <button
+          type="button"
+          class="add-lost-item-btn"
+          id="openAddLostModal"
+          aria-label="Add Lost Item"
+          title="Add Lost Item"
+        >
+          +
+        </button>
+      </div>
+
+    </section>
+
+
+
+
+    <!-- =====================================
+         VIEW LOST ITEM DETAILS MODAL
+    ====================================== -->
+    <div
+      class="lost-modal-overlay"
+      id="viewLostModal"
+      aria-hidden="true"
+    >
+
+      <div
+        class="lost-details-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="viewModalTitle"
+      >
+
+        <div class="lost-modal-header">
+          <div>
+            <h2 id="viewModalTitle">Lost Item Details</h2>
+            <p>Complete information about the reported item.</p>
+          </div>
+
+          <button
+            type="button"
+            class="lost-modal-close"
+            id="closeViewModal"
+            aria-label="Close modal"
+          >
+            &times;
+          </button>
+        </div>
+
+        <div class="lost-modal-image">
+          <img src="" alt="Lost item" id="viewItemImage">
+        </div>
+
+        <div class="lost-modal-item-heading">
+          <div>
+            <h3 id="viewItemName">Item Name</h3>
+            <span id="viewItemId">LST-001</span>
+          </div>
+
+          <span class="lost-modal-label">LOST ITEM</span>
+        </div>
+
+        <div class="lost-modal-description">
+          <h4>Description</h4>
+          <p id="viewItemDescription">Item description</p>
+        </div>
+
+        <div class="lost-modal-info-grid">
+
+          <div class="lost-info-box">
+            <span>Category</span>
+            <strong id="viewItemCategory">Electronics</strong>
+          </div>
+
+          <div class="lost-info-box">
+            <span>Reported By</span>
+            <strong id="viewItemReporter">Juan Dela Cruz</strong>
+          </div>
+
+          <div class="lost-info-box">
+            <span>Date Reported</span>
+            <strong id="viewItemDate">Nov 10, 2026</strong>
+          </div>
+
+          <div class="lost-info-box">
+            <span>Location Lost</span>
+            <strong id="viewItemLocation">Library</strong>
+          </div>
+
+        </div>
+
+        <div class="lost-modal-footer">
+          <button type="button" id="closeViewModalFooter">
+            Close
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- =====================================
+         UPDATE LOST ITEM MODAL
+    ====================================== -->
+    <div
+      class="lost-modal-overlay"
+      id="updateLostModal"
+      aria-hidden="true"
+    >
+
+      <div
+        class="lost-details-modal update-lost-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="updateModalTitle"
+      >
+
+        <div class="lost-modal-header">
+          <div>
+            <h2 id="updateModalTitle">Update Lost Item</h2>
+            <p>Edit the information of the reported item.</p>
+          </div>
+
+          <button
+            type="button"
+            class="lost-modal-close"
+            id="closeUpdateModal"
+            aria-label="Close modal"
+          >
+            &times;
+          </button>
+        </div>
+
+        <form id="updateLostForm">
+
+          <div class="update-form-group">
+            <label for="updateItemName">Item Name</label>
+            <input type="text" id="updateItemName" required>
+          </div>
+
+          <div class="update-form-group">
+            <label for="updateItemDescription">Description</label>
+            <textarea id="updateItemDescription" rows="3" required></textarea>
+          </div>
+
+          <div class="update-form-row">
+
+            <div class="update-form-group">
+              <label for="updateItemCategory">Category</label>
+
+              <select id="updateItemCategory" required>
+                <option value="electronics">Electronics</option>
+                <option value="bags">Bags</option>
+                <option value="personal">Personal Items</option>
+                <option value="school">School Supplies</option>
+                <option value="clothing">Clothing</option>
+                <option value="others">Others</option>
+              </select>
+            </div>
+
+            <div class="update-form-group">
+              <label for="updateItemLocation">Location Lost</label>
+              <input type="text" id="updateItemLocation" required>
+            </div>
+
+          </div>
+
+          <div class="update-form-group">
+            <label for="updateItemReporter">Reported By</label>
+            <input type="text" id="updateItemReporter" required>
+          </div>
+
+          <div class="update-form-group">
+            <label for="updateItemDate">Date Reported</label>
+            <input type="date" id="updateItemDate" required>
+          </div>
+
+          <div class="update-modal-footer">
+            <button type="button" id="cancelUpdateModal">
+              Cancel
+            </button>
+
+            <button type="submit" id="saveLostChanges">
+              Save Changes
+            </button>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+
+
+    <!-- =====================================
+         DELETE LOST ITEM CONFIRMATION MODAL
+    ====================================== -->
+    <div
+      class="lost-modal-overlay"
+      id="deleteLostModal"
+      aria-hidden="true"
+    >
+
+      <div
+        class="delete-confirm-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="deleteModalTitle"
+      >
+
+        <div class="delete-modal-icon">!</div>
+
+        <h2 id="deleteModalTitle">Delete Lost Item?</h2>
+
+        <p>
+          Are you sure you want to delete
+          <strong id="deleteItemName">this item</strong>?
+          This action cannot be undone.
+        </p>
+
+        <div class="delete-modal-actions">
+          <button type="button" id="cancelDeleteItem">
+            Cancel
+          </button>
+
+          <button type="button" id="confirmDeleteItem">
+            Delete Item
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- =====================================
+         ADD LOST ITEM MODAL
+    ====================================== -->
+    <div
+      class="lost-modal-overlay"
+      id="addLostModal"
+      aria-hidden="true"
+    >
+
+      <div
+        class="add-lost-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="addLostModalTitle"
+      >
+
+        <div class="lost-modal-header">
+          <div>
+            <h2 id="addLostModalTitle">Add Lost Item Report</h2>
+            <p>Record a lost item reported personally to campus security.</p>
+          </div>
+
+          <button
+            type="button"
+            class="lost-modal-close"
+            id="closeAddLost"
+            aria-label="Close modal"
+          >
+            &times;
+          </button>
+        </div>
+
+
+        <!-- ADMIN NOTICE -->
+        <div class="admin-report-notice">
+          <span>ⓘ</span>
+
+          <div>
+            <strong>Admin-Assisted Reporting</strong>
+            <p>
+              This form is intended for non-PLMun individuals
+              who personally report a lost item to campus security.
+            </p>
+          </div>
+        </div>
+
+
+        <form id="addLostForm" class="add-lost-form">
+
+          <h3 class="add-form-section-title">Item Information</h3>
+
+          <div class="add-form-group">
+            <label for="addItemName">
+              Item Name <span>*</span>
+            </label>
+
+            <input
+              type="text"
+              id="addItemName"
+              placeholder="e.g. Black Wallet"
+              maxlength="100"
+              required
+            >
+          </div>
+
+          <div class="add-form-group">
+            <label for="addItemDescription">
+              Description <span>*</span>
+            </label>
+
+            <textarea
+              id="addItemDescription"
+              placeholder="Describe the item and its identifying features..."
+              maxlength="500"
+              required
+            ></textarea>
+          </div>
+
+          <div class="add-form-group">
+            <label for="addItemBrand">Brand (Optional)</label>
+
+            <input
+              type="text"
+              id="addItemBrand"
+              placeholder="e.g. Nike, Samsung"
+            >
+          </div>
+
+          <div class="add-form-row">
+
+            <div class="add-form-group">
+              <label for="addItemCategory">
+                Category <span>*</span>
+              </label>
+
+              <select id="addItemCategory" required>
+                <option value="">Select category</option>
+                <option value="electronics">Electronics</option>
+                <option value="bags">Bags</option>
+                <option value="personal">Personal Items</option>
+                <option value="school">School Supplies</option>
+                <option value="clothing">Clothing</option>
+                <option value="others">Others</option>
+              </select>
+            </div>
+
+            <div class="add-form-group">
+              <label for="addItemDateLost">
+                Date Lost <span>*</span>
+              </label>
+
+              <input
+                type="date"
+                id="addItemDateLost"
+                required
+              >
+            </div>
+
+          </div>
+
+          <div class="add-form-group">
+            <label for="addItemLocation">
+              Location Lost <span>*</span>
+            </label>
+
+            <input
+              type="text"
+              id="addItemLocation"
+              placeholder="e.g. Library, Room 204"
+              required
+            >
+          </div>
+
+
+          <!-- ITEM IMAGE -->
+          <div class="add-form-group">
+            <label for="addItemImage">Item Image (Optional)</label>
+
+            <div class="add-image-upload">
+
+              <input
+                type="file"
+                id="addItemImage"
+                accept="image/*"
+              >
+
+              <small>
+                Upload a clear photo of the reported item, if available.
+              </small>
+
+              <img
+                src=""
+                alt="Item image preview"
+                class="add-image-preview"
+                id="addImagePreview"
+              >
+
+            </div>
+          </div>
+
+
+          <!-- REPORTER INFORMATION -->
+          <h3 class="add-form-section-title">Reporter Information</h3>
+
+          <div class="add-form-group">
+            <label for="addReporterName">
+              Full Name <span>*</span>
+            </label>
+
+            <input
+              type="text"
+              id="addReporterName"
+              placeholder="Enter reporter's full name"
+              maxlength="100"
+              required
+            >
+          </div>
+
+          <div class="add-form-group">
+            <label for="addReporterContact">
+              Contact Information (Optional)
+            </label>
+
+            <input
+              type="text"
+              id="addReporterContact"
+              placeholder="Phone number or email address"
+            >
+          </div>
+
+          <div class="add-form-row">
+
+            <div class="add-form-group">
+              <label>Reporter Type</label>
+
+              <input
+                type="text"
+                value="Non-PLMun"
+                readonly
+                class="auto-date-field"
+              >
+            </div>
+
+            <div class="add-form-group">
+              <label>Reported By</label>
+
+              <input
+                type="text"
+                value="Admin"
+                readonly
+                class="auto-date-field"
+              >
+            </div>
+
+          </div>
+
+          <div class="add-form-group">
+            <label for="addDateReported">Date Reported</label>
+
+            <input
+              type="text"
+              id="addDateReported"
+              class="auto-date-field"
+              readonly
+            >
+          </div>
+
+
+          <!-- FORM FOOTER -->
+          <div class="update-modal-footer">
+
+            <button type="button" id="cancelAddLost">
+              Cancel
+            </button>
+
+            <button type="submit" id="submitAddLost">
+              Submit Report
+            </button>
+
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+
+  </main>
+
+
+
+  <!-- JAVASCRIPT -->
+  <script>
+    
+document.addEventListener("DOMContentLoaded", function () {
+
+  // =====================================
+  // SIDEBAR
+  // =====================================
+
+  const sidebarToggle = document.querySelector(".sidebar-toggle");
+  const sidebarClose = document.querySelector(".sidebar-close");
+
+  if (sidebarToggle) {
+    sidebarToggle.addEventListener("click", function () {
+      document.body.classList.toggle("sidebar-open");
+
+      sidebarToggle.setAttribute(
+        "aria-expanded",
+        document.body.classList.contains("sidebar-open")
+      );
+    });
+  }
+
+  if (sidebarClose) {
+    sidebarClose.addEventListener("click", function () {
+      document.body.classList.remove("sidebar-open");
+
+      if (sidebarToggle) {
+        sidebarToggle.setAttribute("aria-expanded", "false");
+      }
+    });
+  }
+
+
+  // =====================================
+  // HEADER AND CUSTOM DROPDOWNS
+  // =====================================
+
+  const headerDropdowns = document.querySelectorAll(".header-dropdown");
+  const customSelectWrappers = document.querySelectorAll(".custom-select-wrapper");
+
+  function closeAllDropdowns() {
+    headerDropdowns.forEach(dropdown => {
+      dropdown.classList.remove("open");
+
+      const button = dropdown.querySelector("button");
+
+      if (button) {
+        button.setAttribute("aria-expanded", "false");
+      }
+    });
+
+    customSelectWrappers.forEach(wrapper => {
+      wrapper.classList.remove("open");
+
+      const trigger = wrapper.querySelector(".custom-select-trigger");
+
+      if (trigger) {
+        trigger.setAttribute("aria-expanded", "false");
+      }
+    });
+  }
+
+
+  headerDropdowns.forEach(dropdown => {
+    const trigger = dropdown.querySelector("button");
+
+    if (!trigger) return;
+
+    trigger.addEventListener("click", function (event) {
+      event.stopPropagation();
+
+      const wasOpen = dropdown.classList.contains("open");
+
+      closeAllDropdowns();
+
+      if (!wasOpen) {
+        dropdown.classList.add("open");
+        trigger.setAttribute("aria-expanded", "true");
+      }
+    });
+  });
+
+
+  customSelectWrappers.forEach(wrapper => {
+    const trigger = wrapper.querySelector(".custom-select-trigger");
+    const selectedText = wrapper.querySelector(".selected-text");
+    const hiddenInput = wrapper.querySelector('input[type="hidden"]');
+    const options = wrapper.querySelectorAll(".custom-option");
+
+    if (!trigger) return;
+
+    trigger.addEventListener("click", function (event) {
+      event.stopPropagation();
+
+      const wasOpen = wrapper.classList.contains("open");
+
+      closeAllDropdowns();
+
+      if (!wasOpen) {
+        wrapper.classList.add("open");
+        trigger.setAttribute("aria-expanded", "true");
+      }
+    });
+
+    options.forEach(option => {
+      option.addEventListener("click", function (event) {
+        event.stopPropagation();
+
+        options.forEach(item => item.classList.remove("selected"));
+        option.classList.add("selected");
+
+        if (selectedText) {
+          selectedText.textContent = option.textContent.trim();
+        }
+
+        if (hiddenInput) {
+          hiddenInput.value = option.dataset.value;
+          hiddenInput.dispatchEvent(new Event("change"));
+        }
+
+        wrapper.classList.remove("open");
+        trigger.setAttribute("aria-expanded", "false");
+      });
+    });
+  });
+
+
+  document.addEventListener("click", function (event) {
+    if (
+      !event.target.closest(".header-dropdown") &&
+      !event.target.closest(".custom-select-wrapper")
+    ) {
+      closeAllDropdowns();
+    }
+  });
+
+
+  // =====================================
+  // NOTIFICATIONS
+  // =====================================
+
+  const notificationItems = document.querySelectorAll(".notification-item");
+  const notificationBadge = document.getElementById("notificationBadge");
+  const notificationButton = document.querySelector(".notification-btn");
+  const markAllRead = document.getElementById("markAllRead");
+  const notificationDescription = document.querySelector(".dropdown-heading p");
+
+  function updateNotificationCount() {
+    const unreadCount = document.querySelectorAll(
+      ".notification-item.unread"
+    ).length;
+
+    if (notificationBadge) {
+      notificationBadge.textContent = unreadCount;
+      notificationBadge.style.display = unreadCount > 0 ? "flex" : "none";
+    }
+
+    if (notificationButton) {
+      notificationButton.setAttribute(
+        "aria-label",
+        unreadCount + " unread notifications"
+      );
+    }
+
+    if (notificationDescription) {
+      notificationDescription.textContent =
+        unreadCount === 0
+          ? "You are all caught up!"
+          : "You have " + unreadCount + " unread notifications";
+    }
+  }
+
+  notificationItems.forEach(item => {
+    item.addEventListener("click", function () {
+      item.classList.remove("unread");
+      updateNotificationCount();
+    });
+  });
+
+  if (markAllRead) {
+    markAllRead.addEventListener("click", function () {
+      notificationItems.forEach(item => {
+        item.classList.remove("unread");
+      });
+
+      updateNotificationCount();
+    });
+  }
+
+  updateNotificationCount();
+
+
+  // =====================================
+  // PROFILE ACTIONS
+  // =====================================
+
+  document.querySelectorAll(".profile-dropdown-links button").forEach(button => {
+    button.addEventListener("click", function () {
+      alert(button.dataset.message || "This feature will be available soon.");
+    });
+  });
+
+
+  // =====================================
+  // HEADER SEARCH CLEAR BUTTON
+  // =====================================
+
+  const adminSearchInput = document.getElementById("adminSearchInput");
+  const clearSearch = document.getElementById("clearSearch");
+
+  if (adminSearchInput) {
+    adminSearchInput.addEventListener("input", function () {
+      if (clearSearch) {
+        clearSearch.hidden = !adminSearchInput.value.trim();
+      }
+    });
+  }
+
+  if (clearSearch && adminSearchInput) {
+    clearSearch.addEventListener("click", function () {
+      adminSearchInput.value = "";
+      clearSearch.hidden = true;
+      adminSearchInput.focus();
+    });
+  }
+
+
+  // =====================================
+  // LOST ITEMS ELEMENTS
+  // =====================================
+
+  const lostItemsTableBody = document.getElementById("lostItemsTableBody");
+
+  const lostItemSearch = document.getElementById("lostItemSearch");
+  const lostCategoryFilter = document.getElementById("lostCategoryFilter");
+  const lostDateFilter = document.getElementById("lostDateFilter");
+
+  const lostRecordsCount = document.getElementById("lostRecordsCount");
+  const lostTableFooter = document.getElementById("lostTableFooter");
+
+  const refreshLostItems = document.getElementById("refreshLostItems");
+
+  const lostPagination = document.getElementById("lostPagination");
+  
+  const lostPaginationControls = document.getElementById(
+    "lostPaginationControls"
+  );
+
+  const recordsPerPage = 5;
+  let currentPage = 1;
+
+  // Keep the original rows even when the table is paginated.
+  let originalLostRows = lostItemsTableBody
+    ? Array.from(lostItemsTableBody.querySelectorAll("tr"))
+    : [];
+
+
+  // =====================================
+  // PAGINATION BUTTONS
+  // =====================================
+function renderPagination(totalPages, totalRecords) {
+  if (!lostPaginationControls) return;
+
+  lostPaginationControls.innerHTML = "";
+
+  if (totalRecords === 0) {
+    if (lostPagination) {
+      lostPagination.style.display = "none";
+    }
+    return;
+  }
+
+  if (lostPagination) {
+    lostPagination.style.display = "flex";
+  }
+
+  function createPageButton(label, page, disabled, active) {
+    const button = document.createElement("button");
+
+    button.type = "button";
+    button.className = "lost-page-btn";
+    button.textContent = label;
+    button.disabled = disabled;
+
+    if (active) {
+      button.classList.add("active");
+      button.setAttribute("aria-current", "page");
+    }
+
+    button.addEventListener("click", function () {
+      if (disabled || page === currentPage) return;
+
+      currentPage = page;
+      filterLostItems();
+    });
+
+    lostPaginationControls.appendChild(button);
+  }
+
+  // PREVIOUS BUTTON
+  createPageButton("‹", currentPage - 1, currentPage === 1, false);
+
+  // PAGE NUMBERS
+  for (let page = 1; page <= totalPages; page++) {
+    createPageButton(
+      page,
+      page,
+      false,
+      page === currentPage
+    );
+  }
+
+  // NEXT BUTTON
+  createPageButton(
+    "›",
+    currentPage + 1,
+    currentPage === totalPages,
+    false
+  );
+}
+
+
+  // =====================================
+  // SEARCH, CATEGORY FILTER AND SORT
+  // =====================================
+
+  function filterLostItems() {
+    if (!lostItemsTableBody) return;
+
+    const searchValue = lostItemSearch
+      ? lostItemSearch.value.trim().toLowerCase()
+      : "";
+
+    const selectedCategory = lostCategoryFilter
+      ? lostCategoryFilter.value
+      : "";
+
+    const selectedDate = lostDateFilter
+      ? lostDateFilter.value
+      : "newest";
+
+
+    // FILTER
+
+    let filteredRows = originalLostRows.filter(row => {
+      const rowText = row.textContent.toLowerCase();
+      const rowCategory = row.dataset.category || "";
+
+      const matchesSearch = rowText.includes(searchValue);
+
+      const matchesCategory =
+        selectedCategory === "" ||
+        rowCategory === selectedCategory;
+
+      return matchesSearch && matchesCategory;
+    });
+
+
+    // SORT BY DATE REPORTED
+
+    filteredRows.sort((a, b) => {
+      const dateA = new Date(a.dataset.date || "1970-01-01");
+      const dateB = new Date(b.dataset.date || "1970-01-01");
+
+      if (selectedDate === "oldest") {
+        return dateA - dateB;
+      }
+
+      return dateB - dateA;
+    });
+
+
+    // PAGINATION CALCULATION
+
+    const totalRecords = filteredRows.length;
+
+    const totalPages = Math.max(
+      1,
+      Math.ceil(totalRecords / recordsPerPage)
+    );
+
+    if (currentPage > totalPages) {
+      currentPage = totalPages;
+    }
+
+    const startIndex = (currentPage - 1) * recordsPerPage;
+    const pageRows = filteredRows.slice(
+      startIndex,
+      startIndex + recordsPerPage
+    );
+
+
+    // CLEAR TABLE
+
+    lostItemsTableBody.innerHTML = "";
+
+
+    // DISPLAY CURRENT PAGE
+
+    if (pageRows.length > 0) {
+      pageRows.forEach(row => {
+        lostItemsTableBody.appendChild(row);
+      });
+    } else {
+      const emptyRow = document.createElement("tr");
+
+      const emptyCell = document.createElement("td");
+
+      emptyCell.colSpan = 7;
+      emptyCell.textContent = "No lost items found.";
+      emptyCell.style.textAlign = "center";
+      emptyCell.style.padding = "35px 15px";
+      emptyCell.style.color = "#888";
+      emptyCell.style.fontSize = "13px";
+
+      emptyRow.appendChild(emptyCell);
+      lostItemsTableBody.appendChild(emptyRow);
+    }
+
+
+    // UPDATE RECORD COUNT
+
+    if (lostRecordsCount) {
+      lostRecordsCount.textContent =
+        totalRecords + (totalRecords === 1 ? " Record" : " Records");
+    }
+
+
+    // UPDATE TABLE FOOTER
+
+    if (lostTableFooter) {
+      lostTableFooter.textContent =
+        totalRecords === 0
+          ? "No matching records"
+          : `Showing ${totalRecords} of ${originalLostRows.length} total records`;
+    }
+
+
+    // UPDATE PAGINATION
+
+    renderPagination(totalPages, totalRecords);
+  }
+
+
+  // SEARCH
+
+  if (lostItemSearch) {
+    lostItemSearch.addEventListener("input", function () {
+      currentPage = 1;
+      filterLostItems();
+    });
+  }
+
+
+  // CATEGORY FILTER
+
+  if (lostCategoryFilter) {
+    lostCategoryFilter.addEventListener("change", function () {
+      currentPage = 1;
+      filterLostItems();
+    });
+  }
+
+
+  // DATE SORT
+
+  if (lostDateFilter) {
+    lostDateFilter.addEventListener("change", function () {
+      currentPage = 1;
+      filterLostItems();
+    });
+  }
+
+
+  // REFRESH FILTERS
+
+  if (refreshLostItems) {
+    refreshLostItems.addEventListener("click", function () {
+      if (lostItemSearch) lostItemSearch.value = "";
+
+      if (lostCategoryFilter) {
+        lostCategoryFilter.value = "";
+
+        const categoryWrapper = lostCategoryFilter.closest(
+          ".custom-select-wrapper"
+        );
+
+        if (categoryWrapper) {
+          categoryWrapper.querySelector(".selected-text").textContent =
+            "All Categories";
+
+          categoryWrapper.querySelectorAll(".custom-option").forEach(option => {
+            option.classList.toggle(
+              "selected",
+              option.dataset.value === ""
+            );
+          });
+        }
+      }
+
+      if (lostDateFilter) {
+        lostDateFilter.value = "newest";
+
+        const dateWrapper = lostDateFilter.closest(
+          ".custom-select-wrapper"
+        );
+
+        if (dateWrapper) {
+          dateWrapper.querySelector(".selected-text").textContent =
+            "Newest to Oldest";
+
+          dateWrapper.querySelectorAll(".custom-option").forEach(option => {
+            option.classList.toggle(
+              "selected",
+              option.dataset.value === "newest"
+            );
+          });
+        }
+      }
+
+      currentPage = 1;
+      filterLostItems();
+    });
+  }
+
+
+  // =====================================
+  // VIEW LOST ITEM MODAL
+  // =====================================
+
+  const viewLostModal = document.getElementById("viewLostModal");
+  const closeViewModal = document.getElementById("closeViewModal");
+  const closeViewModalFooter = document.getElementById("closeViewModalFooter");
+
+  const viewItemImage = document.getElementById("viewItemImage");
+  const viewItemName = document.getElementById("viewItemName");
+  const viewItemId = document.getElementById("viewItemId");
+  const viewItemDescription = document.getElementById("viewItemDescription");
+
+  const viewItemCategory = document.getElementById("viewItemCategory");
+  const viewItemReporter = document.getElementById("viewItemReporter");
+  const viewItemDate = document.getElementById("viewItemDate");
+  const viewItemLocation = document.getElementById("viewItemLocation");
+
+
+  function showViewLostModal(row) {
+    const cells = row.querySelectorAll("td");
+
+    const itemImage = row.querySelector(".lost-item-info img");
+    const itemName = row.querySelector(".lost-item-info strong");
+    const itemDescription = row.querySelector(".lost-item-info span");
+
+    if (viewItemImage) {
+      viewItemImage.src = itemImage ? itemImage.src : "";
+      viewItemImage.alt = itemImage ? itemImage.alt : "Lost item";
+    }
+
+    if (viewItemName) {
+      viewItemName.textContent = itemName
+        ? itemName.textContent.trim()
+        : "Unknown Item";
+    }
+
+    if (viewItemDescription) {
+      viewItemDescription.textContent =
+        row.dataset.description ||
+        (itemDescription ? itemDescription.textContent.trim() : "No description available.");
+    }
+
+    if (viewItemId) {
+      viewItemId.textContent = cells[1]
+        ? cells[1].textContent.trim()
+        : "";
+    }
+
+    if (viewItemCategory) {
+      viewItemCategory.textContent = cells[2]
+        ? cells[2].textContent.trim()
+        : "";
+    }
+
+    if (viewItemReporter) {
+      viewItemReporter.textContent = cells[3]
+        ? cells[3].textContent.trim()
+        : "";
+    }
+
+    if (viewItemDate) {
+      viewItemDate.textContent = cells[4]
+        ? cells[4].textContent.trim()
+        : "";
+    }
+
+    if (viewItemLocation) {
+      viewItemLocation.textContent = cells[5]
+        ? cells[5].textContent.trim()
+        : "";
+    }
+
+    viewLostModal.classList.add("show");
+    viewLostModal.setAttribute("aria-hidden", "false");
+
+    document.body.style.overflow = "hidden";
+
+    if (closeViewModal) closeViewModal.focus();
+  }
+
+
+  function hideViewLostModal() {
+    if (!viewLostModal) return;
+
+    viewLostModal.classList.remove("show");
+    viewLostModal.setAttribute("aria-hidden", "true");
+
+    document.body.style.overflow = "";
+  }
+
+
+  if (closeViewModal) {
+    closeViewModal.addEventListener("click", hideViewLostModal);
+  }
+
+  if (closeViewModalFooter) {
+    closeViewModalFooter.addEventListener("click", hideViewLostModal);
+  }
+
+  if (viewLostModal) {
+    viewLostModal.addEventListener("click", function (event) {
+      if (event.target === viewLostModal) {
+        hideViewLostModal();
+      }
+    });
+  }
+
+
+  // =====================================
+  // UPDATE LOST ITEM MODAL
+  // =====================================
+
+  const updateLostModal = document.getElementById("updateLostModal");
+  const updateLostForm = document.getElementById("updateLostForm");
+
+  const closeUpdateModal = document.getElementById("closeUpdateModal");
+  const cancelUpdateModal = document.getElementById("cancelUpdateModal");
+
+  const updateItemName = document.getElementById("updateItemName");
+  const updateItemDescription = document.getElementById("updateItemDescription");
+  const updateItemCategory = document.getElementById("updateItemCategory");
+  const updateItemLocation = document.getElementById("updateItemLocation");
+  const updateItemReporter = document.getElementById("updateItemReporter");
+  const updateItemDate = document.getElementById("updateItemDate");
+
+  let selectedLostRow = null;
+
+
+  function showUpdateLostModal(row) {
+    selectedLostRow = row;
+
+    const cells = row.querySelectorAll("td");
+
+    const itemName = row.querySelector(".lost-item-info strong");
+    const itemDescription = row.querySelector(".lost-item-info span");
+
+    updateItemName.value = itemName
+      ? itemName.textContent.trim()
+      : "";
+
+    updateItemDescription.value =
+      row.dataset.description ||
+      (itemDescription ? itemDescription.textContent.trim() : "");
+
+    updateItemCategory.value = row.dataset.category || "";
+
+    updateItemLocation.value = cells[5]
+      ? cells[5].textContent.trim()
+      : "";
+
+    updateItemReporter.value = cells[3]
+      ? cells[3].textContent.trim()
+      : "";
+
+    updateItemDate.value = row.dataset.date || "";
+
+    updateLostModal.classList.add("show");
+    updateLostModal.setAttribute("aria-hidden", "false");
+
+    document.body.style.overflow = "hidden";
+
+    updateItemName.focus();
+  }
+
+
+  function hideUpdateLostModal() {
+    if (!updateLostModal) return;
+
+    updateLostModal.classList.remove("show");
+    updateLostModal.setAttribute("aria-hidden", "true");
+
+    document.body.style.overflow = "";
+
+    selectedLostRow = null;
+  }
+
+
+  if (closeUpdateModal) {
+    closeUpdateModal.addEventListener("click", hideUpdateLostModal);
+  }
+
+  if (cancelUpdateModal) {
+    cancelUpdateModal.addEventListener("click", hideUpdateLostModal);
+  }
+
+  if (updateLostModal) {
+    updateLostModal.addEventListener("click", function (event) {
+      if (event.target === updateLostModal) {
+        hideUpdateLostModal();
+      }
+    });
+  }
+
+
+  if (updateLostForm) {
+    updateLostForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      if (!selectedLostRow) return;
+
+      const cells = selectedLostRow.querySelectorAll("td");
+
+      const itemName = selectedLostRow.querySelector(
+        ".lost-item-info strong"
+      );
+
+      const itemDescription = selectedLostRow.querySelector(
+        ".lost-item-info span"
+      );
+
+      const categoryNames = {
+        electronics: "Electronics",
+        bags: "Bags",
+        personal: "Personal Items",
+        school: "School Supplies",
+        clothing: "Clothing",
+        others: "Others"
+      };
+
+      const newName = updateItemName.value.trim();
+      const newDescription = updateItemDescription.value.trim();
+      const newCategory = updateItemCategory.value;
+      const newLocation = updateItemLocation.value.trim();
+      const newReporter = updateItemReporter.value.trim();
+      const newDate = updateItemDate.value;
+
+      if (
+        !newName ||
+        !newDescription ||
+        !newCategory ||
+        !newLocation ||
+        !newReporter ||
+        !newDate
+      ) {
+        alert("Please complete all required fields.");
+        return;
+      }
+
+      if (itemName) itemName.textContent = newName;
+
+      if (itemDescription) {
+        itemDescription.textContent = newDescription;
+      }
+
+      cells[2].textContent = categoryNames[newCategory];
+      cells[3].textContent = newReporter;
+
+      cells[4].textContent = formatLostDate(newDate);
+      cells[5].textContent = newLocation;
+
+      selectedLostRow.dataset.category = newCategory;
+      selectedLostRow.dataset.date = newDate;
+      selectedLostRow.dataset.description = newDescription;
+
+      currentPage = 1;
+
+      filterLostItems();
+      hideUpdateLostModal();
+
+      alert("Lost item details updated successfully.");
+    });
+  }
+
+
+  // =====================================
+  // DELETE LOST ITEM MODAL
+  // =====================================
+
+  const deleteLostModal = document.getElementById("deleteLostModal");
+  const deleteItemName = document.getElementById("deleteItemName");
+
+  const cancelDeleteItem = document.getElementById("cancelDeleteItem");
+  const confirmDeleteItem = document.getElementById("confirmDeleteItem");
+
+  let selectedDeleteRow = null;
+
+
+  function showDeleteLostModal(row) {
+    selectedDeleteRow = row;
+
+    const itemName = row.querySelector(".lost-item-info strong");
+
+    if (deleteItemName) {
+      deleteItemName.textContent = itemName
+        ? itemName.textContent.trim()
+        : "this item";
+    }
+
+    deleteLostModal.classList.add("show");
+    deleteLostModal.setAttribute("aria-hidden", "false");
+
+    document.body.style.overflow = "hidden";
+
+    if (cancelDeleteItem) cancelDeleteItem.focus();
+  }
+
+
+  function hideDeleteLostModal() {
+    if (!deleteLostModal) return;
+
+    deleteLostModal.classList.remove("show");
+    deleteLostModal.setAttribute("aria-hidden", "true");
+
+    document.body.style.overflow = "";
+
+    selectedDeleteRow = null;
+  }
+
+
+  if (cancelDeleteItem) {
+    cancelDeleteItem.addEventListener("click", hideDeleteLostModal);
+  }
+
+  if (deleteLostModal) {
+    deleteLostModal.addEventListener("click", function (event) {
+      if (event.target === deleteLostModal) {
+        hideDeleteLostModal();
+      }
+    });
+  }
+
+
+  if (confirmDeleteItem) {
+    confirmDeleteItem.addEventListener("click", function () {
+      if (!selectedDeleteRow) return;
+
+      const rowIndex = originalLostRows.indexOf(selectedDeleteRow);
+
+      if (rowIndex !== -1) {
+        originalLostRows.splice(rowIndex, 1);
+      }
+
+      selectedDeleteRow.remove();
+
+      hideDeleteLostModal();
+
+      currentPage = 1;
+      filterLostItems();
+
+      alert("Lost item deleted successfully.");
+    });
+  }
+
+
+  // =====================================
+  // TABLE ACTION BUTTONS
+  // =====================================
+
+  if (lostItemsTableBody) {
+    lostItemsTableBody.addEventListener("click", function (event) {
+      const viewButton = event.target.closest(".view-item-btn");
+      const updateButton = event.target.closest(".update-item-btn");
+      const deleteButton = event.target.closest(".delete-item-btn");
+
+      const row = event.target.closest("tr");
+
+      if (!row || !row.dataset.category) return;
+
+      if (viewButton) {
+        showViewLostModal(row);
+      }
+
+      if (updateButton) {
+        showUpdateLostModal(row);
+      }
+
+      if (deleteButton) {
+        showDeleteLostModal(row);
+      }
+    });
+  }
+
+
+  // =====================================
+  // ADD LOST ITEM MODAL
+  // =====================================
+
+  const addLostModal = document.getElementById("addLostModal");
+  const addLostForm = document.getElementById("addLostForm");
+
+  const openAddLostModal = document.getElementById("openAddLostModal");
+  const closeAddLost = document.getElementById("closeAddLost");
+  const cancelAddLost = document.getElementById("cancelAddLost");
+
+  const addItemImage = document.getElementById("addItemImage");
+  const addImagePreview = document.getElementById("addImagePreview");
+
+  const addDateReported = document.getElementById("addDateReported");
+
+
+  // =====================================
+  // DATE HELPERS
+  // =====================================
+
+  function getLocalDate() {
+    const now = new Date();
+
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, "0");
+    const day = String(now.getDate()).padStart(2, "0");
+
+    return `${year}-${month}-${day}`;
+  }
+
+
+  function formatLostDate(date) {
+    if (!date) return "";
+
+    return new Date(date + "T00:00:00").toLocaleDateString("en-US", {
+      month: "short",
+      day: "numeric",
+      year: "numeric"
+    });
+  }
+
+
+  // =====================================
+  // GENERATE UNIQUE ITEM ID
+  // =====================================
+
+  function generateLostItemID() {
+    let highestNumber = 0;
+
+    originalLostRows.forEach(row => {
+      const idElement = row.querySelector(".item-id");
+
+      if (!idElement) return;
+
+      const match = idElement.textContent.match(/LST-(\d+)/i);
+
+      if (match) {
+        highestNumber = Math.max(
+          highestNumber,
+          Number(match[1])
+        );
+      }
+    });
+
+    return "LST-" + String(highestNumber + 1).padStart(3, "0");
+  }
+
+
+  // =====================================
+  // OPEN ADD MODAL
+  // =====================================
+
+  function showAddLostModal() {
+    if (!addLostModal || !addLostForm) return;
+
+    addLostForm.reset();
+
+    if (addDateReported) {
+      addDateReported.value = formatLostDate(getLocalDate());
+    }
+
+    if (addImagePreview) {
+      addImagePreview.src = "";
+      addImagePreview.classList.remove("show");
+    }
+
+    addLostModal.classList.add("show");
+    addLostModal.setAttribute("aria-hidden", "false");
+
+    document.body.style.overflow = "hidden";
+
+    const nameField = document.getElementById("addItemName");
+
+    if (nameField) nameField.focus();
+  }
+
+
+  if (openAddLostModal) {
+    openAddLostModal.addEventListener("click", showAddLostModal);
+  }
+
+
+  // =====================================
+  // IMAGE PREVIEW
+  // =====================================
+
+  if (addItemImage) {
+    addItemImage.addEventListener("change", function () {
+      const file = this.files[0];
+
+      if (!file) {
+        addImagePreview.src = "";
+        addImagePreview.classList.remove("show");
+        return;
+      }
+
+      if (!file.type.startsWith("image/")) {
+        alert("Please select a valid image file.");
+        this.value = "";
+        return;
+      }
+
+      if (file.size > 5 * 1024 * 1024) {
+        alert("Image must not exceed 5MB.");
+        this.value = "";
+        return;
+      }
+
+      const reader = new FileReader();
+
+      reader.onload = function (event) {
+        addImagePreview.src = event.target.result;
+        addImagePreview.classList.add("show");
+      };
+
+      reader.readAsDataURL(file);
+    });
+  }
+
+
+  // =====================================
+  // CLOSE ADD MODAL
+  // =====================================
+
+  function hideAddLostModal() {
+    if (!addLostModal) return;
+
+    addLostModal.classList.remove("show");
+    addLostModal.setAttribute("aria-hidden", "true");
+
+    document.body.style.overflow = "";
+  }
+
+
+  if (closeAddLost) {
+    closeAddLost.addEventListener("click", hideAddLostModal);
+  }
+
+  if (cancelAddLost) {
+    cancelAddLost.addEventListener("click", hideAddLostModal);
+  }
+
+  if (addLostModal) {
+    addLostModal.addEventListener("click", function (event) {
+      if (event.target === addLostModal) {
+        hideAddLostModal();
+      }
+    });
+  }
+
+
+  // =====================================
+  // SUBMIT NEW LOST ITEM
+  // =====================================
+
+  if (addLostForm) {
+    addLostForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const itemName = document.getElementById("addItemName").value.trim();
+      const description = document.getElementById("addItemDescription").value.trim();
+      const brand = document.getElementById("addItemBrand").value.trim();
+
+      const category = document.getElementById("addItemCategory").value;
+      const dateLost = document.getElementById("addItemDateLost").value;
+      const location = document.getElementById("addItemLocation").value.trim();
+
+      const reporter = document.getElementById("addReporterName").value.trim();
+      const contact = document.getElementById("addReporterContact").value.trim();
+
+      const imageFile = addItemImage.files[0];
+
+      if (
+        !itemName ||
+        !description ||
+        !category ||
+        !dateLost ||
+        !location ||
+        !reporter
+      ) {
+        alert("Please complete all required fields.");
+        return;
+      }
+
+      const itemID = generateLostItemID();
+
+      const reportDate = getLocalDate();
+      const formattedReportDate = formatLostDate(reportDate);
+
+      const categoryNames = {
+        electronics: "Electronics",
+        bags: "Bags",
+        personal: "Personal Items",
+        school: "School Supplies",
+        clothing: "Clothing",
+        others: "Others"
+      };
+
+      const placeholderImage =
+        "data:image/svg+xml;charset=UTF-8," +
+        encodeURIComponent(`
+          <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120">
+            <rect width="100%" height="100%" fill="#F1F3F2"/>
+            <text x="50%" y="50%" text-anchor="middle"
+              dominant-baseline="middle"
+              fill="#89938D" font-size="13">
+              No Image
+            </text>
+          </svg>
+        `);
+
+
+      function createLostRecord(imageSource) {
+        const newRow = document.createElement("tr");
+
+        newRow.dataset.category = category;
+        newRow.dataset.date = reportDate;
+        newRow.dataset.dateLost = dateLost;
+        newRow.dataset.brand = brand;
+        newRow.dataset.contact = contact;
+        newRow.dataset.reporterType = "non-plmun";
+        newRow.dataset.reportedBy = "admin";
+        newRow.dataset.description = description;
+
+
+        // ITEM DETAILS CELL
+
+        const itemCell = document.createElement("td");
+
+        const itemInfo = document.createElement("div");
+        itemInfo.className = "lost-item-info";
+
+        const image = document.createElement("img");
+        image.src = imageSource || placeholderImage;
+        image.alt = "Reported lost item";
+
+        const itemText = document.createElement("div");
+
+        const name = document.createElement("strong");
+        name.textContent = itemName;
+
+        const itemDesc = document.createElement("span");
+        itemDesc.textContent = description;
+
+        itemText.appendChild(name);
+        itemText.appendChild(itemDesc);
+
+        itemInfo.appendChild(image);
+        itemInfo.appendChild(itemText);
+
+        itemCell.appendChild(itemInfo);
+
+
+        // ITEM ID CELL
+
+        const idCell = document.createElement("td");
+
+        const idSpan = document.createElement("span");
+        idSpan.className = "item-id";
+        idSpan.textContent = itemID;
+
+        idCell.appendChild(idSpan);
+
+
+        // CATEGORY CELL
+
+        const categoryCell = document.createElement("td");
+        categoryCell.textContent = categoryNames[category];
+
+
+        // REPORTER CELL
+
+        const reporterCell = document.createElement("td");
+
+        const reporterInfo = document.createElement("div");
+        reporterInfo.className = "reporter-cell";
+
+        const reporterName = document.createElement("strong");
+        reporterName.textContent = reporter;
+
+        const adminTag = document.createElement("span");
+        adminTag.className = "admin-reported-tag";
+        adminTag.textContent = "REPORTED BY ADMIN";
+
+        reporterInfo.appendChild(reporterName);
+        reporterInfo.appendChild(adminTag);
+        reporterCell.appendChild(reporterInfo);
+
+
+        // DATE CELL
+
+        const dateCell = document.createElement("td");
+        dateCell.textContent = formattedReportDate;
+
+
+        // LOCATION CELL
+
+        const locationCell = document.createElement("td");
+        locationCell.textContent = location;
+
+
+        // ACTIONS CELL
+
+        const actionsCell = document.createElement("td");
+
+        const actions = document.createElement("div");
+        actions.className = "lost-row-actions";
+
+        const viewButton = document.createElement("button");
+        viewButton.type = "button";
+        viewButton.className = "view-item-btn";
+        viewButton.textContent = "View";
+
+        const updateButton = document.createElement("button");
+        updateButton.type = "button";
+        updateButton.className = "update-item-btn";
+        updateButton.textContent = "Update";
+
+        const deleteButton = document.createElement("button");
+        deleteButton.type = "button";
+        deleteButton.className = "delete-item-btn";
+        deleteButton.textContent = "Delete";
+
+        actions.appendChild(viewButton);
+        actions.appendChild(updateButton);
+        actions.appendChild(deleteButton);
+
+        actionsCell.appendChild(actions);
+
+
+        // ADD ALL CELLS TO ROW
+
+        [
+          itemCell,
+          idCell,
+          categoryCell,
+          reporterCell,
+          dateCell,
+          locationCell,
+          actionsCell
+        ].forEach(cell => {
+          newRow.appendChild(cell);
+        });
+
+
+        // SAVE NEW RECORD
+
+        originalLostRows.push(newRow);
+
+        currentPage = 1;
+
+        if (lostItemSearch) {
+          lostItemSearch.value = "";
+        }
+
+        if (lostCategoryFilter) {
+          lostCategoryFilter.value = "";
+
+          const categoryWrapper = lostCategoryFilter.closest(
+            ".custom-select-wrapper"
+          );
+
+          if (categoryWrapper) {
+            categoryWrapper.querySelector(".selected-text").textContent =
+              "All Categories";
+
+            categoryWrapper.querySelectorAll(".custom-option").forEach(option => {
+              option.classList.toggle(
+                "selected",
+                option.dataset.value === ""
+              );
+            });
+          }
+        }
+
+        if (lostDateFilter) {
+          lostDateFilter.value = "newest";
+
+          const dateWrapper = lostDateFilter.closest(
+            ".custom-select-wrapper"
+          );
+
+          if (dateWrapper) {
+            dateWrapper.querySelector(".selected-text").textContent =
+              "Newest to Oldest";
+
+            dateWrapper.querySelectorAll(".custom-option").forEach(option => {
+              option.classList.toggle(
+                "selected",
+                option.dataset.value === "newest"
+              );
+            });
+          }
+        }
+
+        filterLostItems();
+
+        hideAddLostModal();
+
+        alert("Lost item report successfully added.");
+      }
+
+
+      if (imageFile) {
+        const reader = new FileReader();
+
+        reader.onload = function (event) {
+          createLostRecord(event.target.result);
+        };
+
+        reader.onerror = function () {
+          alert("Unable to read the selected image. Please try again.");
+        };
+
+        reader.readAsDataURL(imageFile);
+      } else {
+        createLostRecord("");
+      }
+    });
+  }
+
+
+  // =====================================
+  // ESCAPE KEY
+  // =====================================
+
+  document.addEventListener("keydown", function (event) {
+    if (event.key !== "Escape") return;
+
+    closeAllDropdowns();
+
+    if (viewLostModal && viewLostModal.classList.contains("show")) {
+      hideViewLostModal();
+    }
+
+    if (updateLostModal && updateLostModal.classList.contains("show")) {
+      hideUpdateLostModal();
+    }
+
+    if (deleteLostModal && deleteLostModal.classList.contains("show")) {
+      hideDeleteLostModal();
+    }
+
+    if (addLostModal && addLostModal.classList.contains("show")) {
+      hideAddLostModal();
+    }
+  });
+
+
+  // =====================================
+  // INITIAL TABLE DISPLAY
+  // =====================================
+
+  filterLostItems();
+
+});
+  </script>
+
+</body>
+</html>
