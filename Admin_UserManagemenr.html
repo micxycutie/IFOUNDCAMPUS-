@@ -1,0 +1,1781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="ADMIN_SIDEBAR.css">
+<link rel="stylesheet" href="ADMIN_USER_MANAGEMENT.css">
+  <title>iFoundCampus | ADMIN_DASHBOARD</title>
+</head>
+<body>
+      
+  <aside class="admin-sidebar">
+
+    <button type="button" class="sidebar-close" aria-label="Close sidebar">
+      &times;
+    </button>
+    
+    <!-- LOGO -->
+    <div class="admin-logo">
+      <a href="ADMIN_DASHBOARD.html">
+        <span class="logo-ifound">iFOUND</span>
+        <span class="logo-campus">CAMPUS</span>
+      </a>
+    </div>
+
+    <!-- MAIN -->
+    <div class="sidebar-section">
+      <p class="sidebar-label">MAIN</p>
+      <a href="ADMIN_DASHBOARD.html" class="sidebar-link">
+        <img src="images/dashboard.png" alt="">
+        <span>Dashboard</span>
+      </a>
+    </div>
+
+    <!-- ITEM -->
+    <div class="sidebar-section">
+      <p class="sidebar-label">ITEM</p>
+      <a href="ADMIN_LOST_ITEMS.html" class="sidebar-link">
+        <img src="images/lost-items.png" alt="">
+        <span>Lost Items</span>
+      </a>
+      <a href="ADMIN_FOUND_ITEMS.html" class="sidebar-link">
+        <img src="images/found-items.png" alt="">
+        <span>Found Items</span>
+      </a>
+      <a href="ADMIN_CLAIM_VERIFICATION.html" class="sidebar-link">
+        <img src="images/claim-verification.png" alt="">
+        <span>Claim Verification</span>
+      </a>
+    </div>
+
+    <!-- ADMINISTRATOR -->
+    <div class="sidebar-section">
+      <p class="sidebar-label">ADMINISTRATOR</p>
+      <a href="ADMIN_USER_MANAGEMENT.html" class="sidebar-link active">
+        <img src="images/user-management.png" alt="">
+        <span>User Management</span>
+      </a>
+      <a href="ADMIN_REGISTERED_USERS.html" class="sidebar-link ">
+        <img src="images/registered-users.png" alt="">
+        <span>Registered Users</span>
+      </a>
+      <a href="ADMIN_REPORTS.html" class="sidebar-link">
+        <img src="images/reports.png" alt="">
+        <span>Reports</span>
+      </a>
+    </div>
+
+    <!-- LOGOUT -->
+    <div class="sidebar-logout">
+      <a href="LOGIN.html" class="sidebar-link logout-link">
+        <img src="images/logout.png" alt="">
+        <span>Logout</span>
+      </a>
+    </div>
+
+  </aside>
+
+<!-- ADMIN HEADER -->
+<header class="admin-header">
+
+  <div class="header-left">
+    <button class="sidebar-toggle" type="button" aria-label="Toggle sidebar menu">
+      <img src="images/sidebar-toggle.png" alt="">
+    </button>
+  </div>
+
+  <div class="header-right">
+
+    <!-- SEARCH -->
+    <div class="admin-search">
+      <img src="images/search.png" alt="">
+      <input
+        type="search"
+        id="adminSearchInput"
+        placeholder="Search..."
+        aria-label="Search dashboard"
+      >
+      <button type="button" id="clearSearch" aria-label="Clear search" hidden>
+        &times;
+      </button>
+    </div>
+
+    <!-- NOTIFICATION -->
+    <div class="header-dropdown notification-wrapper">
+
+      <button
+        class="header-icon notification-btn"
+        type="button"
+        aria-label="Notifications"
+        aria-expanded="false"
+        aria-controls="notificationDropdown"
+      >
+        <img src="images/notification.png" alt="">
+        <span class="notification-badge" id="notificationBadge">3</span>
+      </button>
+
+      <div class="header-dropdown-menu notif-dropdown" id="notificationDropdown">
+
+        <div class="dropdown-heading">
+          <div>
+            <h3>Notifications</h3>
+            <p>You have 3 unread notifications</p>
+          </div>
+          <button type="button" id="markAllRead">Mark all read</button>
+        </div>
+
+        <div class="notification-list">
+
+          <div class="notification-item unread">
+            <span class="notif-indicator"></span>
+            <div>
+              <strong>New Claim Request</strong>
+              <p>A student submitted a claim request.</p>
+              <small>Just now</small>
+            </div>
+          </div>
+
+          <div class="notification-item unread">
+            <span class="notif-indicator"></span>
+            <div>
+              <strong>New Lost Item Report</strong>
+              <p>A new lost item has been reported.</p>
+              <small>10 minutes ago</small>
+            </div>
+          </div>
+
+          <div class="notification-item unread">
+            <span class="notif-indicator"></span>
+            <div>
+              <strong>New Found Item Report</strong>
+              <p>A found item report needs review.</p>
+              <small>30 minutes ago</small>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="dropdown-footer">
+          <a href="ADMIN_NOTIFICATIONS.html">View all notifications</a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ADMIN PROFILE -->
+    <div class="admin-profile header-dropdown">
+
+      <button
+        class="profile-trigger"
+        type="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+        aria-controls="profileDropdown"
+      >
+        <img src="images/admin-profile.png" class="profile-picture" alt="Admin profile">
+
+        <div class="profile-info">
+          <span class="profile-name">System Administrator</span>
+          <span class="profile-role">Administrator</span>
+        </div>
+
+        <img src="images/chevron-down.png" class="profile-arrow" alt="">
+      </button>
+
+      <div class="header-dropdown-menu profile-dropdown" id="profileDropdown">
+
+        <div class="profile-dropdown-header">
+          <img src="images/admin-profile.png" alt="">
+          <div>
+            <strong>System Administrator</strong>
+            <span>Administrator</span>
+          </div>
+        </div>
+
+        <div class="profile-dropdown-links">
+          <button type="button" data-message="Profile settings will be available soon.">
+            <span>♙</span> My Profile
+          </button>
+
+          <button type="button" data-message="Account settings will be available soon.">
+            <span>⚙</span> Account Settings
+          </button>
+        </div>
+
+        <div class="profile-logout">
+          <a href="LOGIN.html">
+            <img src="images/logout.png" alt="">
+            Logout
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</header>
+
+  <main class="admin-main-content">
+
+    <!-- PAGE HEADING -->
+    <section class="user-page-heading">
+      <div>
+        <h1>System Administrator</h1>
+        <p>
+          Admin Only — Oversee system access, manage administrator
+          accounts, and maintain authorized personnel records.
+        </p>
+      </div>
+    </section>
+
+    <!-- TOOLBAR -->
+    <section class="user-toolbar">
+
+      <div class="user-toolbar-left">
+
+        <div class="user-search">
+          <img src="images/search.png" alt="">
+
+          <input
+            type="search"
+            id="userSearchInput"
+            placeholder="Search admin name or ID number..."
+          >
+
+          <button
+            type="button"
+            id="clearUserSearch"
+            hidden
+            aria-label="Clear search"
+          >
+            &times;
+          </button>
+        </div>
+
+        <button
+          type="button"
+          class="user-refresh-btn"
+          id="refreshUsers"
+        >
+          <img src="images/refresh.png" alt="">
+          <span>Refresh</span>
+        </button>
+
+        <button
+          type="button"
+          class="add-admin-btn"
+          id="openAddAdmin"
+        >
+          <span class="add-icon">+</span>
+          <span>Add Admin</span>
+        </button>
+
+      </div>
+
+    </section>
+
+    <!-- TABLE -->
+    <section class="user-table-container">
+
+      <div class="user-table-wrapper">
+
+        <table class="user-table">
+
+          <thead>
+            <tr>
+              <th>Admin Name</th>
+              <th>System Role</th>
+              <th>Academic Information</th>
+              <th>ID Number</th>
+              <th>Date Added</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+
+          <tbody id="adminTableBody">
+
+            <!-- SAMPLE ADMIN 1 -->
+            <tr>
+              <td>
+                <div class="admin-name-cell">
+                  <div class="admin-avatar">JS</div>
+                  <div class="admin-name-details">
+                    <strong>Juan Miguel Santos</strong>
+                    <span>Administrator</span>
+                  </div>
+                </div>
+              </td>
+
+              <td>
+                <span class="role-badge">Admin</span>
+              </td>
+
+              <td>
+                <div class="academic-details">
+                  <strong>College of Information Technology</strong>
+                  <span>BS Information Technology</span>
+                  <small>Year Level: 4th Year</small>
+                </div>
+              </td>
+
+              <td>2022-00125</td>
+              <td>November 10, 2026</td>
+
+              <td>
+                <div class="user-action-buttons">
+                  <button class="edit-user-btn" type="button" title="Edit Admin">
+                    <span>✎</span>
+                  </button>
+
+                  <button class="delete-user-btn" type="button" title="Delete Admin">
+                    <span>×</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+
+            <!-- SAMPLE ADMIN 2 -->
+            <tr>
+              <td>
+                <div class="admin-name-cell">
+                  <div class="admin-avatar">CR</div>
+                  <div class="admin-name-details">
+                    <strong>Christine Reyes</strong>
+                    <span>Administrator</span>
+                  </div>
+                </div>
+              </td>
+
+              <td>
+                <span class="role-badge">Admin</span>
+              </td>
+
+              <td>
+                <div class="academic-details">
+                  <strong>College of Business Administration</strong>
+                  <span>BS Business Administration</span>
+                  <small>Year Level: 4th Year</small>
+                </div>
+              </td>
+
+              <td>2022-00148</td>
+              <td>November 11, 2026</td>
+
+              <td>
+                <div class="user-action-buttons">
+                  <button class="edit-user-btn" type="button" title="Edit Admin">
+                    <span>✎</span>
+                  </button>
+
+                  <button class="delete-user-btn" type="button" title="Delete Admin">
+                    <span>×</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+
+            <!-- SAMPLE ADMIN 3 -->
+            <tr>
+              <td>
+                <div class="admin-name-cell">
+                  <div class="admin-avatar">AL</div>
+                  <div class="admin-name-details">
+                    <strong>Angela Lopez</strong>
+                    <span>Administrator</span>
+                  </div>
+                </div>
+              </td>
+
+              <td>
+                <span class="role-badge">Admin</span>
+              </td>
+
+              <td>
+                <div class="academic-details">
+                  <strong>College of Arts and Sciences</strong>
+                  <span>BA Communication</span>
+                  <small>Year Level: 3rd Year</small>
+                </div>
+              </td>
+
+              <td>2023-00087</td>
+              <td>November 12, 2026</td>
+
+              <td>
+                <div class="user-action-buttons">
+                  <button class="edit-user-btn" type="button" title="Edit Admin">
+                    <span>✎</span>
+                  </button>
+
+                  <button class="delete-user-btn" type="button" title="Delete Admin">
+                    <span>×</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+
+            <!-- SAMPLE ADMIN 4 -->
+            <tr>
+              <td>
+                <div class="admin-name-cell">
+                  <div class="admin-avatar">MR</div>
+                  <div class="admin-name-details">
+                    <strong>Mark Rivera</strong>
+                    <span>Administrator</span>
+                  </div>
+                </div>
+              </td>
+
+              <td>
+                <span class="role-badge">Admin</span>
+              </td>
+
+              <td>
+                <div class="academic-details">
+                  <strong>College of Information Technology</strong>
+                  <span>BS Information Technology</span>
+                  <small>Year Level: 4th Year</small>
+                </div>
+              </td>
+
+              <td>2023-00112</td>
+              <td>November 13, 2026</td>
+
+              <td>
+                <div class="user-action-buttons">
+                  <button class="edit-user-btn" type="button" title="Edit Admin">
+                    <span>✎</span>
+                  </button>
+
+                  <button class="delete-user-btn" type="button" title="Delete Admin">
+                    <span>×</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+
+            <!-- SAMPLE ADMIN 5 -->
+            <tr>
+              <td>
+                <div class="admin-name-cell">
+                  <div class="admin-avatar">JD</div>
+                  <div class="admin-name-details">
+                    <strong>Jasmine Dela Cruz</strong>
+                    <span>Administrator</span>
+                  </div>
+                </div>
+              </td>
+
+              <td>
+                <span class="role-badge">Admin</span>
+              </td>
+
+              <td>
+                <div class="academic-details">
+                  <strong>College of Education</strong>
+                  <span>BS Secondary Education</span>
+                  <small>Year Level: 4th Year</small>
+                </div>
+              </td>
+
+              <td>2024-00056</td>
+              <td>November 14, 2026</td>
+
+              <td>
+                <div class="user-action-buttons">
+                  <button class="edit-user-btn" type="button" title="Edit Admin">
+                    <span>✎</span>
+                  </button>
+
+                  <button class="delete-user-btn" type="button" title="Delete Admin">
+                    <span>×</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+      <!-- EMPTY STATE -->
+      <div class="user-empty-state" id="userEmptyState" hidden>
+        <div class="empty-icon">⌕</div>
+        <h3>No administrators found</h3>
+        <p>Try searching using another name or ID number.</p>
+      </div>
+
+      <!-- PAGINATION -->
+      <div class="user-pagination-section">
+
+        <p id="userTableInfo">
+          Showing 1–3 of 5 administrators
+        </p>
+
+        <div class="user-pagination" id="userPagination"></div>
+
+      </div>
+
+      
+    </section>
+
+    
+
+
+  </main>
+
+
+  <!-- ADD / UPDATE ADMIN MODAL -->
+  <div class="user-modal-overlay" id="userFormModal">
+
+    <div class="user-modal">
+
+      <div class="user-modal-header">
+        <div>
+          <h2 id="userModalTitle">Add Administrator</h2>
+          <p id="userModalSubtitle">
+            Enter the administrator's information below.
+          </p>
+        </div>
+
+        <button
+          type="button"
+          class="user-modal-close"
+          id="closeUserForm"
+        >
+          &times;
+        </button>
+      </div>
+
+      <form id="adminForm">
+
+        <div class="user-form-body">
+
+          <div class="user-form-group">
+            <label for="adminFullName">Full Name</label>
+            <input
+              type="text"
+              id="adminFullName"
+              placeholder="Enter full name"
+              required
+            >
+          </div>
+
+          <div class="user-form-group">
+            <label for="adminIdNumber">ID Number</label>
+            <input
+              type="text"
+              id="adminIdNumber"
+              placeholder="Enter ID number"
+              required
+            >
+          </div>
+
+          <div class="user-form-group">
+            <label for="adminCollege">College / Department</label>
+            <input
+              type="text"
+              id="adminCollege"
+              placeholder="Enter college or department"
+              required
+            >
+          </div>
+
+          <div class="user-form-group">
+            <label for="adminProgram">Program / Position</label>
+            <input
+              type="text"
+              id="adminProgram"
+              placeholder="Enter program or position"
+              required
+            >
+          </div>
+
+          <div class="user-form-group">
+            <label for="adminYearLevel">
+              Year Level <span>(Optional)</span>
+            </label>
+
+            <select id="adminYearLevel">
+              <option value="">Select year level</option>
+              <option value="1st Year">1st Year</option>
+              <option value="2nd Year">2nd Year</option>
+              <option value="3rd Year">3rd Year</option>
+              <option value="4th Year">4th Year</option>
+              <option value="5th Year">5th Year</option>
+              <option value="N/A">Not Applicable</option>
+            </select>
+          </div>
+
+          <div class="user-form-group">
+            <label for="adminRole">System Role</label>
+            <input
+              type="text"
+              id="adminRole"
+              value="Admin"
+              readonly
+            >
+          </div>
+
+        </div>
+
+        <div class="user-modal-footer">
+
+          <button
+            type="button"
+            class="user-cancel-btn"
+            id="cancelUserForm"
+          >
+            Cancel
+          </button>
+
+          <button
+            type="submit"
+            class="user-save-btn"
+            id="saveAdminBtn"
+          >
+            Add Administrator
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+
+  <!-- DELETE CONFIRMATION MODAL -->
+  <div class="user-modal-overlay" id="deleteUserModal">
+
+    <div class="user-confirm-modal">
+
+      <div class="confirm-icon">!</div>
+
+      <h2>Delete Administrator?</h2>
+
+      <p>
+        Are you sure you want to delete
+        <strong id="deleteAdminName">this administrator</strong>?
+        This action cannot be undone.
+      </p>
+
+      <div class="confirm-modal-actions">
+
+        <button
+          type="button"
+          class="user-cancel-btn"
+          id="cancelDeleteUser"
+        >
+          Cancel
+        </button>
+
+        <button
+          type="button"
+          class="user-delete-confirm-btn"
+          id="confirmDeleteUser"
+        >
+          Delete
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- TOAST MESSAGE -->
+  <div class="user-toast" id="userToast">
+    <span class="toast-icon" id="toastIcon">✓</span>
+    <span id="toastMessage">Administrator added successfully.</span>
+  </div>
+
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+        // =================================
+  // SIDEBAR TOGGLE (MOBILE VIEW)
+  // =================================
+
+  const sidebarToggle = document.querySelector(".sidebar-toggle");
+  const sidebarClose = document.querySelector(".sidebar-close");
+
+  if (sidebarToggle) {
+    sidebarToggle.addEventListener("click", function () {
+
+      document.body.classList.toggle("sidebar-open");
+
+      const isOpen = document.body.classList.contains("sidebar-open");
+
+      sidebarToggle.setAttribute("aria-expanded", isOpen);
+
+    });
+  }
+
+  if (sidebarClose) {
+    sidebarClose.addEventListener("click", function () {
+
+      document.body.classList.remove("sidebar-open");
+
+      if (sidebarToggle) {
+        sidebarToggle.setAttribute("aria-expanded", "false");
+      }
+
+    });
+  }
+
+
+  // =================================
+  // HEADER DROPDOWNS
+  // =================================
+
+  const headerDropdowns = document.querySelectorAll(".header-dropdown");
+
+  headerDropdowns.forEach(function (dropdown) {
+
+    const trigger = dropdown.querySelector("button");
+
+    if (!trigger) return;
+
+    trigger.addEventListener("click", function (event) {
+
+      event.stopPropagation();
+
+      const wasOpen = dropdown.classList.contains("open");
+
+      // Close other dropdowns
+      headerDropdowns.forEach(function (item) {
+
+        item.classList.remove("open");
+
+        const button = item.querySelector("button");
+
+        if (button) {
+          button.setAttribute("aria-expanded", "false");
+        }
+
+      });
+
+      // Toggle selected dropdown
+      if (!wasOpen) {
+
+        dropdown.classList.add("open");
+
+        trigger.setAttribute("aria-expanded", "true");
+
+      }
+
+    });
+
+  });
+
+
+  // =================================
+  // CLOSE DROPDOWNS WHEN CLICKING OUTSIDE
+  // =================================
+
+  document.addEventListener("click", function (event) {
+
+    if (!event.target.closest(".header-dropdown")) {
+
+      headerDropdowns.forEach(function (dropdown) {
+
+        dropdown.classList.remove("open");
+
+        const trigger = dropdown.querySelector("button");
+
+        if (trigger) {
+          trigger.setAttribute("aria-expanded", "false");
+        }
+
+      });
+
+    }
+
+  });
+
+
+  // =================================
+  // NOTIFICATION FUNCTIONALITY
+  // =================================
+
+  const notificationItems = document.querySelectorAll(".notification-item");
+  const notificationBadge = document.getElementById("notificationBadge");
+  const notificationButton = document.querySelector(".notification-btn");
+  const markAllRead = document.getElementById("markAllRead");
+  const notificationDescription = document.querySelector(".dropdown-heading p");
+
+  function updateNotificationCount() {
+
+    const unreadCount = document.querySelectorAll(".notification-item.unread").length;
+
+    if (notificationBadge) {
+      notificationBadge.textContent = unreadCount;
+      notificationBadge.style.display = unreadCount > 0 ? "flex" : "none";
+    }
+
+    if (notificationButton) {
+      notificationButton.setAttribute(
+        "aria-label",
+        unreadCount + " unread notifications"
+      );
+    }
+
+    if (notificationDescription) {
+
+      notificationDescription.textContent = unreadCount === 0
+        ? "You are all caught up!"
+        : "You have " + unreadCount + " unread notifications";
+
+    }
+
+  }
+
+  notificationItems.forEach(function (item) {
+
+    item.addEventListener("click", function () {
+
+      item.classList.remove("unread");
+
+      updateNotificationCount();
+
+    });
+
+  });
+
+  if (markAllRead) {
+
+    markAllRead.addEventListener("click", function () {
+
+      notificationItems.forEach(function (item) {
+        item.classList.remove("unread");
+      });
+
+      updateNotificationCount();
+
+    });
+
+  }
+
+  updateNotificationCount();
+
+
+  // =================================
+  // PROFILE MENU ALERTS
+  // =================================
+
+  const profileActions = document.querySelectorAll(".profile-dropdown-links button");
+
+  profileActions.forEach(function (button) {
+
+    button.addEventListener("click", function () {
+
+      alert(button.dataset.message);
+
+    });
+
+  });
+
+
+  // =================================
+  // HEADER SEARCH
+  // =================================
+
+  const adminSearchInput = document.getElementById("adminSearchInput");
+  const clearAdminSearch = document.getElementById("clearSearch");
+
+  if (adminSearchInput) {
+
+    adminSearchInput.addEventListener("input", function () {
+
+      if (clearAdminSearch) {
+        clearAdminSearch.hidden = !adminSearchInput.value.trim();
+      }
+
+    });
+
+  }
+
+  if (clearAdminSearch) {
+
+    clearAdminSearch.addEventListener("click", function () {
+
+      adminSearchInput.value = "";
+
+      clearAdminSearch.hidden = true;
+
+      adminSearchInput.focus();
+
+    });
+
+  }
+
+
+  // =================================
+  // WINDOW RESIZE
+  // =================================
+
+  window.addEventListener("resize", function () {
+
+    if (window.innerWidth > 1100) {
+
+      document.body.classList.remove("sidebar-open");
+
+      if (sidebarToggle) {
+        sidebarToggle.setAttribute("aria-expanded", "false");
+      }
+
+    }
+
+  });
+        
+  // =================================
+  // ELEMENTS
+  // =================================
+
+  const tableBody = document.getElementById("adminTableBody");
+
+  const searchInput = document.getElementById("userSearchInput");
+  const clearSearchBtn = document.getElementById("clearUserSearch");
+  const refreshBtn = document.getElementById("refreshUsers");
+
+  const openAddBtn = document.getElementById("openAddAdmin");
+
+  const formModal = document.getElementById("userFormModal");
+  const deleteModal = document.getElementById("deleteUserModal");
+
+  const adminForm = document.getElementById("adminForm");
+
+  const closeFormBtn = document.getElementById("closeUserForm");
+  const cancelFormBtn = document.getElementById("cancelUserForm");
+
+  const modalTitle = document.getElementById("userModalTitle");
+  const modalSubtitle = document.getElementById("userModalSubtitle");
+  const saveAdminBtn = document.getElementById("saveAdminBtn");
+
+  const emptyState = document.getElementById("userEmptyState");
+
+  const pagination = document.getElementById("userPagination");
+  const tableInfo = document.getElementById("userTableInfo");
+
+  const cancelDeleteBtn = document.getElementById("cancelDeleteUser");
+  const confirmDeleteBtn = document.getElementById("confirmDeleteUser");
+  const deleteAdminName = document.getElementById("deleteAdminName");
+
+  const toast = document.getElementById("userToast");
+  const toastMessage = document.getElementById("toastMessage");
+  const toastIcon = document.getElementById("toastIcon");
+
+
+  // FORM INPUTS
+
+  const fullNameInput = document.getElementById("adminFullName");
+  const idNumberInput = document.getElementById("adminIdNumber");
+  const collegeInput = document.getElementById("adminCollege");
+  const programInput = document.getElementById("adminProgram");
+  const yearLevelInput = document.getElementById("adminYearLevel");
+
+
+  // =================================
+  // VARIABLES
+  // =================================
+
+  let editingRow = null;
+  let deletingRow = null;
+
+  let currentPage = 1;
+  const rowsPerPage = 3;
+
+  let toastTimer;
+
+
+  // =================================
+  // TOAST MESSAGE
+  // =================================
+
+  function showToast(message, type = "success") {
+
+    toastMessage.textContent = message;
+
+    toast.classList.remove("success", "error");
+
+    if (type === "error") {
+      toast.classList.add("error");
+      toastIcon.textContent = "!";
+    } else {
+      toast.classList.add("success");
+      toastIcon.textContent = "✓";
+    }
+
+    toast.classList.add("show");
+
+    clearTimeout(toastTimer);
+
+    toastTimer = setTimeout(function () {
+      toast.classList.remove("show");
+    }, 3000);
+  }
+
+
+  // =================================
+  // GET ROW INFORMATION
+  // =================================
+
+  function getRowData(row) {
+
+    const cells = row.querySelectorAll("td");
+
+    return {
+      name: cells[0].querySelector(".admin-name-details strong").textContent.trim(),
+      id: cells[3].textContent.trim(),
+      college: cells[2].querySelector("strong").textContent.trim(),
+      program: cells[2].querySelector("span").textContent.trim(),
+      year: cells[2].querySelector("small").textContent
+        .replace("Year Level:", "")
+        .trim()
+    };
+  }
+
+
+  // =================================
+  // INITIALIZE ROW DATA
+  // =================================
+
+  function initializeRows() {
+
+    const rows = tableBody.querySelectorAll("tr");
+
+    rows.forEach(function (row) {
+
+      const data = getRowData(row);
+
+      row.dataset.name = data.name.toLowerCase();
+      row.dataset.id = data.id.toLowerCase();
+      row.dataset.college = data.college.toLowerCase();
+      row.dataset.program = data.program.toLowerCase();
+      row.dataset.year = data.year.toLowerCase();
+
+    });
+
+  }
+
+
+  // =================================
+  // INITIALS
+  // =================================
+
+  function getInitials(name) {
+
+    return name
+      .trim()
+      .split(/\s+/)
+      .map(function (part) {
+        return part.charAt(0);
+      })
+      .slice(0, 2)
+      .join("")
+      .toUpperCase();
+
+  }
+
+
+  // =================================
+  // CREATE ADMIN ROW
+  // =================================
+
+  function createAdminRow(data) {
+
+    const row = document.createElement("tr");
+
+    const today = new Date();
+
+    const formattedDate = today.toLocaleDateString("en-US", {
+      month: "long",
+      day: "numeric",
+      year: "numeric"
+    });
+
+    row.innerHTML = `
+
+      <td>
+        <div class="admin-name-cell">
+
+          <div class="admin-avatar">
+            ${getInitials(data.name)}
+          </div>
+
+          <div class="admin-name-details">
+            <strong>${escapeHTML(data.name)}</strong>
+            <span>Administrator</span>
+          </div>
+
+        </div>
+      </td>
+
+      <td>
+        <span class="role-badge">Admin</span>
+      </td>
+
+      <td>
+        <div class="academic-details">
+          <strong>${escapeHTML(data.college)}</strong>
+          <span>${escapeHTML(data.program)}</span>
+          <small>Year Level: ${escapeHTML(data.year || "N/A")}</small>
+        </div>
+      </td>
+
+      <td>${escapeHTML(data.id)}</td>
+
+      <td>${formattedDate}</td>
+
+      <td>
+        <div class="user-action-buttons">
+
+          <button
+            class="edit-user-btn"
+            type="button"
+            title="Edit Admin"
+          >
+            <span>✎</span>
+          </button>
+
+          <button
+            class="delete-user-btn"
+            type="button"
+            title="Delete Admin"
+          >
+            <span>×</span>
+          </button>
+
+        </div>
+      </td>
+
+    `;
+
+    updateRowDataset(row);
+
+    return row;
+  }
+
+
+  // =================================
+  // ESCAPE HTML
+  // =================================
+
+  function escapeHTML(value) {
+
+    return String(value).replace(/[&<>"']/g, function (character) {
+
+      const entities = {
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#039;"
+      };
+
+      return entities[character];
+
+    });
+
+  }
+
+
+  // =================================
+  // UPDATE ROW DATASET
+  // =================================
+
+  function updateRowDataset(row) {
+
+    const data = getRowData(row);
+
+    row.dataset.name = data.name.toLowerCase();
+    row.dataset.id = data.id.toLowerCase();
+    row.dataset.college = data.college.toLowerCase();
+    row.dataset.program = data.program.toLowerCase();
+    row.dataset.year = data.year.toLowerCase();
+
+  }
+
+
+  // =================================
+  // GET ALL ROWS
+  // =================================
+
+  function getAllRows() {
+    return Array.from(tableBody.querySelectorAll("tr"));
+  }
+
+
+  // =================================
+  // SEARCH + PAGINATION
+  // =================================
+
+  function renderTable() {
+
+    const searchValue = searchInput.value.trim().toLowerCase();
+
+    const allRows = getAllRows();
+
+    const filteredRows = allRows.filter(function (row) {
+
+      const name = row.dataset.name || "";
+      const id = row.dataset.id || "";
+      const college = row.dataset.college || "";
+      const program = row.dataset.program || "";
+      const year = row.dataset.year || "";
+
+      return (
+        name.includes(searchValue) ||
+        id.includes(searchValue) ||
+        college.includes(searchValue) ||
+        program.includes(searchValue) ||
+        year.includes(searchValue)
+      );
+
+    });
+
+
+    // HIDE ALL ROWS FIRST
+
+    allRows.forEach(function (row) {
+      row.style.display = "none";
+    });
+
+
+    // PAGINATION COMPUTATION
+
+    const totalRecords = filteredRows.length;
+
+    const totalPages = Math.ceil(totalRecords / rowsPerPage);
+
+
+    if (totalPages === 0) {
+      currentPage = 1;
+    } else if (currentPage > totalPages) {
+      currentPage = totalPages;
+    }
+
+
+    const startIndex = (currentPage - 1) * rowsPerPage;
+    const endIndex = Math.min(startIndex + rowsPerPage, totalRecords);
+
+
+    // DISPLAY CURRENT PAGE ROWS
+
+    filteredRows.slice(startIndex, endIndex).forEach(function (row) {
+      row.style.display = "";
+    });
+
+
+    // EMPTY STATE
+
+    if (totalRecords === 0) {
+
+      emptyState.hidden = false;
+      tableInfo.textContent = "Showing 0 of 0 administrators";
+
+    } else {
+
+      emptyState.hidden = true;
+
+      tableInfo.textContent =
+        `Showing ${startIndex + 1}–${endIndex} of ${totalRecords} administrators`;
+
+    }
+
+
+    // PAGINATION BUTTONS
+
+    renderPagination(totalPages);
+
+  }
+
+
+  // =================================
+  // RENDER PAGINATION
+  // =================================
+
+  function renderPagination(totalPages) {
+
+    pagination.innerHTML = "";
+
+    if (totalPages <= 1) {
+      pagination.style.display = "none";
+      return;
+    }
+
+    pagination.style.display = "flex";
+
+
+    // PREVIOUS BUTTON
+
+    const previousBtn = document.createElement("button");
+
+    previousBtn.type = "button";
+    previousBtn.textContent = "‹";
+    previousBtn.className = "page-arrow";
+
+    previousBtn.disabled = currentPage === 1;
+
+    previousBtn.addEventListener("click", function () {
+
+      if (currentPage > 1) {
+        currentPage--;
+        renderTable();
+      }
+
+    });
+
+    pagination.appendChild(previousBtn);
+
+
+    // PAGE NUMBERS
+
+    for (let page = 1; page <= totalPages; page++) {
+
+      const pageBtn = document.createElement("button");
+
+      pageBtn.type = "button";
+      pageBtn.textContent = page;
+      pageBtn.className = "page-number";
+
+      if (page === currentPage) {
+        pageBtn.classList.add("active");
+      }
+
+      pageBtn.addEventListener("click", function () {
+
+        currentPage = page;
+        renderTable();
+
+      });
+
+      pagination.appendChild(pageBtn);
+
+    }
+
+
+    // NEXT BUTTON
+
+    const nextBtn = document.createElement("button");
+
+    nextBtn.type = "button";
+    nextBtn.textContent = "›";
+    nextBtn.className = "page-arrow";
+
+    nextBtn.disabled = currentPage === totalPages;
+
+    nextBtn.addEventListener("click", function () {
+
+      if (currentPage < totalPages) {
+        currentPage++;
+        renderTable();
+      }
+
+    });
+
+    pagination.appendChild(nextBtn);
+
+  }
+
+
+  // =================================
+  // OPEN ADD MODAL
+  // =================================
+
+  openAddBtn.addEventListener("click", function () {
+
+    editingRow = null;
+
+    adminForm.reset();
+
+    document.getElementById("adminRole").value = "Admin";
+
+    modalTitle.textContent = "Add Administrator";
+
+    modalSubtitle.textContent =
+      "Enter the administrator's information below.";
+
+    saveAdminBtn.textContent = "Add Administrator";
+
+    formModal.classList.add("show");
+
+  });
+
+
+  // =================================
+  // OPEN EDIT MODAL
+  // =================================
+
+  tableBody.addEventListener("click", function (event) {
+
+    const editButton = event.target.closest(".edit-user-btn");
+
+    if (!editButton) {
+      return;
+    }
+
+    const selectedRow = editButton.closest("tr");
+
+    if (!selectedRow) {
+      return;
+    }
+
+    editingRow = selectedRow;
+
+    const data = getRowData(selectedRow);
+
+    fullNameInput.value = data.name;
+    idNumberInput.value = data.id;
+    collegeInput.value = data.college;
+    programInput.value = data.program;
+
+    yearLevelInput.value =
+      data.year === "N/A" ? "" : data.year;
+
+    document.getElementById("adminRole").value = "Admin";
+
+    modalTitle.textContent = "Update Administrator";
+
+    modalSubtitle.textContent =
+      "Modify the administrator's information below.";
+
+    saveAdminBtn.textContent = "Save Changes";
+
+    formModal.classList.add("show");
+
+  });
+
+
+  // =================================
+  // CLOSE FORM MODAL
+  // =================================
+
+  function closeFormModal() {
+
+    formModal.classList.remove("show");
+
+    adminForm.reset();
+
+    editingRow = null;
+
+  }
+
+
+  closeFormBtn.addEventListener("click", closeFormModal);
+
+  cancelFormBtn.addEventListener("click", closeFormModal);
+
+
+  // =================================
+  // ADD / UPDATE ADMIN
+  // =================================
+
+  adminForm.addEventListener("submit", function (event) {
+
+    event.preventDefault();
+
+    const selectedRow = editingRow;
+    const isEditing = selectedRow !== null;
+
+
+    const adminData = {
+
+      name: fullNameInput.value.trim(),
+      id: idNumberInput.value.trim(),
+      college: collegeInput.value.trim(),
+      program: programInput.value.trim(),
+      year: yearLevelInput.value.trim() || "N/A"
+
+    };
+
+
+    // CHECK EMPTY FIELDS
+
+    if (
+      !adminData.name ||
+      !adminData.id ||
+      !adminData.college ||
+      !adminData.program
+    ) {
+
+      showToast("Please complete all required fields.", "error");
+      return;
+
+    }
+
+
+    // CHECK DUPLICATE ID
+
+    const duplicateID = getAllRows().some(function (row) {
+
+      const existingID = row.querySelectorAll("td")[3]
+        .textContent.trim().toLowerCase();
+
+      const currentID = adminData.id.toLowerCase();
+
+      return (
+        existingID === currentID &&
+        row !== selectedRow
+      );
+
+    });
+
+
+    if (duplicateID) {
+
+      showToast("This ID number is already registered.", "error");
+      return;
+
+    }
+
+
+    if (isEditing) {
+
+      // UPDATE THE SELECTED ROW ONLY
+
+      const cells = selectedRow.querySelectorAll("td");
+
+      cells[0].querySelector(".admin-avatar").textContent =
+        getInitials(adminData.name);
+
+      cells[0].querySelector(".admin-name-details strong").textContent =
+        adminData.name;
+
+      cells[2].querySelector("strong").textContent =
+        adminData.college;
+
+      cells[2].querySelector("span").textContent =
+        adminData.program;
+
+      cells[2].querySelector("small").textContent =
+        "Year Level: " + adminData.year;
+
+      cells[3].textContent = adminData.id;
+
+      updateRowDataset(selectedRow);
+
+      showToast("Administrator updated successfully.");
+
+      // IMPORTANT:
+      // Do not reset currentPage when updating.
+      // This keeps the user on the page where the row is located.
+
+    } else {
+
+      // ADD NEW ADMIN
+
+      const newRow = createAdminRow(adminData);
+
+      tableBody.appendChild(newRow);
+
+      currentPage = 1;
+
+      showToast("Administrator added successfully.");
+
+    }
+
+
+    closeFormModal();
+
+    renderTable();
+
+  });
+
+
+  // =================================
+  // OPEN DELETE MODAL
+  // =================================
+
+  tableBody.addEventListener("click", function (event) {
+
+    const deleteButton = event.target.closest(".delete-user-btn");
+
+    if (!deleteButton) {
+      return;
+    }
+
+    deletingRow = deleteButton.closest("tr");
+
+    if (!deletingRow) {
+      return;
+    }
+
+    const data = getRowData(deletingRow);
+
+    deleteAdminName.textContent = data.name;
+
+    deleteModal.classList.add("show");
+
+  });
+
+
+  // =================================
+  // CLOSE DELETE MODAL
+  // =================================
+
+  function closeDeleteModal() {
+
+    deleteModal.classList.remove("show");
+
+    deletingRow = null;
+
+  }
+
+
+  cancelDeleteBtn.addEventListener("click", closeDeleteModal);
+
+
+  // =================================
+  // CONFIRM DELETE
+  // =================================
+
+  confirmDeleteBtn.addEventListener("click", function () {
+
+    if (!deletingRow) {
+      return;
+    }
+
+    deletingRow.remove();
+
+    closeDeleteModal();
+
+    renderTable();
+
+    showToast("Administrator deleted successfully.");
+
+  });
+
+
+  // =================================
+  // SEARCH
+  // =================================
+
+  searchInput.addEventListener("input", function () {
+
+    currentPage = 1;
+
+    clearSearchBtn.hidden = searchInput.value.length === 0;
+
+    renderTable();
+
+  });
+
+
+  // =================================
+  // CLEAR SEARCH
+  // =================================
+
+  clearSearchBtn.addEventListener("click", function () {
+
+    searchInput.value = "";
+
+    clearSearchBtn.hidden = true;
+
+    currentPage = 1;
+
+    renderTable();
+
+    searchInput.focus();
+
+  });
+
+
+  // =================================
+  // REFRESH
+  // =================================
+
+  refreshBtn.addEventListener("click", function () {
+
+    searchInput.value = "";
+
+    clearSearchBtn.hidden = true;
+
+    currentPage = 1;
+
+    initializeRows();
+
+    renderTable();
+
+    showToast("Administrator list refreshed.");
+
+  });
+
+
+  // =================================
+  // CLOSE MODALS WHEN CLICKING OVERLAY
+  // =================================
+
+  formModal.addEventListener("click", function (event) {
+
+    if (event.target === formModal) {
+      closeFormModal();
+    }
+
+  });
+
+
+  deleteModal.addEventListener("click", function (event) {
+
+    if (event.target === deleteModal) {
+      closeDeleteModal();
+    }
+
+  });
+
+
+  // =================================
+  // ESCAPE KEY
+  // =================================
+
+      document.addEventListener("keydown", function (event) {
+
+    if (event.key === "Escape") {
+
+      closeFormModal();
+      closeDeleteModal();
+
+      document.body.classList.remove("sidebar-open");
+
+      if (sidebarToggle) {
+        sidebarToggle.setAttribute("aria-expanded", "false");
+      }
+
+      headerDropdowns.forEach(function (dropdown) {
+
+        dropdown.classList.remove("open");
+
+        const trigger = dropdown.querySelector("button");
+
+        if (trigger) {
+          trigger.setAttribute("aria-expanded", "false");
+        }
+
+      });
+
+    }
+
+  });
+
+
+  // =================================
+  // INITIALIZE PAGE
+  // =================================
+
+  initializeRows();
+
+  renderTable();
+
+});
+  
+  </script>
+
+</body>
+</html>
