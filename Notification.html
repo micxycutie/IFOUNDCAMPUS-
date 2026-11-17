@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <link rel="stylesheet" href="notif.css">
+
+  <title>Notifications | iFound Campus</title>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-bottom">
+    <div class="hamburger" id="menuBtn">
+      <img src="hamburger.png" alt="menu">
+    </div>
+
+    <div class="logo">
+      <span class="ifound">iFOUND</span>
+      <span class="campus">CAMPUS</span>
+      <div class="subtitle"><i>FIND.REPORT.RECOVER.</i></div>
+    </div>
+  </div>
+
+  <div class="nav-top">
+    <div class="nav-right">
+
+      <!-- NOTIFICATION BELL -->
+      <div class="notification" id="notifBtn">
+        <img src="bell (1).png" alt="notification">
+        <span class="badge" id="navNotifBadge">3</span>
+
+        <div class="notif-dropdown" id="notifDropdown">
+          <div class="notif-header">
+            <h4>Notifications</h4>
+            <span id="dropdownNotifCount">3 New</span>
+          </div>
+
+          <div class="notif-list">
+            <div class="notif-item">
+              <p>
+                <strong>Claim Approved:</strong>
+                Your School ID claim request was approved.
+              </p>
+              <span class="notif-time">10m ago</span>
+            </div>
+
+            <div class="notif-item">
+              <p>
+                <strong>Potential Match:</strong>
+                A new item matches your lost report.
+              </p>
+              <span class="notif-time">1h ago</span>
+            </div>
+
+            <div class="notif-item">
+              <p>
+                <strong>Report Posted:</strong>
+                Your found item report is now live.
+              </p>
+              <span class="notif-time">3h ago</span>
+            </div>
+          </div>
+
+          <a href="Notifications.html" class="notif-view-all">
+            View All Notifications
+          </a>
+        </div>
+      </div>
+
+      <!-- PROFILE DROPDOWN -->
+      <div class="sign-in" id="signInBtn">
+        <img src="kiwi.jpg" alt="Profile">
+        <span>Ruffa</span>
+
+        <div class="user-dropdown" id="userDropdown">
+          <div class="user-dropdown-header">
+            <p class="user-name">Ruffa Micayla</p>
+            <p class="user-email">2023-00123</p>
+          </div>
+
+          <div class="user-dropdown-links">
+            <a href="#">
+              <img src="user.png" alt="" class="profile-icon">
+              My Profile
+            </a>
+
+            <a href="#">
+              <img src="settings.png" alt="" class="profile-icon">
+              Account Settings
+            </a>
+
+            <a href="IFC_Login.html" id="logoutLink">
+              <img src="exit.png" alt="" class="profile-icon">
+              Logout
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</nav>
+
+<!-- SIDEBAR -->
+<div id="sideMenu" class="side-menu">
+
+  <div class="side-menu-header">
+    <div class="logo">
+      <span class="ifound">iFOUND</span>
+      <span class="campus">CAMPUS</span>
+    </div>
+
+    <div class="close-btn" id="closeBtn">✕</div>
+  </div>
+
+  <div class="side-menu-links">
+    <a href="DASHBOARD.html">
+      <img src="home.png" alt="Home" class="menu-icon">
+      Home
+    </a>
+
+    <a href="MyClaims.html">
+      <img src="wirte.png" alt="My Claims" class="menu-icon">
+      My Claims
+    </a>
+
+    <a href="#">
+      <img src="user.png" alt="Profile" class="menu-icon">
+      Profile
+    </a>
+  </div>
+
+  <div class="side-menu-footer">
+    <a href="IFC_Login.html" class="sign-out-link">
+      <img src="exit.png" alt="Logout" class="menu-icon">
+      Logout
+    </a>
+  </div>
+
+  
+
+</div>
+
+<div id="overlay" class="overlay"></div>
+
+<!-- NOTIFICATIONS PAGE -->
+<main class="notifications-page">
+
+  <section class="notifications-heading">
+
+    <div class="notifications-title-group">
+      <div class="notifications-title-icon">
+        <img src="bell (1).png" alt="">
+      </div>
+
+      <div>
+        <h1>Notifications</h1>
+        <p>Stay updated with your latest activities and updates.</p>
+      </div>
+    </div>
+
+    <button class="mark-all-btn" id="markAllReadBtn" type="button">
+      ✓ Mark All as Read
+    </button>
+
+  </section>
+
+  <!-- FILTERS -->
+  <section class="notification-controls">
+
+    <div class="notification-filters">
+      <button class="notification-filter active"
+              data-filter="All" type="button">
+        All <span id="allCount">3</span>
+      </button>
+
+      <button class="notification-filter"
+              data-filter="Claims" type="button">
+        Claims
+      </button>
+
+      <button class="notification-filter"
+              data-filter="Lost & Found" type="button">
+        Lost & Found
+      </button>
+
+      <button class="notification-filter"
+              data-filter="System" type="button">
+        System
+      </button>
+    </div>
+
+  </section>
+
+  <!-- NOTIFICATION LIST -->
+  <section class="notifications-list" id="notificationsList">
+
+    <!-- CLAIM -->
+    <article class="notification-card unread"
+             data-category="Claims">
+
+      <div class="notification-card-icon claim-icon">
+        ✓
+      </div>
+
+      <div class="notification-card-content">
+        <div class="notification-card-top">
+          <span class="notification-category">CLAIMS</span>
+          <span class="notification-time">10 minutes ago</span>
+        </div>
+
+        <h3>Claim Approved</h3>
+
+        <p>
+          Your claim request for your School ID has been approved.
+          Please visit the campus security office to claim your item.
+        </p>
+
+        <button class="notification-action"
+                data-action="read" type="button">
+          Mark as read
+        </button>
+      </div>
+
+      <span class="unread-dot"></span>
+
+    </article>
+
+    <!-- POTENTIAL MATCH -->
+    <article class="notification-card unread"
+             data-category="Lost & Found">
+
+      <div class="notification-card-icon match-icon">
+        <img src="search.png" alt="">
+      </div>
+
+      <div class="notification-card-content">
+        <div class="notification-card-top">
+          <span class="notification-category">LOST & FOUND</span>
+          <span class="notification-time">1 hour ago</span>
+        </div>
+
+        <h3>Potential Match Found</h3>
+
+        <p>
+          A newly reported item may match your lost item report.
+          Check the item details for more information.
+        </p>
+
+        <button class="notification-action"
+                data-action="read" type="button">
+          Mark as read
+        </button>
+      </div>
+
+      <span class="unread-dot"></span>
+
+    </article>
+
+    <!-- REPORT -->
+    <article class="notification-card unread"
+             data-category="Lost & Found">
+
+      <div class="notification-card-icon report-icon">
+        +
+      </div>
+
+      <div class="notification-card-content">
+        <div class="notification-card-top">
+          <span class="notification-category">LOST & FOUND</span>
+          <span class="notification-time">3 hours ago</span>
+        </div>
+
+        <h3>Report Posted</h3>
+
+        <p>
+          Your found item report has been successfully posted
+          and is now visible on the dashboard.
+        </p>
+
+        <button class="notification-action"
+                data-action="read" type="button">
+          Mark as read
+        </button>
+      </div>
+
+      <span class="unread-dot"></span>
+
+    </article>
+
+  </section>
+
+  <!-- EMPTY STATE -->
+  <div class="notifications-empty" id="notificationsEmpty" hidden>
+    <div class="empty-icon">✓</div>
+    <h3>You're all caught up!</h3>
+    <p>There are no notifications in this category.</p>
+  </div>
+
+</main>
+
+
+  <!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <span class="ifound">iFOUND</span><span class="campus">CAMPUS</span>
+        <p>Pamantasan ng Lungsod ng Muntinlupa</p>
+      </div>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Contact Support</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 iFoundCampus. All rights reserved.</p>
+    </div>
+</footer>
+
+
+<script>
+
+// SIDEBAR
+const menuBtn = document.getElementById('menuBtn');
+const sideMenu = document.getElementById('sideMenu');
+const closeBtn = document.getElementById('closeBtn');
+const overlay = document.getElementById('overlay');
+
+menuBtn?.addEventListener('click', () => {
+  sideMenu.classList.add('active');
+  overlay.classList.add('active');
+});
+
+function closeSideMenu() {
+  sideMenu?.classList.remove('active');
+  overlay?.classList.remove('active');
+}
+
+closeBtn?.addEventListener('click', closeSideMenu);
+overlay?.addEventListener('click', closeSideMenu);
+
+
+// DROPDOWNS
+const notifBtn = document.getElementById('notifBtn');
+const notifDropdown = document.getElementById('notifDropdown');
+
+const signInBtn = document.getElementById('signInBtn');
+const userDropdown = document.getElementById('userDropdown');
+
+notifBtn?.addEventListener('click', function(e) {
+  e.stopPropagation();
+
+  notifDropdown.classList.toggle('active');
+  userDropdown.classList.remove('active');
+});
+
+signInBtn?.addEventListener('click', function(e) {
+  e.stopPropagation();
+
+  userDropdown.classList.toggle('active');
+  notifDropdown.classList.remove('active');
+});
+
+document.addEventListener('click', function() {
+  notifDropdown?.classList.remove('active');
+  userDropdown?.classList.remove('active');
+});
+
+
+// USER PROFILE
+const savedUserName =
+  localStorage.getItem('iFoundUserName') || 'Ruffa';
+
+const savedIdentifier =
+  localStorage.getItem('iFoundIdentifier');
+
+document.querySelector('.sign-in span').textContent = savedUserName;
+
+document.querySelector('.user-name').textContent = savedUserName;
+
+if (savedIdentifier) {
+  document.querySelector('.user-email').textContent = savedIdentifier;
+}
+
+
+// NOTIFICATION FILTERS
+const notificationCards =
+  document.querySelectorAll('.notification-card');
+
+const filterButtons =
+  document.querySelectorAll('.notification-filter');
+
+const emptyState =
+  document.getElementById('notificationsEmpty');
+
+let activeFilter = 'All';
+
+function filterNotifications() {
+  let visibleCount = 0;
+
+  notificationCards.forEach(card => {
+    const category = card.dataset.category;
+
+    const matches =
+      activeFilter === 'All' || category === activeFilter;
+
+    card.hidden = !matches;
+
+    if (matches) visibleCount++;
+  });
+
+  emptyState.hidden = visibleCount !== 0;
+
+  document.getElementById('allCount').textContent =
+    notificationCards.length;
+}
+
+filterButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    activeFilter = button.dataset.filter;
+
+    filterButtons.forEach(btn => {
+      btn.classList.toggle('active', btn === button);
+    });
+
+    filterNotifications();
+  });
+});
+
+
+// MARK SINGLE NOTIFICATION AS READ
+notificationCards.forEach(card => {
+  const markReadBtn = card.querySelector('[data-action="read"]');
+
+  markReadBtn.addEventListener('click', () => {
+    card.classList.remove('unread');
+    markReadBtn.remove();
+
+    updateUnreadCount();
+  });
+});
+
+
+// MARK ALL AS READ
+document.getElementById('markAllReadBtn')
+  .addEventListener('click', () => {
+
+    notificationCards.forEach(card => {
+      card.classList.remove('unread');
+
+      const button = card.querySelector('[data-action="read"]');
+      button?.remove();
+    });
+
+    updateUnreadCount();
+  });
+
+
+// UPDATE BADGE
+function updateUnreadCount() {
+  const unreadCount =
+    document.querySelectorAll('.notification-card.unread').length;
+
+  const badge = document.getElementById('navNotifBadge');
+  const dropdownCount = document.getElementById('dropdownNotifCount');
+
+  badge.textContent = unreadCount;
+  badge.style.display = unreadCount === 0 ? 'none' : '';
+
+  dropdownCount.textContent =
+    unreadCount === 0 ? 'All caught up' : `${unreadCount} New`;
+}
+
+updateUnreadCount();
+
+
+// ESCAPE KEY
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    closeSideMenu();
+    notifDropdown?.classList.remove('active');
+    userDropdown?.classList.remove('active');
+  }
+});
+
+</script>
+
+</body>
+</html>
