@@ -1,0 +1,1686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="ADMIN_SIDEBAR.css">
+  <link rel="stylesheet" href="ADMIN.REPORTS.css">
+<title>iFoundCampus | Admin Reports</title>
+</head>
+<body>
+      
+  
+<aside class="admin-sidebar">
+
+  <button type="button" class="sidebar-close" aria-label="Close sidebar">
+    &times;
+  </button>
+
+  <!-- LOGO -->
+  <div class="admin-logo">
+    <a href="ADMIN_DASHBOARD.html">
+      <span class="logo-ifound">iFOUND</span>
+      <span class="logo-campus">CAMPUS</span>
+    </a>
+  </div>
+
+  <!-- MAIN -->
+  <div class="sidebar-section">
+    <p class="sidebar-label">MAIN</p>
+
+    <a href="ADMIN_DASHBOARD.html" class="sidebar-link">
+      <img src="images/dashboard.png" alt="">
+      <span>Dashboard</span>
+    </a>
+  </div>
+
+  <!-- ITEM -->
+  <div class="sidebar-section">
+    <p class="sidebar-label">ITEM</p>
+
+    <a href="ADMIN_LOST_ITEMS.html" class="sidebar-link">
+      <img src="images/lost-items.png" alt="">
+      <span>Lost Items</span>
+    </a>
+
+    <a href="ADMIN_FOUND_ITEMS.html" class="sidebar-link">
+      <img src="images/found-items.png" alt="">
+      <span>Found Items</span>
+    </a>
+
+    <a href="ADMIN_CLAIM_VERIFICATION.html" class="sidebar-link">
+      <img src="images/claim-verification.png" alt="">
+      <span>Claim Verification</span>
+    </a>
+  </div>
+
+  <!-- ADMINISTRATOR -->
+  <div class="sidebar-section">
+    <p class="sidebar-label">ADMINISTRATOR</p>
+
+    <a href="ADMIN_USER_MANAGEMENT.html" class="sidebar-link">
+      <img src="images/user-management.png" alt="">
+      <span>User Management</span>
+    </a>
+
+    <a href="ADMIN_REGISTERED_USERS.html" class="sidebar-link">
+      <img src="images/registered-users.png" alt="">
+      <span>Registered Users</span>
+    </a>
+
+    <a href="ADMIN_REPORTS.html" class="sidebar-link active" aria-current="page">
+      <img src="images/reports.png" alt="">
+      <span>Reports</span>
+    </a>
+  </div>
+
+  <!-- LOGOUT -->
+  <div class="sidebar-logout">
+    <a href="LOGIN.html" class="sidebar-link logout-link">
+      <img src="images/logout.png" alt="">
+      <span>Logout</span>
+    </a>
+  </div>
+
+</aside>
+
+<!-- ADMIN HEADER -->
+<header class="admin-header">
+
+  <div class="header-left">
+    <button class="sidebar-toggle" type="button" aria-label="Toggle sidebar menu">
+      <img src="images/sidebar-toggle.png" alt="">
+    </button>
+  </div>
+
+  <div class="header-right">
+
+    <!-- SEARCH -->
+    <div class="admin-search">
+      <img src="images/search.png" alt="">
+      <input
+        type="search"
+        id="adminSearchInput"
+        placeholder="Search..."
+        aria-label="Search dashboard"
+      >
+      <button type="button" id="clearSearch" aria-label="Clear search" hidden>
+        &times;
+      </button>
+    </div>
+
+    <!-- NOTIFICATION -->
+    <div class="header-dropdown notification-wrapper">
+
+      <button
+        class="header-icon notification-btn"
+        type="button"
+        aria-label="Notifications"
+        aria-expanded="false"
+        aria-controls="notificationDropdown"
+      >
+        <img src="images/notification.png" alt="">
+        <span class="notification-badge" id="notificationBadge">3</span>
+      </button>
+
+      <div class="header-dropdown-menu notif-dropdown" id="notificationDropdown">
+
+        <div class="dropdown-heading">
+          <div>
+            <h3>Notifications</h3>
+            <p>You have 3 unread notifications</p>
+          </div>
+          <button type="button" id="markAllRead">Mark all read</button>
+        </div>
+
+        <div class="notification-list">
+
+          <div class="notification-item unread">
+            <span class="notif-indicator"></span>
+            <div>
+              <strong>New Claim Request</strong>
+              <p>A student submitted a claim request.</p>
+              <small>Just now</small>
+            </div>
+          </div>
+
+          <div class="notification-item unread">
+            <span class="notif-indicator"></span>
+            <div>
+              <strong>New Lost Item Report</strong>
+              <p>A new lost item has been reported.</p>
+              <small>10 minutes ago</small>
+            </div>
+          </div>
+
+          <div class="notification-item unread">
+            <span class="notif-indicator"></span>
+            <div>
+              <strong>New Found Item Report</strong>
+              <p>A found item report needs review.</p>
+              <small>30 minutes ago</small>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="dropdown-footer">
+          <a href="ADMIN_NOTIFICATIONS.html">View all notifications</a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ADMIN PROFILE -->
+    <div class="admin-profile header-dropdown">
+
+      <button
+        class="profile-trigger"
+        type="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+        aria-controls="profileDropdown"
+      >
+        <img src="images/admin-profile.png" class="profile-picture" alt="Admin profile">
+
+        <div class="profile-info">
+          <span class="profile-name">System Administrator</span>
+          <span class="profile-role">Administrator</span>
+        </div>
+
+        <img src="images/chevron-down.png" class="profile-arrow" alt="">
+      </button>
+
+      <div class="header-dropdown-menu profile-dropdown" id="profileDropdown">
+
+        <div class="profile-dropdown-header">
+          <img src="images/admin-profile.png" alt="">
+          <div>
+            <strong>System Administrator</strong>
+            <span>Administrator</span>
+          </div>
+        </div>
+
+        <div class="profile-dropdown-links">
+          <button type="button" data-message="Profile settings will be available soon.">
+            <span>♙</span> My Profile
+          </button>
+
+          <button type="button" data-message="Account settings will be available soon.">
+            <span>⚙</span> Account Settings
+          </button>
+        </div>
+
+        <div class="profile-logout">
+          <a href="LOGIN.html">
+            <img src="images/logout.png" alt="">
+            Logout
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</header>
+
+
+<!-- MAIN CONTENT -->
+<main class="admin-main-content reports-main">
+
+  <div class="reports-container">
+
+    <!-- PAGE HEADING -->
+    <div class="reports-page-heading">
+
+      <div class="reports-heading-text">
+        <h1>Interactive Reports</h1>
+        <p>
+          Explore and monitor lost and found activities through
+          detailed reports and data summaries.
+        </p>
+      </div>
+
+      <button type="button" class="export-report-btn" id="exportReportBtn">
+        <span>↓</span>
+        Export Report
+      </button>
+
+    </div>
+
+
+    <!-- FILTER SECTION -->
+    <section class="reports-filter-section">
+
+      <div class="reports-filter-heading">
+        <div>
+          <h2>Report Filters</h2>
+          <p>Customize the data you want to view.</p>
+        </div>
+      </div>
+
+      <div class="reports-filter-toolbar">
+
+        <!-- DATE RANGE -->
+        <div class="report-filter-group report-date-group">
+          <label>Date Range</label>
+
+          <div class="report-date-inputs">
+            <input type="date" id="reportDateFrom" aria-label="Start date">
+            <span>to</span>
+            <input type="date" id="reportDateTo" aria-label="End date">
+          </div>
+        </div>
+
+
+        <!-- REPORT TYPE -->
+        <div class="report-filter-group">
+          <label>Report Type</label>
+
+          <div class="report-custom-dropdown" id="reportTypeDropdown">
+
+            <button type="button"
+              class="report-dropdown-trigger"
+              aria-expanded="false">
+              <span class="report-dropdown-label">All Reports</span>
+              <span class="report-dropdown-arrow">⌄</span>
+            </button>
+
+            <div class="report-dropdown-menu">
+              <button type="button" class="selected" data-value="all">
+                All Reports
+              </button>
+              <button type="button" data-value="lost">
+                Lost Reports
+              </button>
+              <button type="button" data-value="found">
+                Found Reports
+              </button>
+              <button type="button" data-value="claimed">
+                Claimed Items
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+
+        <!-- CATEGORY -->
+        <div class="report-filter-group">
+          <label>Category</label>
+
+          <div class="report-custom-dropdown" id="reportCategoryDropdown">
+
+            <button type="button"
+              class="report-dropdown-trigger"
+              aria-expanded="false">
+              <span class="report-dropdown-label">All Categories</span>
+              <span class="report-dropdown-arrow">⌄</span>
+            </button>
+
+            <div class="report-dropdown-menu">
+              <button type="button" class="selected" data-value="all">
+                All Categories
+              </button>
+              <button type="button" data-value="electronics">
+                Electronics
+              </button>
+              <button type="button" data-value="personal">
+                Personal Belongings
+              </button>
+              <button type="button" data-value="documents">
+                Documents / IDs
+              </button>
+              <button type="button" data-value="accessories">
+                Accessories
+              </button>
+              <button type="button" data-value="others">
+                Others
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+
+        <!-- FILTER ACTIONS -->
+        <div class="report-filter-actions">
+
+          <button type="button" class="apply-report-filter" id="applyReportFilters">
+            Apply Filters
+          </button>
+
+          <button type="button" class="reset-report-filter" id="resetReportFilters">
+            Reset
+          </button>
+
+        </div>
+
+      </div>
+
+            <p class="report-filter-message" id="reportFilterMessage" aria-live="polite"></p>
+
+    </section>
+
+
+    <!-- SUMMARY CARDS -->
+    <section class="reports-summary-section">
+
+      <div class="reports-section-heading">
+        <div>
+          <h2>Overview</h2>
+          <p>A quick summary of campus lost and found activities.</p>
+        </div>
+      </div>
+
+      <div class="reports-summary-grid">
+
+        <!-- TOTAL REPORTS -->
+        <div class="report-summary-card">
+          <div class="report-card-top">
+            <span class="report-card-icon">▤</span>
+            <span class="report-card-label">Total Reports</span>
+          </div>
+
+          <h3 id="totalReports">0</h3>
+          <p>All submitted item reports</p>
+        </div>
+
+
+        <!-- LOST REPORTS -->
+        <div class="report-summary-card">
+          <div class="report-card-top">
+            <span class="report-card-icon">↗</span>
+            <span class="report-card-label">Lost Reports</span>
+          </div>
+
+          <h3 id="lostReports">0</h3>
+          <p>Items reported as lost</p>
+        </div>
+
+
+        <!-- FOUND REPORTS -->
+        <div class="report-summary-card">
+          <div class="report-card-top">
+            <span class="report-card-icon">⌕</span>
+            <span class="report-card-label">Found Reports</span>
+          </div>
+
+          <h3 id="foundReports">0</h3>
+          <p>Items reported as found</p>
+        </div>
+
+
+        <!-- CLAIMED ITEMS -->
+        <div class="report-summary-card">
+          <div class="report-card-top">
+            <span class="report-card-icon">✓</span>
+            <span class="report-card-label">Claimed Items</span>
+          </div>
+
+          <h3 id="claimedItems">0</h3>
+          <p>Successfully claimed items</p>
+        </div>
+
+
+        <!-- CLAIM SUCCESS RATE -->
+        <div class="report-summary-card">
+          <div class="report-card-top">
+            <span class="report-card-icon">%</span>
+            <span class="report-card-label">Claim Success Rate</span>
+          </div>
+
+          <h3 id="claimSuccessRate">0</h3>
+          <p>Successful claims among claim requests</p>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- CHARTS SECTION -->
+<section class="reports-charts-section">
+
+  <div class="reports-section-heading">
+    <div>
+      <h2>Data Analytics</h2>
+      <p>Visual representation of lost and found activities.</p>
+    </div>
+  </div>
+
+  <div class="reports-charts-grid">
+
+    <!-- REPORT TRENDS -->
+    <div class="report-chart-card report-trends-card">
+
+      <div class="report-chart-heading">
+        <div>
+          <h3>Report Trends</h3>
+          <p>Lost, found, and claimed reports over time.</p>
+        </div>
+      </div>
+
+      <div class="report-chart-placeholder">
+        <div class="report-chart-canvas">
+          <canvas id="reportTrendsCanvas"></canvas>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CATEGORY DISTRIBUTION -->
+    <div class="report-chart-card report-category-card">
+
+      <div class="report-chart-heading">
+        <div>
+          <h3>Reports by Category</h3>
+          <p>Distribution of reported item categories.</p>
+        </div>
+      </div>
+
+      <div class="report-chart-placeholder">
+        <div class="report-chart-canvas">
+          <canvas id="categoryDistributionCanvas"></canvas>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+      
+
+<!-- EXPORT REPORT MODAL -->
+<div class="export-modal-overlay" id="exportReportModal">
+
+  <div class="export-modal">
+
+    <div class="export-modal-header">
+      <div>
+        <h2>Export Report</h2>
+        <p>Choose your preferred file format.</p>
+      </div>
+
+      <button type="button"
+              class="export-modal-close"
+              id="closeExportModal">
+        &times;
+      </button>
+    </div>
+
+    <div class="export-modal-body">
+
+      <button type="button"
+              class="export-option"
+              id="exportPdfBtn">
+        <span class="export-option-icon">PDF</span>
+        <span class="export-option-text">
+          <strong>Export as PDF</strong>
+          <small>Save your report as a PDF document.</small>
+        </span>
+        <span class="export-option-arrow">›</span>
+      </button>
+
+      <button type="button"
+              class="export-option"
+              id="exportExcelBtn">
+        <span class="export-option-icon excel-icon">XLS</span>
+        <span class="export-option-text">
+          <strong>Export as Excel</strong>
+          <small>Save report records as an Excel spreadsheet.</small>
+        </span>
+        <span class="export-option-arrow">›</span>
+      </button>
+
+    </div>
+
+    <div class="export-modal-footer">
+      <button type="button"
+              class="export-cancel-btn"
+              id="cancelExportBtn">
+        Cancel
+      </button>
+    </div>
+
+  </div>
+</div>
+
+
+      </div>
+
+  
+
+
+  
+
+</main>
+
+  
+
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+  
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+
+    // SIDEBAR TOGGLE (Mobile View)
+    const sidebarToggle = document.querySelector('.sidebar-toggle');
+    const sidebarClose = document.querySelector('.sidebar-close');
+
+    if (sidebarToggle) {
+      sidebarToggle.addEventListener('click', function() {
+        document.body.classList.toggle('sidebar-open');
+        const isOpen = document.body.classList.contains('sidebar-open');
+        sidebarToggle.setAttribute('aria-expanded', isOpen);
+      });
+    }
+
+    if (sidebarClose) {
+      sidebarClose.addEventListener('click', function() {
+        document.body.classList.remove('sidebar-open');
+        if (sidebarToggle) {
+          sidebarToggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+
+    // HEADER DROPDOWNS
+    const headerDropdowns = document.querySelectorAll('.header-dropdown');
+
+    headerDropdowns.forEach(dropdown => {
+      const trigger = dropdown.querySelector('button');
+      if (!trigger) return;
+
+      trigger.addEventListener('click', function(event) {
+        event.stopPropagation();
+        const wasOpen = dropdown.classList.contains('open');
+
+        // Close other dropdowns
+        headerDropdowns.forEach(item => {
+          item.classList.remove('open');
+          const btn = item.querySelector('button');
+          if (btn) btn.setAttribute('aria-expanded', 'false');
+        });
+
+        // Toggle selected dropdown
+        if (!wasOpen) {
+          dropdown.classList.add('open');
+          trigger.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(event) {
+      if (!event.target.closest('.header-dropdown')) {
+        headerDropdowns.forEach(dropdown => {
+          dropdown.classList.remove('open');
+          const trigger = dropdown.querySelector('button');
+          if (trigger) trigger.setAttribute('aria-expanded', 'false');
+        });
+      }
+    });
+
+    // Close dropdown using Escape key
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        headerDropdowns.forEach(dropdown => {
+          dropdown.classList.remove('open');
+          const trigger = dropdown.querySelector('button');
+          if (trigger) trigger.setAttribute('aria-expanded', 'false');
+        });
+      }
+    });
+
+    // NOTIFICATION FUNCTIONALITY
+    const notificationItems = document.querySelectorAll('.notification-item');
+    const notificationBadge = document.getElementById('notificationBadge');
+    const notificationButton = document.querySelector('.notification-btn');
+    const markAllRead = document.getElementById('markAllRead');
+    const notificationDescription = document.querySelector('.dropdown-heading p');
+
+    function updateNotificationCount() {
+      const unreadCount = document.querySelectorAll('.notification-item.unread').length;
+
+      if (notificationBadge) {
+        notificationBadge.textContent = unreadCount;
+        notificationBadge.style.display = unreadCount > 0 ? 'flex' : 'none';
+      }
+
+      if (notificationButton) {
+        notificationButton.setAttribute('aria-label', unreadCount + ' unread notifications');
+      }
+
+      if (notificationDescription) {
+        notificationDescription.textContent = unreadCount === 0
+          ? 'You are all caught up!'
+          : 'You have ' + unreadCount + ' unread notifications';
+      }
+    }
+
+    notificationItems.forEach(item => {
+      item.addEventListener('click', function() {
+        item.classList.remove('unread');
+        updateNotificationCount();
+      });
+    });
+
+    if (markAllRead) {
+      markAllRead.addEventListener('click', function() {
+        notificationItems.forEach(item => {
+          item.classList.remove('unread');
+        });
+        updateNotificationCount();
+      });
+    }
+
+    updateNotificationCount();
+
+    // PROFILE MENU ALERTS
+    const profileActions = document.querySelectorAll('.profile-dropdown-links button');
+    profileActions.forEach(button => {
+      button.addEventListener('click', function() {
+        alert(button.dataset.message);
+      });
+    });
+
+    // SEARCH FUNCTION (Optional/Placeholder for layout testing)
+    const searchInput = document.getElementById('adminSearchInput');
+    const clearSearch = document.getElementById('clearSearch');
+
+    if (searchInput) {
+      searchInput.addEventListener('input', function() {
+        const query = searchInput.value.trim();
+        if (clearSearch) clearSearch.hidden = !query;
+      });
+    }
+
+    if (clearSearch) {
+      clearSearch.addEventListener('click', function() {
+        searchInput.value = '';
+        clearSearch.hidden = true;
+        searchInput.focus();
+      });
+    }
+
+  // =====================================
+// REPORT FILTER FUNCTIONALITY
+// =====================================
+
+// CUSTOM DROPDOWNS
+const reportDropdowns = document.querySelectorAll(
+  '.report-custom-dropdown'
+);
+
+// Close all report dropdowns
+function closeReportDropdowns() {
+  reportDropdowns.forEach(dropdown => {
+    dropdown.classList.remove('open');
+
+    const trigger = dropdown.querySelector('.report-dropdown-trigger');
+
+    if (trigger) {
+      trigger.setAttribute('aria-expanded', 'false');
+    }
+  });
+}
+
+// Dropdown click events
+reportDropdowns.forEach(dropdown => {
+
+  const trigger = dropdown.querySelector('.report-dropdown-trigger');
+  const options = dropdown.querySelectorAll('.report-dropdown-menu button');
+
+  if (!trigger) return;
+
+  // Open / close dropdown
+  trigger.addEventListener('click', function(event) {
+    event.stopPropagation();
+
+    const wasOpen = dropdown.classList.contains('open');
+
+    closeReportDropdowns();
+
+    if (!wasOpen) {
+      dropdown.classList.add('open');
+      trigger.setAttribute('aria-expanded', 'true');
+    }
+  });
+
+  // Select dropdown option
+  options.forEach(option => {
+
+    option.addEventListener('click', function(event) {
+      event.stopPropagation();
+
+      options.forEach(item => {
+        item.classList.remove('selected');
+      });
+
+      option.classList.add('selected');
+
+      const label = dropdown.querySelector('.report-dropdown-label');
+
+      if (label) {
+        label.textContent = option.textContent.trim();
+      }
+
+      // Store selected value
+      dropdown.dataset.selected = option.dataset.value;
+
+      closeReportDropdowns();
+
+    });
+
+  });
+
+});
+
+
+// Close dropdown when clicking outside
+document.addEventListener('click', function(event) {
+
+  if (!event.target.closest('.report-custom-dropdown')) {
+    closeReportDropdowns();
+  }
+
+});
+
+
+// Close dropdown using Escape
+document.addEventListener('keydown', function(event) {
+
+  if (event.key === 'Escape') {
+    closeReportDropdowns();
+  }
+
+});
+
+    // =================================
+// SAMPLE REPORT DATA
+// =================================
+
+const sampleReportData = [
+  { type: 'lost', category: 'electronics', date: '2026-01-05', claimRequested: false, claimed: false },
+  { type: 'found', category: 'electronics', date: '2026-01-10', claimRequested: true, claimed: true },
+  { type: 'lost', category: 'documents', date: '2026-02-03', claimRequested: true, claimed: false },
+  { type: 'found', category: 'accessories', date: '2026-02-15', claimRequested: true, claimed: true },
+  { type: 'lost', category: 'personal', date: '2026-03-08', claimRequested: false, claimed: false },
+  { type: 'found', category: 'documents', date: '2026-03-20', claimRequested: true, claimed: true },
+  { type: 'lost', category: 'accessories', date: '2026-04-02', claimRequested: false, claimed: false },
+  { type: 'found', category: 'electronics', date: '2026-04-18', claimRequested: true, claimed: false },
+  { type: 'lost', category: 'others', date: '2026-05-06', claimRequested: false, claimed: false },
+  { type: 'found', category: 'personal', date: '2026-05-21', claimRequested: true, claimed: true },
+  { type: 'lost', category: 'documents', date: '2026-06-04', claimRequested: false, claimed: false },
+  { type: 'found', category: 'others', date: '2026-06-12', claimRequested: true, claimed: true }
+];
+
+let currentReportData = [...sampleReportData];
+    
+
+  // CHART INSTANCES
+let reportTrendsChart = null;
+let categoryDistributionChart = null;
+
+// =================================
+// UPDATE SUMMARY CARDS
+// =================================
+
+function updateSummaryCards(data) {
+  const total = data.length;
+
+  const lost = data.filter(item => item.type === 'lost').length;
+
+  const found = data.filter(item => item.type === 'found').length;
+
+  const claimed = data.filter(item => item.claimed).length;
+
+  const claimRequests = data.filter(item => item.claimRequested).length;
+
+  const successfulClaims = data.filter(item =>
+    item.claimRequested && item.claimed
+  ).length;
+
+  const successRate = claimRequests > 0
+    ? Math.round((successfulClaims / claimRequests) * 100)
+    : 0;
+
+  document.getElementById('totalReports').textContent = total;
+  document.getElementById('lostReports').textContent = lost;
+  document.getElementById('foundReports').textContent = found;
+  document.getElementById('claimedItems').textContent = claimed;
+  document.getElementById('claimSuccessRate').textContent = successRate + '%';
+}
+
+// Initial summary values
+updateSummaryCards(sampleReportData);
+
+
+// =====================================
+// APPLY FILTERS
+// =====================================
+
+const reportDateFrom = document.getElementById('reportDateFrom');
+const reportDateTo = document.getElementById('reportDateTo');
+
+const applyReportFilters = document.getElementById('applyReportFilters');
+const resetReportFilters = document.getElementById('resetReportFilters');
+
+const reportFilterMessage = document.getElementById('reportFilterMessage');
+
+const reportTypeDropdown = document.getElementById('reportTypeDropdown');
+const reportCategoryDropdown = document.getElementById('reportCategoryDropdown');
+
+
+// GET SELECTED DROPDOWN VALUE
+function getReportDropdownValue(dropdown) {
+  return dropdown.dataset.selected || 'all';
+}
+
+
+// SHOW FILTER MESSAGE
+function showReportFilterMessage(message, isError = false) {
+  if (!reportFilterMessage) return;
+
+  reportFilterMessage.textContent = message;
+  reportFilterMessage.classList.add('show');
+  reportFilterMessage.classList.toggle('error', isError);
+}
+
+
+// APPLY FILTER BUTTON
+if (applyReportFilters) {
+
+  applyReportFilters.addEventListener('click', function() {
+
+    const fromDate = reportDateFrom.value;
+    const toDate = reportDateTo.value;
+
+    // VALIDATE DATE RANGE
+    if (fromDate && toDate && fromDate > toDate) {
+
+      showReportFilterMessage(
+        'Invalid date range. The start date cannot be later than the end date.',
+        true
+      );
+
+      return;
+    }
+
+    const reportType = getReportDropdownValue(reportTypeDropdown);
+    const category = getReportDropdownValue(reportCategoryDropdown);
+
+    // FILTER SAMPLE DATA
+    let filteredData = sampleReportData.filter(item => {
+
+      const matchesDateFrom = !fromDate || item.date >= fromDate;
+      const matchesDateTo = !toDate || item.date <= toDate;
+
+      const matchesType =
+        reportType === 'all' ||
+        (reportType === 'claimed'
+          ? item.claimed
+          : item.type === reportType);
+
+      const matchesCategory =
+        category === 'all' || item.category === category;
+
+      return matchesDateFrom &&
+             matchesDateTo &&
+             matchesType &&
+             matchesCategory;
+
+    });
+
+    currentReportData = filteredData;
+
+    // UPDATE SUMMARY CARDS
+    updateSummaryCards(filteredData);
+updateReportCharts(filteredData);
+
+    // GET SELECTED LABELS
+    const selectedReportType = reportTypeDropdown.querySelector(
+      '.report-dropdown-menu button.selected'
+    );
+
+    const selectedCategory = reportCategoryDropdown.querySelector(
+      '.report-dropdown-menu button.selected'
+    );
+
+    const reportTypeLabel = selectedReportType
+      ? selectedReportType.textContent.trim()
+      : 'All Reports';
+
+    const categoryLabel = selectedCategory
+      ? selectedCategory.textContent.trim()
+      : 'All Categories';
+
+    let dateLabel = 'All Dates';
+
+    if (fromDate && toDate) {
+      dateLabel = fromDate + ' to ' + toDate;
+    } else if (fromDate) {
+      dateLabel = 'From ' + fromDate;
+    } else if (toDate) {
+      dateLabel = 'Until ' + toDate;
+    }
+
+    showReportFilterMessage(
+      'Showing ' + filteredData.length + ' matching reports: ' +
+      reportTypeLabel + ' • ' +
+      categoryLabel + ' • ' +
+      dateLabel
+    );
+
+  });
+
+}
+
+// =====================================
+// RESET FILTERS
+// =====================================
+
+if (resetReportFilters) {
+
+  resetReportFilters.addEventListener('click', function() {
+
+    // CLEAR DATE INPUTS
+    reportDateFrom.value = '';
+    reportDateTo.value = '';
+
+    // RESET CUSTOM DROPDOWNS
+    reportDropdowns.forEach(dropdown => {
+
+      const options = dropdown.querySelectorAll(
+        '.report-dropdown-menu button'
+      );
+
+      const label = dropdown.querySelector('.report-dropdown-label');
+
+      dropdown.dataset.selected = 'all';
+
+      options.forEach(option => {
+
+        option.classList.remove('selected');
+
+        if (option.dataset.value === 'all') {
+          option.classList.add('selected');
+
+          if (label) {
+            label.textContent = option.textContent.trim();
+          }
+        }
+
+      });
+
+    });
+
+  currentReportData = [...sampleReportData];
+
+    // CLOSE DROPDOWNS
+    closeReportDropdowns();
+
+    // RESTORE ALL SUMMARY VALUES
+    updateSummaryCards(sampleReportData);
+updateReportCharts(sampleReportData);
+
+    // CLEAR FILTER MESSAGE
+    if (reportFilterMessage) {
+      reportFilterMessage.textContent = '';
+      reportFilterMessage.classList.remove('show', 'error');
+    }
+
+  });
+
+}
+// =====================================
+// REPORT TRENDS LINE CHART
+// =====================================
+
+const reportTrendsCanvas = document.getElementById('reportTrendsCanvas');
+
+if (reportTrendsCanvas && typeof Chart !== 'undefined') {
+
+  reportTrendsChart = new Chart(reportTrendsCanvas, {
+
+    type: 'line',
+
+    data: {
+      labels: [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June'
+      ],
+
+      datasets: [
+        {
+          label: 'Lost Reports',
+          data: [],
+          borderColor: '#C96B6B',
+          backgroundColor: 'rgba(201, 107, 107, 0.08)',
+          borderWidth: 2.5,
+          pointRadius: 3,
+          tension: 0.35,
+          fill: false
+        },
+        {
+          label: 'Found Reports',
+          data: [],
+          borderColor: '#3C9870',
+          backgroundColor: 'rgba(60, 152, 112, 0.08)',
+          borderWidth: 2.5,
+          pointRadius: 3,
+          tension: 0.35,
+          fill: false
+        },
+        {
+          label: 'Claimed Items',
+          data: [],
+          borderColor: '#18453B',
+          backgroundColor: 'rgba(24, 69, 59, 0.08)',
+          borderWidth: 2.5,
+          pointRadius: 3,
+          tension: 0.35,
+          fill: false
+        }
+      ]
+    },
+
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+
+      interaction: {
+        intersect: false,
+        mode: 'index'
+      },
+
+      plugins: {
+        legend: {
+          display: true,
+          position: 'bottom',
+
+          labels: {
+            usePointStyle: true,
+            pointStyle: 'circle',
+            boxWidth: 7,
+            boxHeight: 7,
+            padding: 18,
+            color: '#657169',
+            font: {
+              family: 'Arial',
+              size: 10
+            }
+          }
+        },
+
+        tooltip: {
+          backgroundColor: '#18453B',
+          padding: 10,
+          cornerRadius: 6
+        }
+      },
+
+      scales: {
+        x: {
+          grid: {
+            display: false
+          },
+          ticks: {
+            color: '#89938C',
+            font: {
+              size: 10
+            }
+          },
+          border: {
+            display: false
+          }
+        },
+
+        y: {
+          beginAtZero: true,
+          ticks: {
+            precision: 0,
+            color: '#89938C',
+            font: {
+              size: 10
+            }
+          },
+          grid: {
+            color: '#EDF0ED'
+          },
+          border: {
+            display: false
+          }
+        }
+      }
+    }
+
+  });
+
+}
+
+
+// =====================================
+// CATEGORY DISTRIBUTION DOUGHNUT CHART
+// =====================================
+
+const categoryDistributionCanvas = document.getElementById(
+  'categoryDistributionCanvas'
+);
+
+if (categoryDistributionCanvas && typeof Chart !== 'undefined') {
+
+  categoryDistributionChart = new Chart(categoryDistributionCanvas, {
+
+    type: 'doughnut',
+
+    data: {
+      labels: [
+        'Electronics',
+        'Personal Belongings',
+        'Documents / IDs',
+        'Accessories',
+        'Others'
+      ],
+
+      datasets: [{
+        data: [],
+        backgroundColor: [
+          '#18453B',
+          '#3C9870',
+          '#C96B6B',
+          '#A9BDAF',
+          '#D9DFDA'
+        ],
+        borderWidth: 2,
+        borderColor: '#FFFFFF',
+        hoverOffset: 5
+      }]
+    },
+
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      cutout: '65%',
+
+      plugins: {
+        legend: {
+          display: true,
+          position: 'bottom',
+
+          labels: {
+            usePointStyle: true,
+            pointStyle: 'circle',
+            boxWidth: 7,
+            padding: 12,
+            color: '#657169',
+            font: {
+              family: 'Arial',
+              size: 10
+            }
+          }
+        },
+
+        tooltip: {
+          backgroundColor: '#18453B',
+          padding: 10,
+          cornerRadius: 6
+        }
+      }
+    }
+
+  });
+
+}
+
+
+// =====================================
+// UPDATE CHARTS USING FILTERED DATA
+// =====================================
+
+function updateReportCharts(data) {
+
+  const months = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June'
+  ];
+
+  // COUNT LOST, FOUND, AND CLAIMED PER MONTH
+  const lostMonthly = months.map((month, index) => {
+    const monthNumber = String(index + 1).padStart(2, '0');
+
+    return data.filter(item =>
+      item.type === 'lost' &&
+      item.date.substring(5, 7) === monthNumber
+    ).length;
+  });
+
+  const foundMonthly = months.map((month, index) => {
+    const monthNumber = String(index + 1).padStart(2, '0');
+
+    return data.filter(item =>
+      item.type === 'found' &&
+      item.date.substring(5, 7) === monthNumber
+    ).length;
+  });
+
+  const claimedMonthly = months.map((month, index) => {
+    const monthNumber = String(index + 1).padStart(2, '0');
+
+    return data.filter(item =>
+      item.claimed &&
+      item.date.substring(5, 7) === monthNumber
+    ).length;
+  });
+
+
+  // UPDATE LINE CHART
+  if (reportTrendsChart) {
+
+    reportTrendsChart.data.datasets[0].data = lostMonthly;
+    reportTrendsChart.data.datasets[1].data = foundMonthly;
+    reportTrendsChart.data.datasets[2].data = claimedMonthly;
+
+    reportTrendsChart.update();
+  }
+
+
+  // COUNT REPORTS BY CATEGORY
+  const categoryCounts = [
+    data.filter(item => item.category === 'electronics').length,
+    data.filter(item => item.category === 'personal').length,
+    data.filter(item => item.category === 'documents').length,
+    data.filter(item => item.category === 'accessories').length,
+    data.filter(item => item.category === 'others').length
+  ];
+
+
+  // UPDATE DOUGHNUT CHART
+  if (categoryDistributionChart) {
+
+    categoryDistributionChart.data.datasets[0].data = categoryCounts;
+
+    categoryDistributionChart.update();
+  }
+
+}
+
+
+// INITIAL CHART VALUES
+updateReportCharts(sampleReportData);
+
+    // =================================
+// EXPORT REPORT MODAL
+// =================================
+
+const exportReportBtn = document.getElementById("exportReportBtn");
+const exportReportModal = document.getElementById("exportReportModal");
+const closeExportModal = document.getElementById("closeExportModal");
+const cancelExportBtn = document.getElementById("cancelExportBtn");
+
+// OPEN MODAL
+if (exportReportBtn && exportReportModal) {
+  exportReportBtn.addEventListener("click", function () {
+    exportReportModal.classList.add("active");
+  });
+}
+
+// CLOSE MODAL FUNCTION
+function closeExportReportModal() {
+  exportReportModal.classList.remove("active");
+}
+
+// CLOSE USING X BUTTON
+if (closeExportModal) {
+  closeExportModal.addEventListener("click", closeExportReportModal);
+}
+
+// CLOSE USING CANCEL BUTTON
+if (cancelExportBtn) {
+  cancelExportBtn.addEventListener("click", closeExportReportModal);
+}
+
+// CLOSE WHEN CLICKING OUTSIDE THE MODAL
+if (exportReportModal) {
+  exportReportModal.addEventListener("click", function (event) {
+    if (event.target === exportReportModal) {
+      closeExportReportModal();
+    }
+  });
+}
+
+// CLOSE USING ESCAPE KEY
+document.addEventListener("keydown", function (event) {
+  if (event.key === "Escape" && exportReportModal) {
+    closeExportReportModal();
+  }
+});
+
+    // =================================
+// PDF EXPORT
+// =================================
+
+const exportPdfBtn = document.getElementById("exportPdfBtn");
+
+if (exportPdfBtn) {
+  exportPdfBtn.addEventListener("click", function () {
+
+    // GET CURRENT FILTERED DATA
+    const data = currentReportData;
+
+    // OPEN PRINT WINDOW
+    const printWindow = window.open("", "_blank");
+
+    if (!printWindow) {
+      alert("Please allow pop-ups to export your PDF report.");
+      return;
+    }
+
+    // COMPUTE SUMMARY
+    const total = data.length;
+    const lost = data.filter(item => item.type === "lost").length;
+    const found = data.filter(item => item.type === "found").length;
+    const claimed = data.filter(item => item.claimed).length;
+
+    const claimRequests = data.filter(item => item.claimRequested).length;
+    const successfulClaims = data.filter(
+      item => item.claimRequested && item.claimed
+    ).length;
+
+    const successRate = claimRequests > 0
+      ? Math.round((successfulClaims / claimRequests) * 100)
+      : 0;
+
+    // FORMAT CLAIM STATUS
+    function getClaimStatus(item) {
+      if (item.claimed) return "Claimed";
+      if (item.claimRequested) return "Pending Claim";
+      return "No Claim Request";
+    }
+
+    // CREATE TABLE ROWS
+    const tableRows = data.map(item => `
+      <tr>
+        <td>${item.date}</td>
+        <td>${item.type.toUpperCase()}</td>
+        <td>${item.category.charAt(0).toUpperCase() + item.category.slice(1)}</td>
+        <td>${item.claimRequested ? "Yes" : "No"}</td>
+        <td>${getClaimStatus(item)}</td>
+      </tr>
+    `).join("");
+
+    // GENERATE REPORT
+    printWindow.document.write(`
+      <!DOCTYPE html>
+      <html lang="en">
+      <head>
+        <meta charset="UTF-8">
+        <title>iFound Campus - Reports</title>
+
+        <style>
+          * {
+            box-sizing: border-box;
+          }
+
+          body {
+            font-family: Arial, sans-serif;
+            margin: 35px;
+            color: #26332D;
+          }
+
+          .report-header {
+            border-bottom: 3px solid #18453B;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+          }
+
+          .report-header h1 {
+            color: #18453B;
+            margin: 0 0 8px;
+            font-size: 25px;
+          }
+
+          .report-header p {
+            margin: 4px 0;
+            color: #68716C;
+            font-size: 12px;
+          }
+
+          h2 {
+            color: #18453B;
+            font-size: 17px;
+            margin: 25px 0 12px;
+          }
+
+          .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+          }
+
+          .summary-card {
+            border: 1px solid #DDE5DF;
+            padding: 12px;
+            border-radius: 6px;
+          }
+
+          .summary-card span {
+            display: block;
+            color: #68716C;
+            font-size: 11px;
+          }
+
+          .summary-card strong {
+            display: block;
+            margin-top: 7px;
+            color: #18453B;
+            font-size: 21px;
+          }
+
+          .success-rate {
+            margin-top: 12px;
+            padding: 12px;
+            background: #F1F6F2;
+            border-radius: 6px;
+            font-size: 13px;
+          }
+
+          table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 12px;
+            font-size: 11px;
+          }
+
+          th {
+            background: #18453B;
+            color: white;
+            text-align: left;
+            padding: 10px 8px;
+          }
+
+          td {
+            border-bottom: 1px solid #E3E8E4;
+            padding: 9px 8px;
+          }
+
+          tr {
+            page-break-inside: avoid;
+          }
+
+          .empty-message {
+            padding: 20px;
+            text-align: center;
+            color: #777;
+            border: 1px solid #E3E8E4;
+          }
+
+          .report-footer {
+            margin-top: 30px;
+            padding-top: 10px;
+            border-top: 1px solid #DDE5DF;
+            color: #7A827D;
+            font-size: 10px;
+            text-align: center;
+          }
+
+          @media print {
+            body {
+              margin: 15mm;
+            }
+          }
+
+          @media (max-width: 600px) {
+            body {
+              margin: 15px;
+            }
+
+            .summary-grid {
+              grid-template-columns: repeat(2, 1fr);
+            }
+          }
+        </style>
+      </head>
+
+      <body>
+
+        <div class="report-header">
+          <h1>iFOUND CAMPUS</h1>
+          <p>Lost and Found Management System</p>
+          <p>Interactive Reports</p>
+          <p>Generated on: ${new Date().toLocaleString()}</p>
+          <p>Total Records: ${total}</p>
+        </div>
+
+        <h2>Report Summary</h2>
+
+        <div class="summary-grid">
+          <div class="summary-card">
+            <span>Total Reports</span>
+            <strong>${total}</strong>
+          </div>
+
+          <div class="summary-card">
+            <span>Lost Reports</span>
+            <strong>${lost}</strong>
+          </div>
+
+          <div class="summary-card">
+            <span>Found Reports</span>
+            <strong>${found}</strong>
+          </div>
+
+          <div class="summary-card">
+            <span>Claimed Items</span>
+            <strong>${claimed}</strong>
+          </div>
+        </div>
+
+        <div class="success-rate">
+          <strong>Claim Success Rate:</strong> ${successRate}%
+        </div>
+
+        <h2>Report Records</h2>
+
+        ${
+          total > 0
+          ? `
+            <table>
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Report Type</th>
+                  <th>Category</th>
+                  <th>Claim Requested</th>
+                  <th>Claim Status</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                ${tableRows}
+              </tbody>
+            </table>
+          `
+          : `<div class="empty-message">No report records found.</div>`
+        }
+
+        <div class="report-footer">
+          iFound Campus | Pamantasan ng Lungsod ng Muntinlupa
+        </div>
+
+        <script>
+          window.onload = function() {
+            window.print();
+          };
+        <\/script>
+
+      </body>
+      </html>
+    `);
+
+    printWindow.document.close();
+
+    // CLOSE EXPORT MODAL
+    closeExportReportModal();
+
+  });
+}
+
+  // =================================
+// EXCEL EXPORT
+// =================================
+
+const exportExcelBtn = document.getElementById("exportExcelBtn");
+
+if (exportExcelBtn) {
+  exportExcelBtn.addEventListener("click", function () {
+
+    if (typeof XLSX === "undefined") {
+      alert("Excel export library is not loaded.");
+      return;
+    }
+
+    const excelData = currentReportData.map(item => ({
+      "Date": item.date,
+      "Report Type": item.type.charAt(0).toUpperCase() + item.type.slice(1),
+      "Category": item.category.charAt(0).toUpperCase() + item.category.slice(1),
+      "Claim Requested": item.claimRequested ? "Yes" : "No",
+      "Claim Status": item.claimed ? "Claimed" :
+        item.claimRequested ? "Pending" : "Not Requested"
+    }));
+
+    const worksheet = XLSX.utils.json_to_sheet(excelData);
+
+    const workbook = XLSX.utils.book_new();
+
+    XLSX.utils.book_append_sheet(
+      workbook,
+      worksheet,
+      "Report Records"
+    );
+
+    XLSX.writeFile(workbook, "iFoundCampus_Report.xlsx");
+
+    closeExportReportModal();
+  });
+}
+  });
+
+  
+</script>
+
+</body>
+</html>
