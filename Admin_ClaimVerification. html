@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="ADMIN_SIDEBAR.css">
+  <link rel="stylesheet" href="CV.css">
+  <title>iFoundCampus | Claim Verification</title>
+</head>
+<body>
+
+  <!-- ADMIN SIDEBAR -->
+  <aside class="admin-sidebar" id="adminSidebar">
+    <button type="button" class="sidebar-close" aria-label="Close sidebar">&times;</button>
+    <div class="admin-logo">
+      <a href="ADMIN_DASHBOARD.html">
+        <span class="logo-ifound">iFOUND</span>
+        <span class="logo-campus">CAMPUS</span>
+      </a>
+    </div>
+    <div class="sidebar-section">
+      <p class="sidebar-label">MAIN</p>
+      <a href="ADMIN_DASHBOARD.html" class="sidebar-link">
+        <img src="images/dashboard.png" alt="">
+        <span>Dashboard</span>
+      </a>
+    </div>
+    <div class="sidebar-section">
+      <p class="sidebar-label">ITEM</p>
+      <a href="ADMIN_LOST_ITEMS.html" class="sidebar-link">
+        <img src="images/lost-items.png" alt="">
+        <span>Lost Items</span>
+      </a>
+      <a href="ADMIN_FOUND_ITEMS.html" class="sidebar-link">
+        <img src="images/found-items.png" alt="">
+        <span>Found Items</span>
+      </a>
+      <a href="ADMIN_CLAIM_VERIFICATION.html" class="sidebar-link active" aria-current="page">
+        <img src="images/claim-verification.png" alt="">
+        <span>Claim Verification</span>
+      </a>
+    </div>
+    <div class="sidebar-section">
+      <p class="sidebar-label">ADMINISTRATOR</p>
+      <a href="ADMIN_USER_MANAGEMENT.html" class="sidebar-link">
+        <img src="images/user-management.png" alt="">
+        <span>User Management</span>
+      </a>
+      <a href="ADMIN_REGISTERED_USERS.html" class="sidebar-link">
+        <img src="images/registered-users.png" alt="">
+        <span>Registered Users</span>
+      </a>
+      <a href="ADMIN_REPORTS.html" class="sidebar-link">
+        <img src="images/reports.png" alt="">
+        <span>Reports</span>
+      </a>
+    </div>
+    <div class="sidebar-logout">
+      <a href="LOGIN.html" class="sidebar-link logout-link">
+        <img src="images/logout.png" alt="">
+        <span>Logout</span>
+      </a>
+    </div>
+  </aside>
+
+  <!-- ADMIN HEADER -->
+  <header class="admin-header">
+    <div class="header-left">
+      <button class="sidebar-toggle" type="button" aria-label="Toggle sidebar menu" aria-controls="adminSidebar">
+        <img src="images/sidebar-toggle.png" alt="">
+      </button>
+    </div>
+    <div class="header-right">
+      <div class="admin-search">
+        <img src="images/search.png" alt="">
+        <input type="search" id="adminSearchInput" placeholder="Search..." aria-label="Search dashboard">
+        <button type="button" id="clearSearch" aria-label="Clear search" hidden>&times;</button>
+      </div>
+      <div class="header-dropdown notification-wrapper">
+        <button class="header-icon notification-btn" type="button" aria-label="Notifications" aria-expanded="false" aria-controls="notificationDropdown">
+          <img src="images/notification.png" alt="">
+          <span class="notification-badge" id="notificationBadge">3</span>
+        </button>
+        <div class="header-dropdown-menu notif-dropdown" id="notificationDropdown">
+          <div class="dropdown-heading">
+            <div>
+              <h3>Notifications</h3>
+              <p>You have 3 unread notifications</p>
+            </div>
+            <button type="button" id="markAllRead">Mark all read</button>
+          </div>
+          <div class="notification-list">
+            <div class="notification-item unread">
+              <span class="notif-indicator"></span>
+              <div>
+                <strong>New Claim Request</strong>
+                <p>A student submitted a claim request.</p>
+                <small>Just now</small>
+              </div>
+            </div>
+            <div class="notification-item unread">
+              <span class="notif-indicator"></span>
+              <div>
+                <strong>New Lost Item Report</strong>
+                <p>A new lost item has been reported.</p>
+                <small>10 minutes ago</small>
+              </div>
+            </div>
+            <div class="notification-item unread">
+              <span class="notif-indicator"></span>
+              <div>
+                <strong>New Found Item Report</strong>
+                <p>A found item report needs review.</p>
+                <small>30 minutes ago</small>
+              </div>
+            </div>
+          </div>
+          <div class="dropdown-footer">
+            <a href="ADMIN_NOTIFICATIONS.html">View all notifications</a>
+          </div>
+        </div>
+      </div>
+      <div class="admin-profile header-dropdown">
+        <button class="profile-trigger" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="profileDropdown">
+          <img src="images/admin-profile.png" class="profile-picture" alt="Admin profile">
+          <div class="profile-info">
+            <span class="profile-name">System Administrator</span>
+            <span class="profile-role">Administrator</span>
+          </div>
+          <img src="images/chevron-down.png" class="profile-arrow" alt="">
+        </button>
+        <div class="header-dropdown-menu profile-dropdown" id="profileDropdown">
+          <div class="profile-dropdown-header">
+            <img src="images/admin-profile.png" alt="">
+            <div>
+              <strong>System Administrator</strong>
+              <span>Administrator</span>
+            </div>
+          </div>
+          <div class="profile-dropdown-links">
+            <button type="button" data-message="Profile settings will be available soon."><span>&#9817;</span> My Profile</button>
+            <button type="button" data-message="Account settings will be available soon."><span>&#9881;</span> Account Settings</button>
+          </div>
+          <div class="profile-logout">
+            <a href="LOGIN.html">
+              <img src="images/logout.png" alt="">
+              Logout
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- CLAIM VERIFICATION MAIN CONTENT -->
+  <main class="admin-main-content">
+    <section class="claim-page-heading">
+      <h1>Claim Verification</h1>
+      <p>
+        Manage and verify ownership claims for reported found items
+        to ensure that items are released only to their rightful owners.
+      </p>
+    </section>
+
+    <!-- CLAIM TOOLBAR -->
+    <section class="claim-toolbar">
+      <div class="claim-search">
+        <img src="images/search.png" alt="">
+        <input type="search" id="claimSearch" placeholder="Search item or claimant..." aria-label="Search claims">
+      </div>
+
+      <div class="claim-filter">
+        <div class="custom-select-wrapper">
+          <input type="hidden" id="claimStatusFilter" value="all">
+          <button type="button" class="custom-select-trigger" aria-expanded="false" aria-label="Filter by claim status">
+            <span class="selected-text">All Status</span>
+            <span class="dropdown-arrow">▼</span>
+          </button>
+          <ul class="custom-options">
+            <li class="custom-option selected" data-value="all">All Status</li>
+            <li class="custom-option" data-value="pending">Pending</li>
+            <li class="custom-option" data-value="approved">Approved</li>
+            <li class="custom-option" data-value="rejected">Rejected</li>
+            <li class="custom-option" data-value="claimed">Claimed</li>
+          </ul>
+        </div>
+      </div>
+
+      <button type="button" class="claim-toolbar-btn" id="exportPdfBtn">Export PDF</button>
+      <button type="button" class="claim-toolbar-btn" id="exportExcelBtn">Export Excel</button>
+      <button type="button" class="claim-toolbar-btn claim-refresh-btn" id="refreshClaimsBtn">
+        <span>&#8635;</span> Refresh
+      </button>
+      <button type="button" class="claim-add-btn" id="openAddClaimModal">+ Add Claim</button>
+    </section>
+
+    <!-- CLAIM TABLE CONTAINER -->
+<section class="claim-table-container">
+
+  <div class="claim-table-heading">
+    <h2>Claim Requests</h2>
+    <p>Review and manage submitted ownership claims and institutional emails.</p>
+  </div>
+
+  <!-- TABLE SCROLL AREA ONLY -->
+  <div class="claim-table-wrapper">
+    <table class="claim-table">
+      <thead>
+        <tr>
+          <th>Item Name</th>
+          <th>Claimant & Institutional Email</th>
+          <th>Proof of Ownership</th>
+          <th>Date Submitted</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+
+      <tbody id="claimTableBody">
+        <!-- Dynamic rows populated via JS -->
+      </tbody>
+    </table>
+  </div>
+
+  <!-- FOOTER OUTSIDE TABLE SCROLL AREA -->
+  <div class="claim-table-footer">
+
+    <span id="claimTableFooter">Showing 5 sample records</span>
+
+    <div class="claim-pagination" id="claimPagination">
+      <div class="claim-pagination-controls" id="claimPaginationControls"></div>
+    </div>
+
+  </div>
+
+</section>
+
+  </main>
+
+  <!-- ================================= -->
+  <!-- MODALS & OVERLAYS                 -->
+  <!-- ================================= -->
+
+  <!-- ADD CLAIM MODAL -->
+  <div class="claim-modal-overlay" id="addClaimModal">
+    <div class="claim-modal">
+      <div class="claim-modal-header">
+        <div>
+          <h2>Add Claim Request</h2>
+          <p>Enter claimant information, PLMun email, and proof of ownership.</p>
+        </div>
+        <button type="button" class="claim-modal-close" id="closeAddClaimModal" aria-label="Close modal">&times;</button>
+      </div>
+      <form id="addClaimForm">
+        <div class="claim-form-group">
+          <label for="newClaimItem">Item Name</label>
+          <input type="text" id="newClaimItem" placeholder="Enter item name" required>
+        </div>
+        <div class="claim-form-group">
+          <label for="newClaimant">Claimant Name</label>
+          <input type="text" id="newClaimant" placeholder="Ruffa Micayla Martinez" required>
+        </div>
+        <div class="claim-form-group">
+          <label for="newClaimEmail">Institutional Email (IE)</label>
+          <input type="email" id="newClaimEmail" placeholder="martinezruffamicayla_bsit@plmun.edu.ph" required>
+        </div>
+        <div class="claim-form-group">
+          <label for="newClaimDate">Date Submitted</label>
+          <input type="date" id="newClaimDate" required>
+        </div>
+        <div class="claim-form-group">
+          <label for="newClaimProof">Proof of Ownership</label>
+          <input type="file" id="newClaimProof" accept="image/*,.pdf" required>
+          <small>Upload an image or PDF document.</small>
+        </div>
+        <div class="claim-form-group">
+          <label for="newClaimStatus">Claim Status</label>
+          <select id="newClaimStatus" required>
+            <option value="pending" selected>Pending</option>
+            <option value="approved">Approved</option>
+            <option value="rejected">Rejected</option>
+            <option value="claimed">Claimed</option>
+          </select>
+        </div>
+        <div class="claim-modal-actions">
+          <button type="button" class="claim-cancel-btn" id="cancelAddClaim">Cancel</button>
+          <button type="submit" class="claim-submit-btn">Save Claim</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- VIEW PROOF MODAL -->
+  <div class="claim-modal-overlay" id="viewProofModal">
+    <div class="proof-modal">
+      <div class="claim-modal-header">
+        <div>
+          <h2>Proof of Ownership</h2>
+          <p id="proofFileName">Uploaded document</p>
+        </div>
+        <button type="button" class="claim-modal-close" id="closeProofModal" aria-label="Close proof modal">&times;</button>
+      </div>
+      <div class="proof-preview-container" id="proofPreviewContainer"></div>
+      <div class="proof-modal-footer">
+        <button type="button" class="claim-cancel-btn" id="closeProofModalBtn">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CLAIM CONFIRMATION MODAL -->
+  <div class="claim-modal-overlay" id="claimConfirmModal">
+    <div class="claim-modal simple-confirm-modal">
+      <div class="confirm-icon" id="confirmIcon"><span>?</span></div>
+      <div class="confirm-content">
+        <h2 id="confirmTitle">Confirm Action</h2>
+        <p id="confirmMessage">Are you sure you want to proceed?</p>
+      </div>
+      <div class="claim-modal-actions">
+        <button type="button" class="claim-cancel-btn" id="cancelConfirmAction">Cancel</button>
+        <button type="button" class="claim-submit-btn" id="confirmClaimAction">Confirm</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CODE VERIFICATION MODAL (MARK AS CLAIMED) -->
+<div class="claim-modal-overlay" id="verifyCodeModal">
+  <div class="claim-modal verify-code-modal">
+
+    <div class="claim-modal-header">
+      <div>
+        <h2>Verify Claim Code</h2>
+        <p>
+          Enter the verification code presented by the claimant
+          to complete the release.
+        </p>
+      </div>
+
+      <button
+        type="button"
+        class="claim-modal-close"
+        id="closeVerifyModal"
+        aria-label="Close modal">
+        &times;
+      </button>
+    </div>
+
+    <form id="verifyCodeForm">
+
+      <!-- ITEM AND CLAIMANT DETAILS -->
+      <div class="claim-form-group">
+        <label>Item & Claimant</label>
+
+        <div class="verify-claim-details">
+          <strong id="verifyItemName"></strong>
+          <span id="verifyClaimantName"></span>
+          <span id="verifyClaimantEmail"></span>
+
+          <div class="verify-generated-code">
+            <span>Generated Code</span>
+            <strong id="verifyGeneratedCode"></strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- VERIFICATION CODE INPUT -->
+      <div class="claim-form-group">
+        <label for="inputClaimCode">Verification Code</label>
+
+        <input
+          type="text"
+          id="inputClaimCode"
+          placeholder="e.g. FC-8492"
+          autocomplete="off"
+          required>
+
+        <small>
+          Hint: Check the approved claim record or generated code.
+        </small>
+      </div>
+
+      <!-- MODAL ACTIONS -->
+      <div class="claim-modal-actions">
+        <button
+          type="button"
+          class="claim-cancel-btn"
+          id="cancelVerifyModal">
+          Cancel
+        </button>
+
+        <button type="submit" class="claim-submit-btn">
+          Verify & Mark as Claimed
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div class="claim-toast" id="claimToast">
+    <div class="toast-icon" id="toastIcon">✓</div>
+    <div class="toast-message">
+      <strong id="toastTitle">Success</strong>
+      <p id="toastDescription">Action completed successfully.</p>
+    </div>
+    <button type="button" id="closeClaimToast" aria-label="Close toast">&times;</button>
+  </div>
+
+  <!-- ================================= -->
+  <!-- SCRIPT SECTION                    -->
+  <!-- ================================= -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+
+      // SIDEBAR TOGGLE
+      const sidebarToggle = document.querySelector('.sidebar-toggle');
+      const sidebarClose = document.querySelector('.sidebar-close');
+
+      if (sidebarToggle) {
+        sidebarToggle.addEventListener('click', function() {
+          document.body.classList.toggle('sidebar-open');
+          const isOpen = document.body.classList.contains('sidebar-open');
+          sidebarToggle.setAttribute('aria-expanded', isOpen);
+        });
+      }
+
+      if (sidebarClose) {
+        sidebarClose.addEventListener('click', function() {
+          document.body.classList.remove('sidebar-open');
+          if (sidebarToggle) sidebarToggle.setAttribute('aria-expanded', 'false');
+        });
+      }
+
+      // HEADER DROPDOWNS
+      const headerDropdowns = document.querySelectorAll('.header-dropdown');
+      headerDropdowns.forEach(dropdown => {
+        const trigger = dropdown.querySelector('button');
+        if (!trigger) return;
+
+        trigger.addEventListener('click', function(event) {
+          event.stopPropagation();
+          const wasOpen = dropdown.classList.contains('open');
+
+          headerDropdowns.forEach(item => {
+            item.classList.remove('open');
+            const btn = item.querySelector('button');
+            if (btn) btn.setAttribute('aria-expanded', 'false');
+          });
+
+          if (!wasOpen) {
+            dropdown.classList.add('open');
+            trigger.setAttribute('aria-expanded', 'true');
+          }
+        });
+      });
+
+      document.addEventListener('click', function(event) {
+        if (!event.target.closest('.header-dropdown')) {
+          headerDropdowns.forEach(dropdown => {
+            dropdown.classList.remove('open');
+            const trigger = dropdown.querySelector('button');
+            if (trigger) trigger.setAttribute('aria-expanded', 'false');
+          });
+        }
+      });
+
+      // CUSTOM STATUS DROPDOWN
+      const claimStatusDropdown = document.querySelector(".claim-toolbar .custom-select-wrapper");
+      const claimStatusFilter = document.getElementById("claimStatusFilter");
+
+      if (claimStatusDropdown) {
+        const trigger = claimStatusDropdown.querySelector(".custom-select-trigger");
+        const selectedText = claimStatusDropdown.querySelector(".selected-text");
+        const options = claimStatusDropdown.querySelectorAll(".custom-option");
+
+        trigger.addEventListener("click", function(event) {
+          event.stopPropagation();
+          const isOpen = claimStatusDropdown.classList.contains("open");
+          claimStatusDropdown.classList.toggle("open");
+          trigger.setAttribute("aria-expanded", !isOpen);
+        });
+
+        options.forEach(option => {
+          option.addEventListener("click", function() {
+            const selectedValue = option.dataset.value;
+            const selectedLabel = option.textContent.trim();
+
+            claimStatusFilter.value = selectedValue;
+            selectedText.textContent = selectedLabel;
+
+            options.forEach(item => item.classList.remove("selected"));
+            option.classList.add("selected");
+
+            claimStatusDropdown.classList.remove("open");
+            trigger.setAttribute("aria-expanded", "false");
+
+            claimStatusFilter.dispatchEvent(new Event("change"));
+          });
+        });
+
+        document.addEventListener("click", function(event) {
+          if (!claimStatusDropdown.contains(event.target)) {
+            claimStatusDropdown.classList.remove("open");
+            trigger.setAttribute("aria-expanded", "false");
+          }
+        });
+      }
+
+      // CLAIM DATA WITH INSTITUTIONAL EMAIL & CLAIM CODE
+      const claimTableBody = document.getElementById("claimTableBody");
+      const claimSearch = document.getElementById("claimSearch");
+      const paginationControls = document.getElementById("claimPaginationControls");
+      const paginationContainer = document.getElementById("claimPagination");
+
+      let claims = [
+        { id: 1, item: "Blue Notebook", claimant: "Juan Dela Cruz", email: "juandelacruz_bsit@plmun.edu.ph", date: "November 15, 2026", status: "pending", proofName: "receipt.pdf", proofUrl: "", claimCode: "" },
+        { id: 2, item: "Black Umbrella", claimant: "Ruffa Micayla Martinez", email: "martinezruffamicayla_bsit@plmun.edu.ph", date: "November 14, 2026", status: "approved", proofName: "id.jpg", proofUrl: "", claimCode: "FC-4821" },
+        { id: 3, item: "White Earphones", claimant: "Pedro Reyes", email: "pedroreyes_bscs@plmun.edu.ph", date: "November 13, 2026", status: "rejected", proofName: "proof.png", proofUrl: "", claimCode: "" },
+        { id: 4, item: "School ID", claimant: "Ana Garcia", email: "anagarcia_bsoa@plmun.edu.ph", date: "November 12, 2026", status: "claimed", proofName: "id.pdf", proofUrl: "", claimCode: "FC-1092" },
+        { id: 5, item: "Black Backpack", claimant: "Carlo Mendoza", email: "carlomendoza_bsed@plmun.edu.ph", date: "November 11, 2026", status: "pending", proofName: "receipt.jpg", proofUrl: "", claimCode: "" }
+      ];
+
+      const rowsPerPage = 5;
+      let currentPage = 1;
+
+      function generateUniqueCode() {
+        const randomNum = Math.floor(1000 + Math.random() * 9000);
+        return `FC-${randomNum}`;
+      }
+
+      function getFilteredClaims() {
+        const searchValue = claimSearch.value.toLowerCase().trim();
+        const selectedStatus = claimStatusFilter.value;
+
+        return claims.filter(claim => {
+          const matchesSearch =
+            claim.item.toLowerCase().includes(searchValue) ||
+            claim.claimant.toLowerCase().includes(searchValue) ||
+            claim.email.toLowerCase().includes(searchValue);
+
+          const matchesStatus =
+            selectedStatus === "all" || claim.status === selectedStatus;
+
+          return matchesSearch && matchesStatus;
+        });
+      }
+
+      function displayClaims() {
+        const filteredClaims = getFilteredClaims();
+        const totalPages = Math.ceil(filteredClaims.length / rowsPerPage) || 1;
+
+        if (currentPage > totalPages) {
+          currentPage = Math.max(1, totalPages);
+        }
+
+        const startIndex = (currentPage - 1) * rowsPerPage;
+        const displayedClaims = filteredClaims.slice(startIndex, startIndex + rowsPerPage);
+
+        claimTableBody.innerHTML = "";
+
+        if (displayedClaims.length === 0) {
+          claimTableBody.innerHTML = `
+            <tr>
+              <td colspan="6" style="text-align:center; padding:30px; color:#7A8580;">
+                No claims found.
+              </td>
+            </tr>
+          `;
+        } else {
+          displayedClaims.forEach(claim => {
+  const row = document.createElement("tr");
+
+  const isApproved = claim.status === "approved";
+  const isClaimed = claim.status === "claimed";
+
+  // Dynamic button properties based on status
+  let btnText = "Mark as Claimed";
+  let btnClass = "claim-verify-btn";
+  let btnDisabled = "";
+  let btnTitle = "Mark as Claimed";
+
+  if (isClaimed) {
+    btnText = "Claimed";
+    btnClass += " claimed disabled";
+    btnDisabled = "disabled";
+    btnTitle = "Item already claimed";
+  } else if (!isApproved) {
+    btnClass += " disabled";
+    btnDisabled = "disabled";
+    btnTitle = "Approve claim first to enable verification";
+  }
+
+    const footerText = document.getElementById("claimTableFooter");
+
+if (footerText) {
+  if (filteredClaims.length === 0) {
+    footerText.textContent = "No records found";
+  } else {
+    const showingFrom = startIndex + 1;
+    const showingTo = Math.min(startIndex + rowsPerPage, filteredClaims.length);
+
+    footerText.textContent =
+      `Showing ${showingFrom}–${showingTo} of ${filteredClaims.length} records`;
+  }
+}
+
+  row.innerHTML = `
+    <td>
+      <strong>${claim.item}</strong>
+      ${claim.claimCode ? `<br><small style="color:#2E7D32; font-weight:600;">Code: ${claim.claimCode}</small>` : ''}
+    </td>
+    <td>
+      <div class="claimant-cell">
+        <strong>${claim.claimant}</strong><br>
+        <span style="font-size: 12px; color: #555;">${claim.email}</span>
+      </div>
+    </td>
+    <td>
+      <button type="button" class="claim-proof-btn" data-id="${claim.id}">
+        View Proof
+      </button>
+    </td>
+    <td>${claim.date}</td>
+    <td>
+      <span class="claim-status ${claim.status}">
+        ${claim.status.charAt(0).toUpperCase() + claim.status.slice(1)}
+      </span>
+    </td>
+    <td>
+<div class="claim-actions" style="display: flex; align-items: center; gap: 6px; white-space: nowrap;">
+<button type="button" class="claim-approve-btn" data-id="${claim.id}" aria-label="Approve claim" title="Approve" style="width: 29px; height: 29px; flex-shrink: 0;">&#10003;</button>
+<button type="button" class="claim-reject-btn" data-id="${claim.id}" aria-label="Reject claim" title="Reject" style="width: 29px; height: 29px; flex-shrink: 0;">&#10005;</button>
+<button type="button" class="claim-delete-btn" data-id="${claim.id}" aria-label="Delete claim" title="Delete" style="width: 29px; height: 29px; flex-shrink: 0;">&#128465;</button>
+<button type="button" class="${btnClass}" data-id="${claim.id}" ${btnDisabled} title="${btnTitle}"
+  style="width: auto !important; min-width: 115px; height: 29px; padding: 0 12px; display: inline-flex; align-items: center; justify-content: center; border-radius: 5px; font-size: 11px; font-weight: 600; white-space: nowrap; flex-shrink: 0; ${isClaimed ? 'background:#E8F1ED; color:#18453B; border:1px solid #D2EADB; cursor:default;' : (!isApproved ? 'background:#EDF2EF; color:#89938E; border:1px solid #DCE5E0; cursor:not-allowed;' : 'background:#18453B; color:#FFFFFF; border:1px solid #18453B; cursor:pointer;')}">
+  ${btnText}
+</button>
+</div>
+</td>
+
+  `;
+
+  claimTableBody.appendChild(row);
+});
+        }
+
+        displayPagination(totalPages);
+      }
+
+      function displayPagination(totalPages) {
+        paginationControls.innerHTML = "";
+
+        if (totalPages <= 1) {
+          paginationContainer.style.display = "none";
+          return;
+        }
+
+        paginationContainer.style.display = "flex";
+
+        const previousButton = document.createElement("button");
+        previousButton.type = "button";
+        previousButton.className = "claim-page-btn";
+        previousButton.textContent = "‹";
+        previousButton.disabled = currentPage === 1;
+        previousButton.addEventListener("click", function () {
+          if (currentPage > 1) { currentPage--; displayClaims(); }
+        });
+        paginationControls.appendChild(previousButton);
+
+        for (let i = 1; i <= totalPages; i++) {
+          const pageButton = document.createElement("button");
+          pageButton.type = "button";
+          pageButton.className = "claim-page-btn";
+          pageButton.textContent = i;
+          if (i === currentPage) pageButton.classList.add("active");
+          pageButton.addEventListener("click", function () { currentPage = i; displayClaims(); });
+          paginationControls.appendChild(pageButton);
+        }
+
+        const nextButton = document.createElement("button");
+        nextButton.type = "button";
+        nextButton.className = "claim-page-btn";
+        nextButton.textContent = "›";
+        nextButton.disabled = currentPage === totalPages;
+        nextButton.addEventListener("click", function () {
+          if (currentPage < totalPages) { currentPage++; displayClaims(); }
+        });
+        paginationControls.appendChild(nextButton);
+      }
+
+      claimSearch.addEventListener("input", function () { currentPage = 1; displayClaims(); });
+      claimStatusFilter.addEventListener("change", function () { currentPage = 1; displayClaims(); });
+
+      // Refresh button
+      const refreshClaimsBtn = document.getElementById("refreshClaimsBtn");
+      if (refreshClaimsBtn) {
+        refreshClaimsBtn.addEventListener("click", function() {
+          claimSearch.value = "";
+          claimStatusFilter.value = "all";
+          currentPage = 1;
+          displayClaims();
+          showClaimToast("Refreshed", "Claim list has been refreshed.");
+
+          // Idagdag ito sa loob ng refreshClaimsBtn listener:
+const selectedText = document.querySelector(".claim-toolbar .selected-text");
+if (selectedText) selectedText.textContent = "All Status";
+
+document.querySelectorAll(".claim-toolbar .custom-option").forEach(opt => {
+  opt.classList.toggle("selected", opt.dataset.value === "all");
+});
+
+        });
+      }
+
+      // ADD CLAIM MODAL
+      const addClaimModal = document.getElementById("addClaimModal");
+      const openAddClaimModal = document.getElementById("openAddClaimModal");
+      const closeAddClaimModal = document.getElementById("closeAddClaimModal");
+      const cancelAddClaim = document.getElementById("cancelAddClaim");
+      const addClaimForm = document.getElementById("addClaimForm");
+
+      function openClaimModal() { addClaimModal.classList.add("active"); document.body.style.overflow = "hidden"; }
+      function closeClaimModal() { addClaimModal.classList.remove("active"); document.body.style.overflow = ""; }
+
+      if (openAddClaimModal) openAddClaimModal.addEventListener("click", openClaimModal);
+      if (closeAddClaimModal) closeAddClaimModal.addEventListener("click", closeClaimModal);
+      if (cancelAddClaim) cancelAddClaim.addEventListener("click", closeClaimModal);
+
+      addClaimForm.addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        const itemName = document.getElementById("newClaimItem").value.trim();
+        const claimantName = document.getElementById("newClaimant").value.trim();
+        const claimantEmail = document.getElementById("newClaimEmail").value.trim();
+        const submittedDate = document.getElementById("newClaimDate").value;
+        const proofFile = document.getElementById("newClaimProof").files[0];
+        const claimStatus = document.getElementById("newClaimStatus").value;
+
+        if (!itemName || !claimantName || !claimantEmail || !submittedDate || !proofFile) {
+          alert("Please complete all required fields.");
+          return;
+        }
+
+        const formattedDate = new Date(submittedDate + "T00:00:00")
+          .toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
+
+        const generatedCode = (claimStatus === "approved") ? generateUniqueCode() : "";
+
+        const newClaim = {
+          id: claims.length > 0 ? Math.max(...claims.map(c => c.id)) + 1 : 1,
+          item: itemName,
+          claimant: claimantName,
+          email: claimantEmail,
+          date: formattedDate,
+          status: claimStatus,
+          proofName: proofFile.name,
+          proofUrl: URL.createObjectURL(proofFile),
+          claimCode: generatedCode
+        };
+
+        claims.unshift(newClaim);
+        displayClaims();
+        addClaimForm.reset();
+        closeClaimModal();
+
+        showClaimToast("Success", `Claim added successfully for ${claimantEmail}`);
+      });
+
+      // VIEW PROOF MODAL
+      const viewProofModal = document.getElementById("viewProofModal");
+      const proofPreviewContainer = document.getElementById("proofPreviewContainer");
+      const proofFileName = document.getElementById("proofFileName");
+      const closeProofModal = document.getElementById("closeProofModal");
+      const closeProofModalBtn = document.getElementById("closeProofModalBtn");
+
+      claimTableBody.addEventListener("click", function(event) {
+        const proofButton = event.target.closest(".claim-proof-btn");
+        if (!proofButton) return;
+
+        const claimId = Number(proofButton.dataset.id);
+        const selectedClaim = claims.find(c => c.id === claimId);
+        if (!selectedClaim) return;
+
+        proofFileName.textContent = selectedClaim.proofName || "Proof document";
+        proofPreviewContainer.innerHTML = "";
+
+        if (!selectedClaim.proofUrl) {
+          proofPreviewContainer.innerHTML = `<p style="padding: 20px; text-align: center;">Sample Proof File: <strong>${selectedClaim.proofName}</strong></p>`;
+        } else if (selectedClaim.proofName.toLowerCase().endsWith(".pdf")) {
+          const pdfPreview = document.createElement("iframe");
+          pdfPreview.src = selectedClaim.proofUrl;
+          proofPreviewContainer.appendChild(pdfPreview);
+        } else {
+          const imagePreview = document.createElement("img");
+          imagePreview.src = selectedClaim.proofUrl;
+          proofPreviewContainer.appendChild(imagePreview);
+        }
+
+        viewProofModal.classList.add("active");
+        document.body.style.overflow = "hidden";
+      });
+
+      function closeProofPreview() {
+        viewProofModal.classList.remove("active");
+        proofPreviewContainer.innerHTML = "";
+        document.body.style.overflow = "";
+      }
+
+      if (closeProofModal) closeProofModal.addEventListener("click", closeProofPreview);
+      if (closeProofModalBtn) closeProofModalBtn.addEventListener("click", closeProofPreview);
+
+      // CONFIRMATION MODAL & ACTION HANDLERS
+      const claimConfirmModal = document.getElementById("claimConfirmModal");
+      const confirmTitle = document.getElementById("confirmTitle");
+      const confirmMessage = document.getElementById("confirmMessage");
+      const confirmClaimAction = document.getElementById("confirmClaimAction");
+      const cancelConfirmAction = document.getElementById("cancelConfirmAction");
+
+      let pendingClaimId = null;
+      let pendingClaimAction = null;
+
+      function openClaimConfirmation(claimId, actionType) {
+        pendingClaimId = claimId;
+        pendingClaimAction = actionType;
+        const confirmIcon = document.getElementById("confirmIcon");
+
+        if (actionType === "approved") {
+          confirmTitle.textContent = "Approve Claim Request";
+          confirmMessage.textContent = "Are you sure you want to approve this claim? A unique verification code will be generated and emailed to the claimant.";
+          confirmClaimAction.textContent = "Approve";
+          confirmClaimAction.className = "claim-submit-btn";
+          confirmIcon.innerHTML = "<span>✓</span>";
+        } else if (actionType === "rejected") {
+          confirmTitle.textContent = "Reject Claim Request";
+          confirmMessage.textContent = "Are you sure you want to reject this claim request?";
+          confirmClaimAction.textContent = "Reject";
+          confirmClaimAction.className = "claim-submit-btn reject";
+          confirmIcon.innerHTML = "<span>!</span>";
+        } else if (actionType === "deleted") {
+          confirmTitle.textContent = "Delete Claim Request";
+          confirmMessage.textContent = "Are you sure you want to delete this claim record?";
+          confirmClaimAction.textContent = "Delete";
+          confirmClaimAction.className = "claim-submit-btn reject";
+          confirmIcon.innerHTML = "<span>!</span>";
+        }
+
+        claimConfirmModal.classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeClaimConfirmation() {
+        claimConfirmModal.classList.remove("active");
+        pendingClaimId = null;
+        pendingClaimAction = null;
+        document.body.style.overflow = "";
+      }
+
+      if (cancelConfirmAction) cancelConfirmAction.addEventListener("click", closeClaimConfirmation);
+
+      // VERIFY CODE MODAL (MARK AS CLAIMED)
+      const verifyItemName = document.getElementById("verifyItemName");
+const verifyClaimantName = document.getElementById("verifyClaimantName");
+const verifyClaimantEmail = document.getElementById("verifyClaimantEmail");
+const verifyGeneratedCode = document.getElementById("verifyGeneratedCode");
+      const closeVerifyModal = document.getElementById("closeVerifyModal");
+      const cancelVerifyModal = document.getElementById("cancelVerifyModal");
+      const verifyCodeForm = document.getElementById("verifyCodeForm");
+      const verifyClaimDetails = document.getElementById("verifyClaimDetails");
+      const inputClaimCode = document.getElementById("inputClaimCode");
+
+      let activeVerifyClaimId = null;
+
+      function openVerifyModal(claimId) {
+  activeVerifyClaimId = claimId;
+
+  const claim = claims.find(c => c.id === claimId);
+  if (!claim) return;
+
+  verifyItemName.textContent = claim.item;
+  verifyClaimantName.textContent = `Claimant: ${claim.claimant}`;
+  verifyClaimantEmail.textContent = claim.email;
+  verifyGeneratedCode.textContent = claim.claimCode;
+
+  inputClaimCode.value = "";
+
+  verifyCodeModal.classList.add("active");
+  document.body.style.overflow = "hidden";
+}
+
+      function closeVerifyModalFn() {
+        verifyCodeModal.classList.remove("active");
+        activeVerifyClaimId = null;
+        document.body.style.overflow = "";
+      }
+
+      if (closeVerifyModal) closeVerifyModal.addEventListener("click", closeVerifyModalFn);
+      if (cancelVerifyModal) cancelVerifyModal.addEventListener("click", closeVerifyModalFn);
+
+      verifyCodeForm.addEventListener("submit", function(event) {
+        event.preventDefault();
+        const claim = claims.find(c => c.id === activeVerifyClaimId);
+        if (!claim) return;
+
+        const enteredCode = inputClaimCode.value.trim().toUpperCase();
+
+        if (enteredCode === claim.claimCode.toUpperCase()) {
+          claim.status = "claimed";
+          closeVerifyModalFn();
+          displayClaims();
+          showClaimToast("Item Claimed Successfully!", `Verification code matched. Item released to ${claim.claimant}.`);
+        } else {
+          showClaimToast("Invalid Code", "The verification code entered does not match the approved claim code.", "error");
+        }
+      });
+
+      // TOAST NOTIFICATION
+      let claimToastTimer;
+      function showClaimToast(title, message, type = "success") {
+        const claimToast = document.getElementById("claimToast");
+        const toastTitle = document.getElementById("toastTitle");
+        const toastDescription = document.getElementById("toastDescription");
+        const toastIcon = document.getElementById("toastIcon");
+
+        clearTimeout(claimToastTimer);
+        toastTitle.textContent = title;
+        toastDescription.textContent = message;
+        claimToast.classList.remove("error");
+
+        if (type === "error") {
+          claimToast.classList.add("error");
+          toastIcon.textContent = "!";
+        } else {
+          toastIcon.textContent = "✓";
+        }
+
+        claimToast.classList.add("show");
+        claimToastTimer = setTimeout(function() {
+          claimToast.classList.remove("show");
+        }, 4000);
+      }
+
+      const closeClaimToastBtn = document.getElementById("closeClaimToast");
+      if (closeClaimToastBtn) {
+        closeClaimToastBtn.addEventListener("click", function() {
+          document.getElementById("claimToast").classList.remove("show");
+          clearTimeout(claimToastTimer);
+        });
+      }
+
+      // TABLE BUTTON LISTENERS
+      claimTableBody.addEventListener("click", function(event) {
+        const approveButton = event.target.closest(".claim-approve-btn");
+        const rejectButton = event.target.closest(".claim-reject-btn");
+        const deleteButton = event.target.closest(".claim-delete-btn");
+        const verifyButton = event.target.closest(".claim-verify-btn");
+
+        if (!approveButton && !rejectButton && !deleteButton && !verifyButton) return;
+
+        const selectedBtn = approveButton || rejectButton || deleteButton || verifyButton;
+        const claimId = Number(selectedBtn.dataset.id);
+        const selectedClaim = claims.find(c => c.id === claimId);
+
+        if (!selectedClaim) return;
+
+        if (verifyButton) {
+          if (selectedClaim.status !== "approved") {
+            showClaimToast("Action Unavailable", "You must approve this claim first before verification.", "error");
+            return;
+          }
+          openVerifyModal(claimId);
+          return;
+        }
+
+        if (approveButton) openClaimConfirmation(claimId, "approved");
+        else if (rejectButton) openClaimConfirmation(claimId, "rejected");
+        else if (deleteButton) openClaimConfirmation(claimId, "deleted");
+      });
+
+      confirmClaimAction.addEventListener("click", function() {
+        const index = claims.findIndex(c => c.id === pendingClaimId);
+        if (index === -1 || !pendingClaimAction) return;
+
+        const claim = claims[index];
+
+        if (pendingClaimAction === "deleted") {
+          claims.splice(index, 1);
+          closeClaimConfirmation();
+          displayClaims();
+          showClaimToast("Claim Deleted", "The claim record has been removed successfully.");
+        } else {
+          claim.status = pendingClaimAction;
+          if (pendingClaimAction === "approved") {
+            claim.claimCode = generateUniqueCode();
+          }
+          closeClaimConfirmation();
+          displayClaims();
+
+          if (pendingClaimAction === "approved") {
+            showClaimToast("Claim Approved", `Claim request successfully approved! Code: ${claim.claimCode}`);
+          } else {
+            showClaimToast("Claim Rejected", "The claim request has been successfully rejected.");
+          }
+        }
+      });
+
+      // ESC KEY
+      document.addEventListener("keydown", function(event) {
+        if (event.key === "Escape") {
+          if (viewProofModal.classList.contains("active")) closeProofPreview();
+          if (addClaimModal.classList.contains("active")) closeClaimModal();
+          if (claimConfirmModal.classList.contains("active")) closeClaimConfirmation();
+          if (verifyCodeModal.classList.contains("active")) closeVerifyModalFn();
+        }
+      });
+
+      displayClaims();
+    });
+  </script>
+</body>
+</html>
