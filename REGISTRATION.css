@@ -90,9 +90,9 @@ body {
 
 .reg-container {
   flex: 1;
-  max-width: 520px;
+  max-width: 420px;
   margin: 0 auto;
-  padding: 40px 55px;
+  padding: 30px 45px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -324,4 +324,4 @@ body {
   .description p {
     font-size: 12px;
   }
-}
+  }
